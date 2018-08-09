@@ -1,0 +1,7 @@
+<% @projects.each do |project| %>
+  <ul>
+    <li><%= project.name %></li>
+    <li><%= project.work_type %></li>
+    <li><%= project.charity.name %></li>
+  </ul>
+<% end %>
