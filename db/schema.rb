@@ -65,13 +65,14 @@ ActiveRecord::Schema.define(version: 2018_08_09_050258) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "type"
+    t.string "work_type"
     t.string "status"
     t.date "deadline"
     t.string "github"
     t.bigint "charity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["charity_id"], name: "index_projects_on_charity_id"
   end
 
