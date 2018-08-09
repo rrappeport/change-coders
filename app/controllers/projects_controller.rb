@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
-  # before_action :authenticate_developer!, only: [:show, :index]
-  # before_action :authenticate_charity!, only: [:new, :create, :edit, :update]
 
+  skip_before_action :authenticate_developer!, only: [:index, :show]
 
   def index
     @projects = policy_scope(Project)

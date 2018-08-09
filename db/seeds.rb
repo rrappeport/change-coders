@@ -71,7 +71,19 @@ developer = Developer.new(
         status: "In Progress",
         deadline: Date.today+30.day
       )
-      project.save!
+        project.save!
+
+        team = Team.new(
+          developer_id: rand(1..developer.id),
+          project_id: project.id,
+        )
+        team.save!
+          proposal = Proposal.new(
+            developer_id: developer.id,
+            project_id: rand(1..developer.id),
+            state: "pending"
+          )
+          proposal.save!
 end
 
 
