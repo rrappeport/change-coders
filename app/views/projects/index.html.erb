@@ -1,7 +1,10 @@
-<% @projects.each do |project| %>
-  <ul>
-    <li><%= project.name %></li>
-    <li><%= project.work_type %></li>
-    <li><%= project.charity.name %></li>
-  </ul>
-<% end %>
+<div>
+  <% @projects.each do |project| %>
+    <ul>
+      <li>Name:<%= link_to project.name, project_path(project)%></li>
+      <li>Status:<%= project.status %></li>
+      <li>Type:<%= project.work_type %></li>
+      <li>Charity:<%= project.charity.name %></li>
+    </ul>
+  <% end %>
+<div>
