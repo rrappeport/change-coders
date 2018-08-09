@@ -1,8 +1,10 @@
-<% @id = current_user.id %>
+<!-- Change to current_developer -->
+<% @id = Developer.last.id %>
 <% projects = Project.all.where(user_id: @id) %>
-<h1><%= "Hi, #{current_user.first_name} #{current_user.last_name}" %></h1>
-
-<h4><%= current_user.email %></h4>
+<!-- Change to current_developer -->
+<h1><%= "Hi, #{Developer.last.first_name} #{Developer.last.last_name}" %></h1>
+<!-- Change to current_developer -->
+<h4><%= Developer.last.email %></h4>
 
 <h2>Your projects</h2>
 <!-- Add path to update profile -->
@@ -14,8 +16,8 @@
     <%= current_charity.description %>
     <%= current_team = Team.find_by project_id: project.id %>
     <!-- Display each team member -->
-
-    <%= end %>
+  <% end %>
+<% end %>
 
 <h2>Your proposals</h2>
 

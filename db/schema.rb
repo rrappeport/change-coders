@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2018_08_09_050258) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +75,6 @@ ActiveRecord::Schema.define(version: 2018_08_09_050258) do
     t.index ["charity_id"], name: "index_projects_on_charity_id"
   end
 
-
   create_table "proposals", force: :cascade do |t|
     t.bigint "developer_id"
     t.bigint "project_id"
@@ -99,9 +96,8 @@ ActiveRecord::Schema.define(version: 2018_08_09_050258) do
   end
 
   add_foreign_key "projects", "charities"
-  add_foreign_key "teams", "developers"
-  add_foreign_key "teams", "projects"
   add_foreign_key "proposals", "developers"
   add_foreign_key "proposals", "projects"
-
+  add_foreign_key "teams", "developers"
+  add_foreign_key "teams", "projects"
 end
