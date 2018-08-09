@@ -7,7 +7,6 @@ class ProjectsController < ApplicationController
   # end
 
   def index
-    byebug
     @projects = policy_scope(Project)
   end
   def show
