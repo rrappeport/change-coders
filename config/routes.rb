@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :charities
-  devise_for :developers
+  devise_for :charities, path: 'charities'
+  devise_for :developers, path: 'developers'
   root to: 'pages#home'
   resources :projects do
     resources :reviews, only: [:create]

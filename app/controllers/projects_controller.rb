@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  # before_action :authenticate_developer!, only: [:show, :index]
+  before_action :authenticate_charity!, only: [:new, :create, :edit, :update]
 
   def pundit_user
     current_developer
