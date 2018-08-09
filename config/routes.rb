@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :charities
   devise_for :developers
   root to: 'pages#home'
+  get 'dashboard/:id', to: 'developers#dashboard', as: 'dashboard'
   resources :projects do
     resources :reviews, only: [:create]
     resources :proposals, only: [:new, :create]
