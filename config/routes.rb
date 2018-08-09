@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :developers do
     resources :developer_skills, except: [:show, :index]
   end
-   get 'dashboard', to: 'pages#dashboard'
+  get 'dashboard', to: 'pages#dashboard'
+  get 'charity_dahsboard', to: 'pages#charity-dashboard'
 end
