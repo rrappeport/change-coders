@@ -1,3 +1,4 @@
+<div class="container">
 <div>
   <% @projects.each do |project| %>
     <ul>
@@ -5,6 +6,54 @@
       <li>Status:<%= project.status %></li>
       <li>Type:<%= project.work_type %></li>
       <li>Charity:<%= project.charity.name %></li>
+      <li>category:<%= project.charity.category %></li>
+      <li>deadline:<%= project.deadline %></li>
     </ul>
   <% end %>
 <div>
+
+
+<%= form_for(:project, :url => {:action => "index"}, :html => {:method => :get}) do %>
+
+  <div>
+  <% Project::CATEGORIES.each do |category| %>
+  <div class= "">
+    <%= check_box_tag "category", category %> <%= category %>
+  </div>
+  <% end %>
+  </div>
+  <br>
+  <div>
+    <% Project::TYPES.each do |work_type| %>
+  <div class= "">
+    <%= check_box_tag "work_type", work_type %> <%= work_type %>
+  </div>
+  <% end %>
+  <div>
+
+  <br>
+  <div>
+    <% Project::STATUSES.each do |status| %>
+  <div class= "">
+    <%= check_box_tag "status", status %> <%= status %>
+  </div>
+  <% end %>
+  </div>
+
+
+  <br>
+  <div>
+    <% Project::DEADLINES.each do |deadline| %>
+  <div class= "">
+    <%= check_box_tag "deadline", deadline %> within <%= deadline %> days
+  </div>
+  <% end %>
+  </div>
+
+  <%= submit_tag("Search") %>
+<% end %>
+
+
+
+</div>
+

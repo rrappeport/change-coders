@@ -1,0 +1,27 @@
+<h2><%= @developer.first_name %> <%= @developer.last_name %></h2>
+<p>super developer</p>
+<p>info: </p>
+<h4>Email: <%= @developer.email %></h4>
+<h4>Description: <%= @developer.description %></h4>
+<h4>Experience: <%= @developer.experience %></h4>
+<h4>Linkedin_username: <%= @developer.linkedin_username %></h4>
+<h4>Github_username: <%= @developer.github_username %></h4>
+
+
+<div class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star off"></i></div>
+<a href="#" class="btn btn-primary btn-lg btn-top-margin" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Get in touch</a>
+</div>
+</div>
+
+<h2> My projects </h2>
+<div class="stat">
+  <div class="stat-content">
+    <h5>Projects</h5>
+    <% @projects.each do |project| %>
+    <p>name: <%= project.name  %> </p>
+    <p>status: <%= project.status %></p>
+    <p>deadline: <%= project.deadline  %></p>
+    <p>id: <%= project.id  %></p>
+  <% end %>
+  </div>
+</div>

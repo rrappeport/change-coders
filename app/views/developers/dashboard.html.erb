@@ -1,1 +1,32 @@
-<h1>Developer Dashboard</h1>
+
+<%# @id = current_developer.id %>
+<!-- Change to current_developer -->
+<h2> Hi, <%= @developer.first_name %> <%= @developer.last_name %></h2>
+<!-- Change to current_developer -->
+<h4><%= @developer.email %></h4>
+<h4>Email: <%= @developer.email %></h4>
+<h4>Description: <%= @developer.description %></h4>
+<h4>Experience: <%= @developer.experience %></h4>
+<h4>Linkedin_username: <%= @developer.linkedin_username %></h4>
+<h4>Github_username: <%= @developer.github_username %></h4>
+
+<h2>Your projects: </h2>
+
+<% @projects.each do |project| %>
+  <p>name: <%= project.name  %> </p>
+  <p>status: <%= project.status %></p>
+  <p>deadline: <%= project.deadline  %></p>
+  <p>id: <%= project.id  %></p>
+  <% end %>
+
+
+<h2>Your aplications</h2>
+<% @proposals.each do |proposal| %>
+  <div>
+  <%= proposal.project.name  %>
+  ---->
+  <%= proposal.state  %>
+
+  </div>
+<% end %>
+

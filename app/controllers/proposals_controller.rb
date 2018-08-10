@@ -7,11 +7,25 @@ class ProposalsController < ApplicationController
     authorize @proposal
     @proposal.developer = current_developer
     if @proposal.save
-      redirect_to dashboard_path
+      redirect_to developer_dashboard_path
+      flash[:notice] = "Thanks for applying!"
     else
-      render project_path(@project)
-      flash[:alert] = "Error"
+      render 'project_path(@project)', flash[:alert] = "Error"
     end
+  end
+
+  def accept
+    @project = Project.find(params[:project_id])
+    @proposal = Proposal.find(params[:proposal])
+    @proposal.state = "Accepted"
+    if @proposal.save!
+      member = Member.new
+      member.developer = @proposal.developer
+      member.project = @project
+      member.save!
+    end
+
+    redirect_to projects_dashboard_path(@project)
   end
 
 end
