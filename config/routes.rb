@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :developers, :controllers => { :omniauth_callbacks => "callbacks" }, path: 'developers'
   root to: 'pages#home'
 
+
+  resources :charities, only: [:index, :show]
   resources :projects do
     resources :reviews, only: [:create]
     resources :proposals, only: [:new, :create]
