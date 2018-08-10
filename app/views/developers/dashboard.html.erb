@@ -1,28 +1,27 @@
 
 <%# @id = current_developer.id %>
 <!-- Change to current_developer -->
-<h1> Hi, <%= @developer.first_name %>, <%= @developer.last_name %></h1>
+<h2> Hi, <%= @developer.first_name %> <%= @developer.last_name %></h2>
 <!-- Change to current_developer -->
-<h4><%= @developer.email %></h4>
+<h4>Email: <%= @developer.email %></h4>
+<h4>Description: <%= @developer.description %></h4>
+<h4>Experience: <%= @developer.experience %></h4>
+<h4>Linkedin_username: <%= @developer.linkedin_username %></h4>
+<h4>Github_username: <%= @developer.github_username %></h4>
 
-
-<h2>Your projects</h2>
+<h2>Your projects: </h2>
 
 <% @projects.each do |project| %>
-  <%= project.name  %>
-  <%= project.status %>
-  <%= project.deadline  %>
-  <% teammembers = teammembers(project) %>
-    <% teammembers.each do |member| %>
-      <%= member.first_name %>
-      <%= member.last_name %>
-      <%= member.avatar %>
-      <% end %>
+  <p>name: <%= project.name  %> </p>
+  <p>status: <%= project.status %></p>
+  <p>deadline: <%= project.deadline  %></p>
+  <p>id: <%= project.id  %></p>
   <% end %>
 
 
 <h2>Your proposals</h2>
 <% @proposals.each do |proposal| %>
-  <%= proposal.state  %>
+  <p>id: <%= proposal.id  %></p>
+  <p>state: <%= proposal.state  %></p>
   <% end %>
 
