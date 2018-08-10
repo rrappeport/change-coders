@@ -16,8 +16,8 @@
     <% if developer_signed_in? %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% if current_developer[:photo]%>
-            <%= image_tag "#{current_developer.photo}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% if current_developer[:avatar]%>
+            <%= image_tag "#{current_developer.avatar}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% else %>
               <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% end %>
