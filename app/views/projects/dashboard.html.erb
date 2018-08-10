@@ -18,12 +18,24 @@
 <div class="team-info">
   <h2>Team Members: </h2>
   <% @project.developers.each do |developer| %>
-  <div class="col-md-4">
-    <p><%= developer.avatar %></p>
-    <h2><%= developer.first_name %> <%= developer.last_name %></h2>
-    <p><%= developer.email %></p>
-    <p><%= developer.github_username %></p>
-  </div>
-    <% end %>
-
+    <div class="col-md-4">
+      <p><%= developer.avatar %></p>
+      <h2><%= developer.first_name %> <%= developer.last_name %></h2>
+      <p><%= developer.email %></p>
+      <p><%= developer.github_username %></p>
+    </div>
+  <% end %>
 </div>
+
+<div class="applications-info">
+  <div class="col-md-12">
+    <h2>New join requests: </h2>
+    <% @proposals.each do |proposal| %>
+      <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
+      <p><%= proposal.state%></p>
+      <%= link_to "Accept application", accept_proposal_path(proposal: proposal), method: :post %>
+      <br> <br> <br>
+    <% end %>
+  </div>
+</div>
+
