@@ -20,9 +20,13 @@
   <% end %>
 
 
-<h2>Your proposals: </h2>
+<h2>Your aplications</h2>
 <% @proposals.each do |proposal| %>
-  <p>id: <%= proposal.id  %></p>
-  <p>state: <%= proposal.state  %></p>
-  <% end %>
+  <div>
+  <%= proposal.project.name  %>
+  ---->
+  <%= proposal.state  %>
+
+  </div>
+<% end %>
 

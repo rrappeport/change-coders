@@ -18,7 +18,13 @@ class ProposalsController < ApplicationController
     @project = Project.find(params[:project_id])
     @proposal = Proposal.find(params[:proposal])
     @proposal.state = "Accepted"
-    @proposal.save!
+    if @proposal.save!
+      member = Member.new
+      member.developer = @proposal.developer
+      member.project = @project
+      member.save!
+    end
+
     redirect_to projects_dashboard_path(@project)
   end
 
