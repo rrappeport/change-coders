@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_09_071348) do
+ActiveRecord::Schema.define(version: 2018_08_10_020034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2018_08_09_071348) do
     t.index ["reset_password_token"], name: "index_charities_on_reset_password_token", unique: true
   end
 
+  create_table "developer_skills", force: :cascade do |t|
+    t.bigint "developer_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["developer_id"], name: "index_developer_skills_on_developer_id"
+    t.index ["skill_id"], name: "index_developer_skills_on_skill_id"
+  end
+
   create_table "developers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -60,8 +69,19 @@ ActiveRecord::Schema.define(version: 2018_08_09_071348) do
     t.string "linkedin_username"
     t.string "avatar"
     t.date "birth_date"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_developers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
+  end
+
+  create_table "project_skills", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_skills_on_project_id"
+    t.index ["skill_id"], name: "index_project_skills_on_skill_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -74,6 +94,7 @@ ActiveRecord::Schema.define(version: 2018_08_09_071348) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.bigint "team_id"
+    t.integer "leader_id"
     t.index ["charity_id"], name: "index_projects_on_charity_id"
     t.index ["team_id"], name: "index_projects_on_team_id"
   end
@@ -88,6 +109,12 @@ ActiveRecord::Schema.define(version: 2018_08_09_071348) do
     t.index ["project_id"], name: "index_proposals_on_project_id"
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.bigint "developer_id"
     t.bigint "project_id"
@@ -98,6 +125,10 @@ ActiveRecord::Schema.define(version: 2018_08_09_071348) do
     t.index ["project_id"], name: "index_teams_on_project_id"
   end
 
+  add_foreign_key "developer_skills", "developers"
+  add_foreign_key "developer_skills", "skills"
+  add_foreign_key "project_skills", "projects"
+  add_foreign_key "project_skills", "skills"
   add_foreign_key "projects", "charities"
   add_foreign_key "projects", "teams"
   add_foreign_key "proposals", "developers"

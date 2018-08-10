@@ -12,15 +12,41 @@
     <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
 
     <!-- Profile picture with dropdown list -->
+      <% if user_signed_in? %>
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+        <% if current_user[:photo]%>
+          <%= image_tag "#{current_user.photo}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% else %>
+            <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
+        <%= current_user.first_name.capitalize %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
+          <li>
+            <%= link_to developer_dashboard_path(current_user) do %>
+              <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to edit_user_registration_path(current_user) do %>
+              <i class="fa fa-cog"></i><%= t(".profile", default: "Edit profile") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-in-alt"></i></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
+  <% else %>
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+  <% end %>
+</div>
+
+
   </div>
 </div>
+
