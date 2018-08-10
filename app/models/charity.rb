@@ -4,4 +4,5 @@ class Charity < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :projects
+  mount_uploader :logo, PhotoUploader
 end

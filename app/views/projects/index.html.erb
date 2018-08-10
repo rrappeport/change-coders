@@ -45,7 +45,7 @@
   <div>
     <% Project::DEADLINES.each do |deadline| %>
   <div class= "">
-    <%= check_box_tag "deadline", deadline %> <%= deadline %>
+    <%= check_box_tag "deadline", deadline %> within <%= deadline %> days
   </div>
   <% end %>
   </div>
