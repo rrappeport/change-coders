@@ -34,6 +34,11 @@ CATEGORY = ["Animals", "Community Development", "Education", "Health", "Environm
 PROJECT_NAME = ["Charity New Website", "Charity Add Map", "Redesign My Site", "Ruby Work Needed"]
 TYPE = ["New", "Update", "Rebuild"]
 
+Developer.destroy_all
+Charity.destroy_all
+Member.destroy_all
+Project.destroy_all
+
 (1..5).to_a.each do |number|
 developer = Developer.new(
   first_name: NAME.sample,
@@ -65,7 +70,7 @@ developer = Developer.new(
 
       project = Project.new(
         name: PROJECT_NAME.sample,
-        charity_id: Charity.last.id,
+        charity: Charity.all.sample,
         github: GITHUB.sample,
         work_type: TYPE.sample,
         status: "In Progress",
@@ -73,15 +78,16 @@ developer = Developer.new(
       )
         project.save!
 
-        team = Team.new(
-          developer_id: rand(1..developer.id),
-          project_id: project.id
+        3.times do
+        member = Member.new(
+          developer: Developer.all.sample,
+          project: Project.all.sample,
         )
-        team.save!
-
+        member.save!
+        end
           proposal = Proposal.new(
-            developer_id: developer.id,
-            project_id: rand(1..developer.id),
+            developer: Developer.all.sample,
+            project: Project.all.sample,
             state: "pending"
           )
           proposal.save!
