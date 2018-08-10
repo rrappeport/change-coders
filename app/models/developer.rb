@@ -7,6 +7,7 @@ class Developer < ApplicationRecord
          :omniauthable
   has_many :proposals
   has_many :teams
+  has_many :skills, through: :developer_skills
   # has_many :projects throgh:
 
 
