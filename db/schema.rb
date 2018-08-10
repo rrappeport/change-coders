@@ -10,11 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
+
 ActiveRecord::Schema.define(version: 2018_08_10_053422) do
-=======
-ActiveRecord::Schema.define(version: 2018_08_10_035759) do
->>>>>>> 81e9e9fed73d92a57a5ba703d1d8e66affa112f6
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,7 +93,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_035759) do
     t.index ["project_id"], name: "index_members_on_project_id"
   end
 
-<<<<<<< HEAD
   create_table "messages", force: :cascade do |t|
     t.integer "sender_id"
     t.string "sender_type"
@@ -106,8 +103,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_035759) do
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
   end
 
-=======
->>>>>>> 81e9e9fed73d92a57a5ba703d1d8e66affa112f6
   create_table "project_skills", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "skill_id"
@@ -146,18 +141,12 @@ ActiveRecord::Schema.define(version: 2018_08_10_035759) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   add_foreign_key "chatrooms", "projects"
-=======
->>>>>>> 81e9e9fed73d92a57a5ba703d1d8e66affa112f6
   add_foreign_key "developer_skills", "developers"
   add_foreign_key "developer_skills", "skills"
   add_foreign_key "members", "developers"
   add_foreign_key "members", "projects"
-<<<<<<< HEAD
   add_foreign_key "messages", "chatrooms"
-=======
->>>>>>> 81e9e9fed73d92a57a5ba703d1d8e66affa112f6
   add_foreign_key "project_skills", "projects"
   add_foreign_key "project_skills", "skills"
   add_foreign_key "projects", "charities"
