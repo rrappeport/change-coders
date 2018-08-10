@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources :developer_skills, except: [:show, :index]
   end
   get 'projects/:project_id/dashboard', to: 'projects#dashboard', as: 'projects_dashboard'
-  get 'developer_dashboard', to: 'developers#dashboard', as: "developer_dahsboard"
-  get 'charity_dahsboard', to: 'charities#dashboard', as: "charity_dahsboard"
+  get 'developer_dashboard', to: 'developers#dashboard', as: "developer_dashboard"
+  get 'charity_dashboard', to: 'charities#dashboard', as: "charity_dashboard"
 end
