@@ -1,0 +1,26 @@
+
+<div class="project-info">
+  <h1>Project name:<%= @project.name %></h1>
+  <h2>Charity:<%= @charity.name %></h2>
+  <p>Status: <%= @project.status  %></p>
+  <p>Type: <%= @project.work_type %></p>
+</div>
+
+<div class="charity-info">
+    <p>Logo: <%= @project.charity.logo %></p>
+    <h2>Charity:<%= @project.charity.name %></h2>
+    <h2>Location:<%= @project.charity.address %></h2>
+    <p>Email: <%= @project.charity.email %></p>
+    <p>Website: <%= @project.charity.website %></p>
+    <p>Category: <%= @project.charity.category %></p>
+</div>
+
+<div class="team-info">
+  <h2>Developers: </h2>
+  <% @project.developers.each do |developer| %>
+    <p><%= developer.avatar %></p>
+    <h2><%= developer.first_name %> <%= developer.last_name %></h2>
+    <p><%= developer.email %></p>
+    <p><%= developer.github_username %></p>
+    <% end %>
+</div>

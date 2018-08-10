@@ -16,5 +16,4 @@ end
      @developer = Developer.last
      # @developer = Developer.find(params[:id])
      # authorize @developer
-  end
 end

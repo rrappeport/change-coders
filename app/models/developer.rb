@@ -6,8 +6,12 @@ class Developer < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
   has_many :proposals
-  has_many :teams
-  has_many :projects, through: :teams
+  has_many :members
+  has_many :projects, through: :members
+  has_many :skills, through: :developer_skills
+
+  # has_many :projects throgh:
+
 
 
   def self.from_omniauth(auth)
