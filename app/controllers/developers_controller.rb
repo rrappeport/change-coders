@@ -9,7 +9,6 @@ end
     @developer = current_developer
     @projects = @developer.projects
     @proposals = @developer.proposals
-
   end
 
   def show

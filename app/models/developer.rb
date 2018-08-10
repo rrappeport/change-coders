@@ -6,6 +6,7 @@ class Developer < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
   has_many :proposals
+
   has_many :members
   has_many :projects, through: :members
   has_many :skills, through: :developer_skills

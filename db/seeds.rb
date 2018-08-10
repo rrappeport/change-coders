@@ -77,12 +77,12 @@ developer = Developer.new(
         deadline: Date.today+30.day
       )
         project.save!
+
         3.times do
         member = Member.new(
           developer: Developer.all.sample,
           project: Project.all.sample,
         )
-
         member.save!
         end
           proposal = Proposal.new(
