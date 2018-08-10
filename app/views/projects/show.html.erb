@@ -14,10 +14,12 @@
     <p>Category: <%= @project.charity.category %></p>
 </div>
 
-<%= link_to "Edit", edit_project_path(@project), class:'btn'  %>
+
+<%= link_to "Dashboard", projects_dashboard_path(@project), class:'btn btn-success'  %>
+<%= link_to "Edit", edit_project_path(@project), class:'btn btn-default'  %>
 
 <!-- <button type="button" data-toggle="modal" data-target="#myModal">Apply -->
-<%= link_to "apply", project_proposals_path(@project), method: :post %>
+<%= link_to "Apply", project_proposals_path(@project), class: 'btn btn-primary', method: :post  %>
 <!-- </button> -->
 
 
