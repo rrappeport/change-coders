@@ -36,6 +36,23 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def new
+    @project = Project.new
+    # authorize @project
+  end
+
+  def create
+    @project = Project.new(project_params)
+    @project.charity = current_charity
+    # authorize @project
+    if @project.save
+      puts "Your project has been created!"
+      redirect_to projects_dashboard_path
+    else
+      render :new
+    end
+  end
+
   def dashboard
     @project = Project.find(params[:project_id])
     @proposals = @project.proposals
@@ -45,6 +62,6 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:type, :status, :github, :deadline, :charity_id, :name)
+    params.require(:project).permit(:type, :status, :github, :deadline, :charity_id, :name, :details)
   end
 end

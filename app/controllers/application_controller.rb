@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
       # For additional in app/views/devise/registrations/edit.html.erb
       devise_parameter_sanitizer.permit(:account_update, keys: [:github_account, :birth_date, :profile_pic, :experience, :description, :address, :linkedin, :skills, :avatar ])
-    else
+    elsif resource_name == :charity
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
       # charity devise
     end
