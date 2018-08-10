@@ -75,9 +75,10 @@ developer = Developer.new(
 
         team = Team.new(
           developer_id: rand(1..developer.id),
-          project_id: project.id,
+          project_id: project.id
         )
         team.save!
+
           proposal = Proposal.new(
             developer_id: developer.id,
             project_id: rand(1..developer.id),
