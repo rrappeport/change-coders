@@ -26,6 +26,9 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def dashboard
+  end
+
   private
   def project_params
     params.require(:project).permit(:type, :status, :github, :deadline, :charity_id, :name)
