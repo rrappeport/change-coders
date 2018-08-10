@@ -11,7 +11,8 @@ class DevelopersController < ApplicationController
   end
 
   def show
-    @developer = Developer.last
+    @developer = current_developer
+    @projects = @developer.projects
      # @developer = Developer.find(params[:id])
      # authorize @developer
   end
