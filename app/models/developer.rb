@@ -7,7 +7,10 @@ class Developer < ApplicationRecord
          :omniauthable
   has_many :proposals
   has_many :teams
+
   has_many :projects, through: :teams
+  has_many :skills, through: :developer_skills
+
 
 
   def self.from_omniauth(auth)
