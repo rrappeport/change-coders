@@ -11,4 +11,10 @@ class ProjectPolicy < ApplicationPolicy
   def show?
     return true
   end
+  def edit?
+    return true
+  end
+  def dashboard?
+    return true
+  end
 end
