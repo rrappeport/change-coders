@@ -12,6 +12,12 @@
   <%= project.name  %>
   <%= project.status %>
   <%= project.deadline  %>
+  <% teammembers = teammembers(project) %>
+  <% teammembers.each do |member| %>
+    <%= member.first_name %>
+    <%= member.last_name %>
+    <%= member.avatar %>
+    <% end %>
   <% end %>
 
 
@@ -19,4 +25,5 @@
 <% @proposals.each do |proposal| %>
   <%= proposal.state  %>
   <% end %>
+
 
