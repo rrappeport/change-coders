@@ -14,14 +14,15 @@
     <p>Category: <%= @project.charity.category %></p>
 </div>
 
-<%= link_to "Edit", edit_project_path(@project), class:'btn'  %>
+
+<%= link_to "Dashboard", projects_dashboard_path(@project), class:'btn btn-success'  %>
+<%= link_to "Edit", edit_project_path(@project), class:'btn btn-default'  %>
 
 <!-- <button type="button" data-toggle="modal" data-target="#myModal">Apply -->
+
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Apply
   </button>
-
-
 
 
 

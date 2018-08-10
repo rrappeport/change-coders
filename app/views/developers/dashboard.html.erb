@@ -1,1 +1,28 @@
-<h1>Developer Dashboard</h1>
+
+<%# @id = current_developer.id %>
+<!-- Change to current_developer -->
+<h1> Hi, <%= @developer.first_name %>, <%= @developer.last_name %></h1>
+<!-- Change to current_developer -->
+<h4><%= @developer.email %></h4>
+
+
+<h2>Your projects</h2>
+
+<% @projects.each do |project| %>
+  <%= project.name  %>
+  <%= project.status %>
+  <%= project.deadline  %>
+  <% teammembers = teammembers(project) %>
+    <% teammembers.each do |member| %>
+      <%= member.first_name %>
+      <%= member.last_name %>
+      <%= member.avatar %>
+      <% end %>
+  <% end %>
+
+
+<h2>Your proposals</h2>
+<% @proposals.each do |proposal| %>
+  <%= proposal.state  %>
+  <% end %>
+

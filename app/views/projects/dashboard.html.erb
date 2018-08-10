@@ -16,13 +16,16 @@
 </div>
 
 <div class="team-info">
-  <h2>Developers: </h2>
+  <h2>Team Members: </h2>
   <% @project.developers.each do |developer| %>
+  <div class="col-md-4">
     <p><%= developer.avatar %></p>
     <h2><%= developer.first_name %> <%= developer.last_name %></h2>
     <p><%= developer.email %></p>
     <p><%= developer.github_username %></p>
+  </div>
     <% end %>
+
 </div>
 
 <div class="applications-info">

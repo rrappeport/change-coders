@@ -4,6 +4,16 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = policy_scope(Project)
+    @projects = @projects.where(nil)
+    @projects = @projects.where(status: params[:status]) if params[:status].present?
+    @projects = @projects.where(work_type: params[:work_type]) if params[:work_type].present?
+    if params[:category].present?
+      @charities = Charity.where(category: params[:category])
+      @projects = @projects.where(charity_id: @charities.pluck(:id))
+    end
+    if params[:deadline].present?
+        @projects = @projects.where("deadline <= ? ", Date.today + params[:deadline].to_i.day)
+    end
   end
 
   def show
