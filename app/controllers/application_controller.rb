@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   def configure_permitted_parameters
-    if resource_name == Developer
+    if resource_name == :developer
       devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
 
       # For additional in app/views/devise/registrations/edit.html.erb

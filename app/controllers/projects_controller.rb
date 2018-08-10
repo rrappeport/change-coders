@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     authorize @project
     if @project.update(project_params)
-      redirect_to project_path(@project)
+      redirect_to project_path(@pro=> ject)
     else
       render :edit
     end
@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
 
   def dashboard
     @project = Project.find(params[:project_id])
+    @proposals = @project.proposals
     authorize @project
     @charity = @project.charity
   end

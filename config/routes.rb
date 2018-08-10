@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   resources :developers do
     resources :developer_skills, except: [:show, :index]
   end
+  resources :messages
+  resources :chatrooms
   get 'projects/:project_id/dashboard', to: 'projects#dashboard', as: 'projects_dashboard'
   get 'developer_dashboard', to: 'developers#dashboard', as: "developer_dashboard"
   get 'charity_dashboard', to: 'charities#dashboard', as: "charity_dashboard"
+  post 'projects/:project_id/dashboard/accept', to: 'proposals#accept', as: "accept_proposal"
 end

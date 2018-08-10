@@ -24,3 +24,15 @@
     <p><%= developer.github_username %></p>
     <% end %>
 </div>
+
+<div class="applications-info">
+  <h2>New join requests: </h2>
+  <% @proposals.each do |proposal| %>
+    <div>
+      <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
+      <p><%= proposal.state%></p>
+      <%= link_to "Accept application", accept_proposal_path(proposal: proposal), method: :post %>
+    </div>
+  <% end %>
+</div>
+
