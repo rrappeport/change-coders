@@ -19,6 +19,7 @@ gem 'devise'
 gem "pundit"
 gem 'cloudinary'
 gem 'faker'
+gem 'omniauth-github'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
