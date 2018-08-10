@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :reviews, only: [:create]
     resources :proposals, only: [:new, :create]
-    resources :teams
+    resources :members
     resources :posts
     resources :project_skills, except: [:show, :index]
   end
