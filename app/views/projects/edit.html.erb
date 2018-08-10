@@ -1,0 +1,8 @@
+ <%= simple_form_for @project do |f| %>
+  <%= f.input :name %>
+  <%= f.input :status %>
+  <%= f.input :work_type %>
+  <%= f.input :deadline %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
+
