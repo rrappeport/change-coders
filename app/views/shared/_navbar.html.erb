@@ -44,7 +44,43 @@
     <% else %>
       <%= link_to t(".sign_in", default: "Developer login"), new_developer_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
+
+
+  <% if charity_signed_in? %>
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <% if current_charity[:photo]%>
+            <%= image_tag "#{current_charity.photo}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <% else %>
+              <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <% end %>
+          <%= current_charity.name %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to charity_dashboard_path(current_charity) do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to edit_charity_registration_path(current_charity) do %>
+                <i class="fa fa-cog"></i><%= t(".profile", default: "Edit profile") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_charity_session_path, method: :delete do %>
+                <i class="fas fa-sign-in-alt"></i></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <%= link_to t(".sign_in", default: "Charity login"), new_charity_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
     </div>
+
+
   </div>
 </div>
 
