@@ -1,1 +1,28 @@
-<h1>Developer Dashboard</h1>
+<!-- Change to current_developer -->
+<% @id = Developer.last.id %>
+<% projects = Project.all %>
+<% projects2 = projects.where(user_id: @id)  %>
+ <%= raise %>
+
+<!-- Change to current_developer -->
+<h1><%= "Hi, #{Developer.last.first_name} #{Developer.last.last_name}" %></h1>
+<!-- Change to current_developer -->
+<h4><%= Developer.last.email %></h4>
+
+<h2>Your projects</h2>
+<!-- Add path to update profile -->
+<%#= link_to "Update profile", edit_user_registration_path(current_user) %>
+
+<% if projects.size > 0 %>
+  <% projects.each do |project|   %>
+
+    <% current_charity = project.charity_id %>
+    <%= current_charity.name %>
+    <%= current_charity.description %>
+    <%= current_team = Team.find_by project_id: project.id %>
+    <!-- Display each team member -->
+  <% end %>
+<% end %>
+
+<h2>Your proposals</h2>
+
