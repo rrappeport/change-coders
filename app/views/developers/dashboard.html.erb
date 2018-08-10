@@ -21,8 +21,13 @@
   <% end %>
 
 
-<h2>Your proposals</h2>
+<h2>Your aplications</h2>
 <% @proposals.each do |proposal| %>
+  <div>
+  <%= proposal.project.name  %>
+  ---->
   <%= proposal.state  %>
-  <% end %>
+
+  </div>
+<% end %>
 
