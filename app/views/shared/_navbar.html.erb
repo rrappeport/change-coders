@@ -11,16 +11,16 @@
     <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
     <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
 
-    <!-- Profile picture with dropdown list -->
+    <!-- When developer is signed in -->
 
     <% if developer_signed_in? %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_developer[:avatar]%>
             <%= image_tag "#{current_developer.avatar}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-            <% else %>
-              <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-            <% end %>
+          <% else %>
+            <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
           <%= current_developer.first_name %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
@@ -42,12 +42,10 @@
           </ul>
         </div>
       </div>
-    <% else %>
-      <%= link_to t(".sign_in", default: "Developer login"), new_developer_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <% end %>
 
+    <!-- When charity is signed in -->
 
-  <% if charity_signed_in? %>
+    <% elsif charity_signed_in?%>
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_charity[:photo]%>
@@ -76,11 +74,13 @@
           </ul>
         </div>
       </div>
-    <% else %>
-      <%= link_to t(".sign_in", default: "Charity login"), new_charity_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <% end %>
-    </div>
 
+    <!-- When no one is signed in -->
+
+    <% else %>
+      <%= link_to t(".sign_in", default: "Developer login"), new_developer_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Charity login"), new_charity_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
 
   </div>
 </div>
