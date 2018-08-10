@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_09_092253) do
+ActiveRecord::Schema.define(version: 2018_08_10_035759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 2018_08_09_092253) do
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
   end
 
+  create_table "members", force: :cascade do |t|
+    t.bigint "developer_id"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["developer_id"], name: "index_members_on_developer_id"
+    t.index ["project_id"], name: "index_members_on_project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "work_type"
     t.string "status"
@@ -75,35 +84,22 @@ ActiveRecord::Schema.define(version: 2018_08_09_092253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.bigint "team_id"
     t.index ["charity_id"], name: "index_projects_on_charity_id"
-    t.index ["team_id"], name: "index_projects_on_team_id"
   end
 
   create_table "proposals", force: :cascade do |t|
     t.bigint "developer_id"
     t.bigint "project_id"
-    t.string "state"
+    t.string "state", default: "Pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["developer_id"], name: "index_proposals_on_developer_id"
     t.index ["project_id"], name: "index_proposals_on_project_id"
   end
 
-  create_table "teams", force: :cascade do |t|
-    t.bigint "developer_id"
-    t.bigint "project_id"
-    t.string "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["developer_id"], name: "index_teams_on_developer_id"
-    t.index ["project_id"], name: "index_teams_on_project_id"
-  end
-
+  add_foreign_key "members", "developers"
+  add_foreign_key "members", "projects"
   add_foreign_key "projects", "charities"
-  add_foreign_key "projects", "teams"
   add_foreign_key "proposals", "developers"
   add_foreign_key "proposals", "projects"
-  add_foreign_key "teams", "developers"
-  add_foreign_key "teams", "projects"
 end

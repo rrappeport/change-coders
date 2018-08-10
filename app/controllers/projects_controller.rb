@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  skip_before_action :authenticate_developer!, only: [:index, :show]
+  skip_before_action :authenticate_developer!, only: [:index, :show, :dashboard]
 
   def index
     @projects = policy_scope(Project)
@@ -27,6 +27,9 @@ class ProjectsController < ApplicationController
   end
 
   def dashboard
+    @project = Project.find(params[:project_id])
+    authorize @project
+    @charity = @project.charity
   end
 
   private

@@ -72,12 +72,14 @@ developer = Developer.new(
         deadline: Date.today+30.day
       )
         project.save!
-
-        team = Team.new(
+        3.times do
+        member = Member.new(
           developer_id: rand(1..developer.id),
           project_id: project.id,
         )
-        team.save!
+
+        member.save!
+        end
           proposal = Proposal.new(
             developer_id: developer.id,
             project_id: rand(1..developer.id),
