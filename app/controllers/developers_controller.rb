@@ -8,7 +8,6 @@ end
   def dashboard
     @developer = current_developer
     @projects = @developer.projects
-    @teams = @developer.teams
     @proposals = @developer.proposals
   end
 
@@ -16,5 +15,9 @@ end
      @developer = Developer.last
      # @developer = Developer.find(params[:id])
      # authorize @developer
-  end
+   end
+
+   def teammembers(project)
+      Members.all.where(project_id: project.id)
+   end
 end

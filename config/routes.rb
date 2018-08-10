@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   get 'developer_dashboard', to: 'developers#dashboard', as: "developer_dashboard"
 
   get 'charity_dashboard', to: 'charities#dashboard', as: "charity_dashboard"
+  get 'developer/:developer_id', to: 'developers#show'
 end

@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_08_10_035759) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,7 +75,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_035759) do
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
   end
 
-
   create_table "members", force: :cascade do |t|
     t.bigint "developer_id"
     t.bigint "project_id"
@@ -84,7 +82,8 @@ ActiveRecord::Schema.define(version: 2018_08_10_035759) do
     t.datetime "updated_at", null: false
     t.index ["developer_id"], name: "index_members_on_developer_id"
     t.index ["project_id"], name: "index_members_on_project_id"
-    
+  end
+
   create_table "project_skills", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "skill_id"
@@ -103,6 +102,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_035759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.integer "leader_id"
     t.index ["charity_id"], name: "index_projects_on_charity_id"
   end
 
@@ -116,18 +116,16 @@ ActiveRecord::Schema.define(version: 2018_08_10_035759) do
     t.index ["project_id"], name: "index_proposals_on_project_id"
   end
 
-  add_foreign_key "members", "developers"
-  add_foreign_key "members", "projects"
-  
   create_table "skills", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-
   add_foreign_key "developer_skills", "developers"
   add_foreign_key "developer_skills", "skills"
+  add_foreign_key "members", "developers"
+  add_foreign_key "members", "projects"
   add_foreign_key "project_skills", "projects"
   add_foreign_key "project_skills", "skills"
   add_foreign_key "projects", "charities"
