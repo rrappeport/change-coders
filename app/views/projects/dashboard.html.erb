@@ -27,6 +27,7 @@
       <% if @project.leader_id == developer.id %>
         <h4> LEADER <h4>
       <% end %>
+      <%= link_to "Remove from the team", project_member_path(@project, developer), method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
   <% end %>
 </div>
