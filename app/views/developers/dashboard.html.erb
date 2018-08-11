@@ -26,7 +26,7 @@
 <div class="stat">
   <div class="stat-content">
     <% @skills.each do |skill| %>
-      <li><%= skill.name %> </li>
+      <li><%= skill.name %> <%= link_to "Remove", developer_developer_skill_path(@developer, skill) , method: :delete%></li>
     <% end %>
   </div>
 </div>
