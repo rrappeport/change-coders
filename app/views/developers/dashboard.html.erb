@@ -17,7 +17,16 @@
   <p>status: <%= project.status %></p>
   <p>deadline: <%= project.deadline  %></p>
   <p>id: <%= project.id  %></p>
-  <% end %>
+<% end %>
+
+<h2> My skills </h2>
+<div class="stat">
+  <div class="stat-content">
+    <% @skills.each do |skill| %>
+      <li><%= skill.name %> </li>
+    <% end %>
+  </div>
+</div>
 
 
 <h2>Your aplications</h2>
@@ -26,7 +35,6 @@
   <%= proposal.project.name  %>
   ---->
   <%= proposal.state  %>
-
   </div>
 <% end %>
 

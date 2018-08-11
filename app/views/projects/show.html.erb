@@ -15,6 +15,15 @@
     <p>Category: <%= @project.charity.category %></p>
 </div>
 
+<h2> Skills requiered </h2>
+<div class="stat">
+  <div class="stat-content">
+    <% @skills.each do |skill| %>
+      <li><%= skill.name %> </li>
+    <% end %>
+  </div>
+</div>
+
 
 <%= link_to "Dashboard", projects_dashboard_path(@project), class:'btn btn-success'  %>
 <%= link_to "Edit", edit_project_path(@project), class:'btn btn-default'  %>
