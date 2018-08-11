@@ -23,6 +23,8 @@ class ProposalsController < ApplicationController
       member.developer = @proposal.developer
       member.project = @project
       member.save!
+      @project.leader_id = member.developer_id
+      @project.save!
     end
       redirect_to projects_dashboard_path(@project)
   end
