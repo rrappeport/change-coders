@@ -9,6 +9,7 @@ class Developer < ApplicationRecord
 
   has_many :members
   has_many :projects, through: :members
+  has_many :developer_skills
   has_many :skills, through: :developer_skills
   mount_uploader :avatar, PhotoUploader
   # has_many :projects throgh:

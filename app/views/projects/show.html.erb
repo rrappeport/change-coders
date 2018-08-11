@@ -3,6 +3,7 @@
   <img class="cover-img" data-embed-id="cover-image" alt="Mastercard cover image" src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/job29abatch6-s58-volunteer-06.jpg?h=370&dpr=1.5&fit=default&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&ixlib=js-1.1.1&s=ff7d84730aba9c978a091143af44bd3d">
 </figure>
 
+
 <div class="container">
   <div class="col-md-12">
     <div class="card-show">
@@ -42,6 +43,19 @@
 
         <h3>Issues & Solutions</h3>
         <p>Direct Relief’s medical assistance programs equip health professionals in resource-poor communities to meet the challenges of diagnosing, treating, and caring for people in need."</p>
+    </div>
+  </div>
+
+    <div class="col-md-12">
+    <div class="charity-info">
+      <h2> Skills requiered </h2>
+      <div class="stat">
+        <div class="stat-content">
+          <% @skills.each do |skill| %>
+            <li><%= skill.name %> </li>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 

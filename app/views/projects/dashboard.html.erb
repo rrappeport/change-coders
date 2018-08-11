@@ -16,6 +16,15 @@
   <p>Category: <%= @project.charity.category %></p>
 </div>
 
+<h2> Skills requiered </h2>
+<div class="stat">
+  <div class="stat-content">
+    <% @skills.each do |skill| %>
+      <li><%= skill.name %><%= link_to "Remove", "#" %> </li>
+    <% end %>
+  </div>
+</div>
+
 <div class="team-info">
   <h3>Team Members: </h3>
   <% @project.developers.each do |developer| %>
