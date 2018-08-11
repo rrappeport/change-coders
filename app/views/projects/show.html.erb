@@ -1,45 +1,86 @@
-<div class="project-info">
-  <h1>Project name:<%= @project.name %></h1>
-  <h2>Charity:<%= @project.charity.name %></h2>
-  <p>Status: <%= @project.status  %></p>
-  <p>Type: <%= @project.work_type %></p>
-  <p>Details: <%= @project.details %></p>
-</div>
-
-<div class="charity-info">
-    <h2>Charity:<%= @project.charity.name %></h2>
-    <h2>Location:<%= @project.charity.address %></h2>
-    <p>Email: <%= @project.charity.email %></p>
-    <p>Logo: <%= @project.charity.logo %></p>
-    <p>Website: <%= @project.charity.website %></p>
-    <p>Category: <%= @project.charity.category %></p>
-</div>
+<figure>
+  <code id="cover-image" style="display: none;"></code>
+  <img class="cover-img" data-embed-id="cover-image" alt="Mastercard cover image" src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/job29abatch6-s58-volunteer-06.jpg?h=370&dpr=1.5&fit=default&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&ixlib=js-1.1.1&s=ff7d84730aba9c978a091143af44bd3d">
+</figure>
 
 
-<%= link_to "Dashboard", projects_dashboard_path(@project), class:'btn btn-success'  %>
-<%= link_to "Edit", edit_project_path(@project), class:'btn btn-default'  %>
-
-<!-- <button type="button" data-toggle="modal" data-target="#myModal">Apply -->
-
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Apply
-  </button>
-
-
-
-
-<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Confirm your application</h4>
+<div class="container">
+  <div class="col-md-12">
+    <div class="card-show">
+      <div class="card-index-image col-md-3" style="background-image: url(https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg)"></div>
+      <div class="card-show-content col-md-6">
+        <h1><%= @project.name %></h1>
+        <h2>Charity:<%= @project.charity.name %></h2>
+        <p>Status: <%= @project.status  %></p>
+        <p>Type: <%= @project.work_type %></p>
+        <div class="contact-links">
+          <a href="#"><i class="far fa-envelope"></i>   <% @project.charity.email %></a>
+          <a href="#"><i class="fas fa-desktop"></i>   <% @project.charity.website %></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
       </div>
-      <div class="modal-body">
-        <p>After you apply you will have to wait to be accpeted as part of the team working on <strong><%= @project.name %> </strong></p>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="card-show">
+      <div class="card-show-content">
+        <h1>Details</h1>
+        <p>Project Details: "I need help to make my website look better. I love saving Bali Reptiles but unfortuanately I do not know how to build websites. This site needs work on the front end and also on the back end functionality."</p>
       </div>
-      <div class="modal-footer">
-          <%= link_to "Apply", project_proposals_path(@project), method: :post, class:"btn btn-default" %>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="charity-info">
+        <h1>More About <%= @project.charity.name %></a></h1>
+        <h3>Emergency Response</h3>
+        <p>A strong network of trusted partners enables Direct Relief to assess immediate healthcare needs, understand the situation on the ground, and respond quickly and efficiently when a disaster strikes."</p>
+
+        <h3>Products with Purpose</h3>
+        <p>Based on years of experience, Direct Relief designs and deploys a range of humanitarian products to support vulnerable communities throughout the world.</p>
+
+        <h3>Issues & Solutions</h3>
+        <p>Direct Relief’s medical assistance programs equip health professionals in resource-poor communities to meet the challenges of diagnosing, treating, and caring for people in need."</p>
+    </div>
+  </div>
+
+    <div class="col-md-12">
+    <div class="charity-info">
+      <h2> Skills requiered </h2>
+      <div class="stat">
+        <div class="stat-content">
+          <% @skills.each do |skill| %>
+            <li><%= skill.name %> </li>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12 text-center">
+    <%= link_to "Dashboard", projects_dashboard_path(@project), class:'btn btn-success show-buttons'  %>
+    <%= link_to "Edit", edit_project_path(@project), class:'btn btn-default show-buttons'  %>
+    <button type="button" class="btn btn-primary show-buttons" data-toggle="modal" data-target="#myModal">
+      Apply
+    </button>
+  </div>
+
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Confirm your application</h4>
+        </div>
+        <div class="modal-body">
+          <p>After you apply you will have to wait to be accpeted as part of the team working on <strong><%= @project.name %> </strong></p>
+        </div>
+        <div class="modal-footer">
+            <%= link_to "Apply", project_proposals_path(@project), method: :post, class:"btn btn-default" %>
+        </div>
       </div>
     </div>
   </div>

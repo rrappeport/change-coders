@@ -1,59 +1,81 @@
 <div class="container">
-<div>
-  <% @projects.each do |project| %>
-    <ul>
-      <li>Name:<%= link_to project.name, project_path(project)%></li>
-      <li>Status:<%= project.status %></li>
-      <li>Type:<%= project.work_type %></li>
-      <li>Charity:<%= project.charity.name %></li>
-      <li>category:<%= project.charity.category %></li>
-      <li>deadline:<%= project.deadline %></li>
-    </ul>
-  <% end %>
-<div>
+
+  <div class="row">
+    <div class="col-md-3 check-boxes">
+        <%= form_for(:project, :url => {:action => "index"}, :html => {:method => :get}) do %>
+      <div>
+        <h4> Search by category </h4>
+        <% Project::CATEGORIES.each do |category| %>
+          <div class= "categories-search">
+            <%= check_box_tag "category", category %> <%= category %>
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <div>
+        <h4> Search by status </h4>
+        <% Project::STATUSES.each do |status| %>
+          <div class= "statuses-search">
+            <%= check_box_tag "status", status %> <%= status %>
+          </div>
+        <% end %>
+      </div>
 
 
-<%= form_for(:project, :url => {:action => "index"}, :html => {:method => :get}) do %>
+      <br>
+      <div>
+        <h4> Search by deadline </h4>
+        <% Project::DEADLINES.each do |deadline| %>
+          <div class= "deadlines-search">
+            <%= check_box_tag "deadline", deadline %> within <%= deadline %> days
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <div>
+        <h4> Search by type </h4>
+        <% Project::TYPES.each do |work_type| %>
+      <div class= "types-search">
+        <%= check_box_tag "work_type", work_type %> <%= work_type %>
+      </div>
+      <% end %>
+    </div>
+    <%= submit_tag("Search", class:'btn btn-success')%>
+         <% end %>
 
-  <div>
-  <% Project::CATEGORIES.each do |category| %>
-  <div class= "">
-    <%= check_box_tag "category", category %> <%= category %>
+    </div>
+    <div class="col-md-9">
+
+
+    <% @projects.each do |project| %>
+
+          <div class="card-index">
+
+            <div class="card-index-image col-md-3" style="background-image: url(https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg)">
+            </div>
+
+            <div class="card-index-content col-md-6">
+              <h4>Project Name: <%= link_to project.name, project_path(project)%></h4>
+              <p>Project Details: "I need help to make my website look better. I love saving Bali Reptiles but unfortuanately I do not know how to build websites. This site needs work on the front end and also on the back end functionality."</p>
+              <p>Charity: <%= project.charity.name %> (<%= project.charity.category %>)</p>
+              <p>Status: <%= project.status %>, Type: <%= project.work_type %></p>
+              <p>Deadline: <%= project.deadline %></p>
+            </div>
+
+            <div class="col-md-2 text-center">
+              <%= link_to "Read More", project_path(project), class:'align-self-end btn btn-success btn-index' %>
+            </div>
+
+          </div>
+
+    <%end %>
+    </div>
   </div>
-  <% end %>
-  </div>
-  <br>
-  <div>
-    <% Project::TYPES.each do |work_type| %>
-  <div class= "">
-    <%= check_box_tag "work_type", work_type %> <%= work_type %>
-  </div>
-  <% end %>
-  <div>
-
-  <br>
-  <div>
-    <% Project::STATUSES.each do |status| %>
-  <div class= "">
-    <%= check_box_tag "status", status %> <%= status %>
-  </div>
-  <% end %>
-  </div>
-
-
-  <br>
-  <div>
-    <% Project::DEADLINES.each do |deadline| %>
-  <div class= "">
-    <%= check_box_tag "deadline", deadline %> within <%= deadline %> days
-  </div>
-  <% end %>
-  </div>
-
-  <%= submit_tag("Search") %>
-<% end %>
-
-
-
 </div>
+
+
+
+
+
+
 

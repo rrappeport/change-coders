@@ -3,12 +3,15 @@
 <!-- Change to current_developer -->
 <h2> Hi, <%= @developer.first_name %> <%= @developer.last_name %></h2>
 <!-- Change to current_developer -->
-<h4><%= @developer.email %></h4>
 <h4>Email: <%= @developer.email %></h4>
 <h4>Description: <%= @developer.description %></h4>
 <h4>Experience: <%= @developer.experience %></h4>
 <h4>Linkedin_username: <%= @developer.linkedin_username %></h4>
 <h4>Github_username: <%= @developer.github_username %></h4>
+<h4>photo: <%= @developer.avatar %></h4>
+<h4>firstname: <%= @developer.first_name %></h4>
+<h4>lastname: <%= @developer.last_name %></h4>
+
 
 <h2>Your projects: </h2>
 
@@ -17,7 +20,16 @@
   <p>status: <%= project.status %></p>
   <p>deadline: <%= project.deadline  %></p>
   <p>id: <%= project.id  %></p>
-  <% end %>
+<% end %>
+
+<h2> My skills </h2>
+<div class="stat">
+  <div class="stat-content">
+    <% @skills.each do |skill| %>
+      <li><%= skill.name %> <%= link_to "Remove", developer_developer_skill_path(@developer, skill) , method: :delete%></li>
+    <% end %>
+  </div>
+</div>
 
 
 <h2>Your aplications</h2>
@@ -26,7 +38,6 @@
   <%= proposal.project.name  %>
   ---->
   <%= proposal.state  %>
-
   </div>
 <% end %>
 

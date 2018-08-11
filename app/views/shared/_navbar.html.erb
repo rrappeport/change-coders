@@ -28,9 +28,8 @@
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
               <% end %>
             </li>
-
             <li>
-              <%= link_to edit_developer_registration_path(current_developer) do %>
+              <%= link_to edit_developer_path(current_developer) do %>
                 <i class="fa fa-cog"></i><%= t(".profile", default: "Edit profile") %>
               <% end %>
             </li>
@@ -78,7 +77,8 @@
     <!-- When no one is signed in -->
 
     <% else %>
-      <%= link_to t(".sign_in", default: "Developer login"), new_developer_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%#= link_to t(".sign_in", default: "Developer login"), new_developer_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <a href="/developers/auth/github">Sign in with GitHub</a>
       <%= link_to t(".sign_in", default: "Charity login"), new_charity_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
