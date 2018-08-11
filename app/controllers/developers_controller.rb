@@ -12,7 +12,7 @@ class DevelopersController < ApplicationController
   end
 
   def show
-    @developer = current_developer
+    @developer = Developer.find(params[:id])
     @projects = @developer.projects
     @skills = @developer.skills
      # @developer = Developer.find(params[:id])
@@ -34,6 +34,12 @@ class DevelopersController < ApplicationController
 
   def teammembers(project)
     Members.all.where(project_id: project.id)
+  end
+
+  private
+
+  def developer_params
+    params.require(:developer).permit(:first_name, :last_name, :address, :description, :experience, :linkedin_username, :avatar, :birth_date)
   end
 
   private

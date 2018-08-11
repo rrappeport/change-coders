@@ -14,15 +14,17 @@
   <p>Email: <%= @project.charity.email %></p>
   <p>Website: <%= @project.charity.website %></p>
   <p>Category: <%= @project.charity.category %></p>
+
 </div>
 
 <h2> Skills requiered </h2>
 <div class="stat">
   <div class="stat-content">
     <% @skills.each do |skill| %>
-      <li><%= skill.name %><%= link_to "Remove", "#" %> </li>
+      <li><%= skill.name %><%= link_to "Remove", project_project_skill_path(@project, skill) , method: :delete%> </li>
     <% end %>
   </div>
+
 </div>
 
 <div class="team-info">
