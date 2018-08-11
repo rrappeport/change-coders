@@ -24,7 +24,14 @@ class ProposalsController < ApplicationController
       member.project = @project
       member.save!
     end
+      redirect_to projects_dashboard_path(@project)
+  end
 
+  def reject
+    @project = Project.find(params[:project_id])
+    @proposal = Proposal.find(params[:proposal])
+    @proposal.state = "Rejected"
+    @proposal.save!
     redirect_to projects_dashboard_path(@project)
   end
 

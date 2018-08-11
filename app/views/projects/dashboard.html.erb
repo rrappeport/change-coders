@@ -35,6 +35,8 @@
       <p><%= proposal.state%></p>
       <% if proposal.state == "Pending" %>
         <%= link_to "Accept application", accept_proposal_path(proposal: proposal), method: :post %>
+        <%= link_to "Reject application", reject_proposal_path(proposal: proposal), method: :post %>
+
       <% end %>
       <br> <br> <br>
     <% end %>

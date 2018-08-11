@@ -1,0 +1,26 @@
+<h2>Edit profile</h2>
+
+<%= simple_form_for(@developer) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name, required: false %>
+    <%= f.input :last_name, required: false %>
+    <%= f.input :github_username, required: false %>
+    <%= f.input :address, required: false %>
+    <%= f.input :linkedin_username, required: false %>
+    <%= f.input :description, required: false %>
+    <%= f.input :experience, required: false %>
+    <%= f.input :avatar, required: false %>
+    <%= f.input :avatar_cache, as: :hidden %>
+    <%= f.input :birth_date, required: false %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update" %>
+  </div>
+<% end %>
+
+
+<%= link_to "Edit account", edit_developer_registration_path(current_charity) %>
+<%= link_to "Back", :back %>
