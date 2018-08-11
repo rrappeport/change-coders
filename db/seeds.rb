@@ -33,11 +33,15 @@ WEBSITE = ["https://www.charityworld.com", "https://www.animals.com", "https://w
 CATEGORY = ["Animals", "Community Development", "Education", "Health", "Environment", "Human Rights"]
 PROJECT_NAME = ["Charity New Website", "Charity Add Map", "Redesign My Site", "Ruby Work Needed"]
 TYPE = ["New", "Update", "Rebuild"]
-
+PROGRAMMING_LANGUAGE = ["C", "C++", "C#", "Clojure", "CoffeeScript", "CSS", "Go", "Haskell", "Java", "JavaScript", "Lua", "Matlab", "Objective-C", "Peral", "PHP", "Python", "R", "Ruby", "Scala", "Shell", "Swift", "TeX", "Vim script"]
 Developer.destroy_all
 Charity.destroy_all
 Member.destroy_all
 Project.destroy_all
+Proposal.destroy_all
+DeveloperSkill.destroy_all
+ProjectSkill.destroy_all
+Skill.destroy_all
 
 (1..5).to_a.each do |number|
 developer = Developer.new(
@@ -91,6 +95,31 @@ developer = Developer.new(
             state: "pending"
           )
           proposal.save!
+end
+
+PROGRAMMING_LANGUAGE.each do |language|
+  skill = Skill.new(name: language)
+  skill.save!
+end
+
+5.times do
+  Developer.all.each do |developer|
+    dev_skills = DeveloperSkill.new(
+      developer: developer,
+      skill: Skill.all.sample
+      )
+    dev_skills.save!
+  end
+end
+
+5.times do
+Project.all.each do |project|
+  project_skills = ProjectSkill.new(
+    project: project,
+    skill: Skill.all.sample
+    )
+  project_skills.save!
+  end
 end
 
 
