@@ -21,6 +21,17 @@ class Developer < ApplicationRecord
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
+      fullname = auth.info.name.split
+      if fullname.length == 1
+        user.first_name = auth.info.name
+      else
+        user.first_name = auth.info.name.split.first
+        user.last_name = auth.info.name.split.last
+      end
+      user.github_username = auth.info.nickname
+      user.avatar = auth.info.image
+      user.description = auth.extra.raw_info.bio
+      user.save
     end
   end
 end

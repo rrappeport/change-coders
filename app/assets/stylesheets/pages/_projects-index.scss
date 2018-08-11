@@ -1,14 +1,4 @@
-.container.search-index{
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between !important;
-  margin: 0 !important;
-}
-
-.container .check-boxes{
-  flex: 0 0 450px;
-  border: 1px solid black;
-  width: 300px;
+.check-boxes{
   top: 80px;
   position: sticky !important;
 }

@@ -17,7 +17,28 @@ class DevelopersController < ApplicationController
      # authorize @developer
   end
 
+  def edit
+    @developer = Developer.find(params[:id])
+  end
+
+  def update
+    @developer = Developer.find(params[:id])
+    if @developer.update(developer_params)
+      redirect_to developer_path(@developer)
+    else
+      render :edit
+    end
+  end
+
   def teammembers(project)
       Members.all.where(project_id: project.id)
   end
+
+  private
+
+  def developer_params
+    params.require(:developer).permit(:first_name, :last_name, :address, :description, :experience, :linkedin_username, :avatar, :birth_date)
+  end
 end
+
+

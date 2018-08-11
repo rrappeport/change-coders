@@ -11,6 +11,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 5
 }
 
 /* Logo */
@@ -44,7 +45,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: $green;
   text-decoration: none;
 }
 
