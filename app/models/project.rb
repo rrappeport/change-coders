@@ -5,9 +5,9 @@ class Project < ApplicationRecord
   DEADLINES = [15, 30, 60]
 
   belongs_to :charity
-  has_many :members
+  has_many :members, dependent: :destroy
   has_many :developers, through: :members
-  has_many :project_skills
+  has_many :skills
   has_many :skills, through: :project_skills
   has_many :chatrooms
   has_many :proposals
