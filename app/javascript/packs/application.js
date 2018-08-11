@@ -1,3 +1,8 @@
-import { initMap } from 'components/map';
+import { initMap } from 'components/maps';
 // [...]
 initMap();
+
+import { autocomplete } from 'components/autocomplete';
+
+// [...]
+autocomplete();

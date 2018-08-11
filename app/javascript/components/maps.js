@@ -15,9 +15,8 @@ function initMap() {
       map.fitLatLngBounds(markers);
     }
   }
-}
 
-export{ initMap };
+
 
 const styles = [
     {
@@ -135,14 +134,11 @@ const styles = [
         ]
     }
 ];
+}
+// map.addStyle({
+//   styles: styles,
+//   mapTypeId: 'map_style'
+// });
+// map.setStyle('map_style');
 
-map.addStyle({
-  styles: styles,
-  mapTypeId: 'map_style'
-});
-map.setStyle('map_style');
-
-import { autocomplete } from 'autocomplete';
-
-// [...]
-autocomplete();
+export{ initMap };
