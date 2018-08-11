@@ -12,7 +12,7 @@ class DevelopersController < ApplicationController
   end
 
   def show
-    @developer = current_developer
+    @developer = Developer.find(params[:id])
     @projects = @developer.projects
     @skills = @developer.skills
      # @developer = Developer.find(params[:id])
