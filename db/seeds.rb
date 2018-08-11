@@ -33,12 +33,26 @@ WEBSITE = ["https://www.charityworld.com", "https://www.animals.com", "https://w
 CATEGORY = ["Animals", "Community Development", "Education", "Health", "Environment", "Human Rights"]
 PROJECT_NAME = ["Charity New Website", "Charity Add Map", "Redesign My Site", "Ruby Work Needed"]
 TYPE = ["New", "Update", "Rebuild"]
+PROGRAMMING_LANGUAGE = ["C", "C++", "C#", "Clojure", "CoffeeScript", "CSS", "Go", "Haskell", "Java", "JavaScript", "Lua", "Matlab", "Objective-C", "Peral", "PHP", "Python", "R", "Ruby", "Scala", "Shell", "Swift", "TeX", "Vim script"]
 
-Developer.destroy_all
-Charity.destroy_all
+puts "destroying dev_skills"
+DeveloperSkill.destroy_all
+puts "destroying project_skills"
+ProjectSkill.destroy_all
+puts "destroying skills"
+Skill.destroy_all
+puts "destroying member"
 Member.destroy_all
+puts "destroying proposal"
+Proposal.destroy_all
+puts "destroying develoepr"
+Developer.destroy_all
+puts "destroying project"
 Project.destroy_all
+puts "destroying charity"
+Charity.destroy_all
 
+puts "creating new develoepr"
 (1..5).to_a.each do |number|
 developer = Developer.new(
   first_name: NAME.sample,
@@ -54,7 +68,7 @@ developer = Developer.new(
   avatar: "https://avatars3.githubusercontent.com/u/19302598?s=460&v=4"
   )
   developer.save!
-
+    puts "creating new charity"
     charity = Charity.new(
       email: Faker::Internet.email,
       password: 'topsecret',
@@ -67,7 +81,7 @@ developer = Developer.new(
       logo: "https://img.freepik.com/free-vector/charity-life-abstract-logo_1043-47.jpg?size=338&ext=jpg"
     )
     charity.save!
-
+      puts "creating new project"
       project = Project.new(
         name: PROJECT_NAME.sample,
         charity: Charity.all.sample,
@@ -77,7 +91,7 @@ developer = Developer.new(
         deadline: Date.today+30.day
       )
         project.save!
-
+        puts "creating new members"
         3.times do
         member = Member.new(
           developer: Developer.all.sample,
@@ -85,12 +99,41 @@ developer = Developer.new(
         )
         member.save!
         end
+          puts "creating new proposal"
           proposal = Proposal.new(
             developer: Developer.all.sample,
             project: Project.all.sample,
             state: "pending"
           )
           proposal.save!
+end
+
+puts "creating new languages"
+PROGRAMMING_LANGUAGE.each do |language|
+  skill = Skill.new(name: language)
+  skill.save!
+end
+
+puts "creating new dev skills"
+5.times do
+  Developer.all.each do |developer|
+    dev_skills = DeveloperSkill.new(
+      developer: developer,
+      skill: Skill.all.sample
+      )
+    dev_skills.save!
+  end
+end
+
+puts "creating new project skills"
+5.times do
+Project.all.each do |project|
+  project_skills = ProjectSkill.new(
+    project: project,
+    skill: Skill.all.sample
+    )
+  project_skills.save!
+  end
 end
 
 
