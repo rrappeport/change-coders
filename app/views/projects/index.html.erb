@@ -1,15 +1,24 @@
 <div class="container">
 <div>
   <% @projects.each do |project| %>
-    <ul>
-      <li>Name:<%= link_to project.name, project_path(project)%></li>
-      <li>Status:<%= project.status %></li>
-      <li>Type:<%= project.work_type %></li>
-      <li>Charity:<%= project.charity.name %></li>
-      <li>category:<%= project.charity.category %></li>
-      <li>deadline:<%= project.deadline %></li>
-    </ul>
+      <div class="col-md-12">
+        <div class="card-index">
+          <div class="card-index-image col-md-3" style="background-image: url(https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg)">
+          </div>
+          <div class="card-index-content col-md-6">
+            <h4>Project Name: <%= link_to project.name, project_path(project)%></h2>
+            <p>Project Details: "I need help to make my website look better. I love saving Bali Reptiles but unfortuanately I do not know how to build websites. This site needs work on the front end and also on the back end functionality."</p>
+            <p>Charity: <%= project.charity.name %> (<%= project.charity.category %>)</p>
+            <p>Status: <%= project.status %>, Type: <%= project.work_type %></p>
+            <p>Deadline: <%= project.deadline %></p>
+          </div>
+          <div class="col-md-2 text-center">
+            <%= link_to "Read More", project_path(project), class:'align-self-end btn btn-success btn-index' %>
+        </div>
+        </div>
+      </div>
   <% end %>
+</div>
 <div>
 
 

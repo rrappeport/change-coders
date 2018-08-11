@@ -1,0 +1,39 @@
+    .btn-index-content {
+      align-items: bottom;
+    }
+
+  .card-index {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      width: 100%;
+      margin: 20px;
+      height: 300px;
+    }
+
+    .card-index-image {
+      float: left;
+      height: 290px;
+      border-right: 1px solid $light-gray;
+      background-position: center;
+    }
+
+    .card-index-content {
+      margin-left: 3%;
+      padding-right: 2%;
+      width: 73%;
+      padding: 5px;
+      border-right: 1px solid $light-gray;
+    }
+
+    .card-index-content h4 a {
+      margin: 15px 0;
+      color: $green;
+    }
+
+    .btn-index {
+      padding: 20px 10px !important;
+    }
+
+
