@@ -1,0 +1,22 @@
+<h1>Hello <%= @developer.first_name %></h1>
+<% if @application.state == "Accepted" %>
+  <p>
+    Congratulations! You're application to work on <%= @project.name %> got accpeted!
+    We take this opportunity to express our appreciation for the time and effort you are going to devote to this project.
+  </p>
+<% elsif @application.state == "Rejected" %>
+  <p>
+    We take this opportunity to express our appreciation for the time and effort you invested in applaying to work on <%= @project.name%>.  Unfortunately in this instance, your application was unsuccessful.
+  </p>
+  <p>
+    We hope that while the outcome may not have been as positive as you would have liked, our relationship can continue on amicable terms.
+  </p>
+<% else %>
+  <p>
+    Your application for <%= @project.name%> is still waiting to be accpeted by <%= @project.charity.name%>. We will contact you shortly!
+  </p>
+<% end %>
+
+<p>Regards,</p>
+<p>Ania</p>
+<p>CodeChangers Team</p>
