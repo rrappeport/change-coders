@@ -23,7 +23,7 @@ gem 'omniauth-github'
 gem 'carrierwave', '~> 1.2'
 gem "geocoder"
 gem 'dotenv-rails', groups: [:development, :test]
-
+gem "letter_opener", group: :development
 
 
 group :development do

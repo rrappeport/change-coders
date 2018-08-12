@@ -5,12 +5,14 @@ class ProposalsController < ApplicationController
     @project = Project.find(params[:project_id])
     @proposal.project = @project
     authorize @proposal
-    @proposal.developer = current_developer
+    @developer = current_developer
     if @proposal.save
+      # CharityMailer.new_request(@project, @developer).deliver_now
       redirect_to developer_dashboard_path
       flash[:notice] = "Thanks for applying!"
     else
-      render 'project_path(@project)', flash[:alert] = "Error"
+      redirect_to project_path(@project)
+      flash[:alert] = "Error"
     end
   end
 
