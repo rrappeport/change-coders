@@ -1,3 +1,4 @@
+import 'bootstrap';
 import { initMap } from 'components/maps';
 // [...]
 
