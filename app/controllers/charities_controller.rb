@@ -1,9 +1,13 @@
 class CharitiesController < ApplicationController
   def index
     @charities = Charity.all
-    @carities = Charity.where.not(latitude: nil, longitude: nil)
+    # @charities.each do |charity|
+    #   charity.geocode
+    #   charity.save
+    # end
+    @charities = Charity.where.not(latitude: nil, longitude: nil)
 
-    @markers = @carities.map do |charity|
+    @markers = @charities.map do |charity|
       {
         lat: charity.latitude,
         lng: charity.longitude#,

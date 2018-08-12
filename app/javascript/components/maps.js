@@ -14,9 +14,6 @@ function initMap() {
     } else {
       map.fitLatLngBounds(markers);
     }
-  }
-
-
 
 const styles = [
     {
@@ -134,11 +131,13 @@ const styles = [
         ]
     }
 ];
+
+    map.addStyle({
+    styles: styles,
+    mapTypeId: 'map_style'});
+    map.setStyle('map_style');
+
+  }
 }
-// map.addStyle({
-//   styles: styles,
-//   mapTypeId: 'map_style'
-// });
-// map.setStyle('map_style');
 
 export{ initMap };
