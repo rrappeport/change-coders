@@ -1,7 +1,3 @@
-    .btn-index-content {
-      align-items: bottom;
-    }
-
   .card-index {
       background: #fff;
       display: flex;
@@ -13,7 +9,6 @@
     }
 
     .card-index-image {
-      float: left;
       height: 290px;
       border-right: 1px solid $light-gray;
       background-position: center;
@@ -34,6 +29,18 @@
 
     .btn-index {
       padding: 20px 10px !important;
+    }
+
+    .check-boxes {
+      border: 1px solid #ddd;
+      margin: 20px 0;
+      background: #fff;
+      padding: 20px;
+    }
+
+    .index-search-button {
+      margin: 30px 20px 20px 20px;
+      padding: 10px 30px;
     }
 
 
