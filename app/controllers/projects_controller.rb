@@ -16,6 +16,10 @@ class ProjectsController < ApplicationController
     if params[:deadline].present?
         @projects = @projects.where("deadline <= ? ", Date.today + params[:deadline].to_i.day)
     end
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def show
