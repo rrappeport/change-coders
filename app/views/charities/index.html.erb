@@ -1,0 +1,12 @@
+
+<div class="container">
+  <div>
+    <% @charities.each do |charity| %>
+      <ul>
+        <li>Status:<%= charity.name %></li>
+        <li>Type:<%= charity.address %></li>
+      </ul>
+    <% end %>
+  <div>
+  <div id="map" data-markers=<%= @markers.to_json %>> Here the map</div>
+<div>

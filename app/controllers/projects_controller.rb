@@ -4,7 +4,9 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = policy_scope(Project)
+
     @projects = @projects.where(nil)
+
     @projects = @projects.where(status: params[:status]) if params[:status].present?
     @projects = @projects.where(work_type: params[:work_type]) if params[:work_type].present?
     if params[:category].present?
@@ -20,6 +22,14 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @skills = @project.skills
     authorize @project
+    @charity = @project.charity
+
+    @markers =
+      [{
+        lat: @charity.latitude,
+        lng: @charity.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/carities/map_box", locals: { charity: charity }) }
+      }]
   end
 
   def edit

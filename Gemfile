@@ -21,6 +21,9 @@ gem 'cloudinary'
 gem 'faker'
 gem 'omniauth-github'
 gem 'carrierwave', '~> 1.2'
+gem "geocoder"
+gem 'dotenv-rails', groups: [:development, :test]
+
 
 
 group :development do
