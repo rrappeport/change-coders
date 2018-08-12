@@ -11,13 +11,15 @@ Rails.application.routes.draw do
     resources :members
     resources :posts
     resources :project_skills, except: [:show, :index]
+    resources :posts, except: [:show, :index]
   end
   resources :developers do
     resources :developer_skills, except: [:show, :index]
   end
 
-  resources :messages
-  resources :chatrooms
+  # resources :messages
+  # resources :chatrooms
+
 
   get 'projects/:project_id/dashboard', to: 'projects#dashboard', as: 'projects_dashboard'
   get 'developer_dashboard', to: 'developers#dashboard', as: "developer_dashboard"
