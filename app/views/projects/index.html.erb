@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="row">
+  <div class="row project-list">
     <div class="col-md-3 check-boxes">
         <%= form_for(:project, :url => {:action => "index"}, :html => {:method => :get}) do %>
       <div>
@@ -45,7 +45,7 @@
          <% end %>
     </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 index-results">
     <% @projects.each do |project| %>
 
           <div class="card-index">
