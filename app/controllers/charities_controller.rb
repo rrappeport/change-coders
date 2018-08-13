@@ -1,11 +1,11 @@
 class CharitiesController < ApplicationController
-  before_action :autenticate_charity! only:[:dashboard]
+  before_action :authenticate_charity!, only: [:dashboard]
 
   def index
     @charities = Charity.all
     # @charities.each do |charity|
     #   charity.geocode
-    #   charity.savç
+    #   charity.save
     # end
     @charities = Charity.where.not(latitude: nil, longitude: nil)
 
@@ -23,5 +23,4 @@ class CharitiesController < ApplicationController
     @projects = @charity.projects
     @proposals = @charity.proposals # ??? proposals for project
   end
-
 end
