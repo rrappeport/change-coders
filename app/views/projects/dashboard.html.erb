@@ -80,9 +80,9 @@
             <div class="col-md-4 text-center">
               <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
               <p><%= proposal.state%></p>
-              <% if proposal.state == "Pending" %>
-                <%= link_to "Accept application", accept_proposal_path(proposal: proposal), method: :post, class: 'btn' %>
-                <%= link_to "Reject application", reject_proposal_path(proposal: proposal), method: :post, class: 'btn' %>
+              <% if proposal.state == "Pending" || "pending" %>
+                <%= link_to "Accept ", accept_proposal_path(proposal: proposal), method: :post, class: 'btn btn-success' %>
+                <%= link_to "Reject", reject_proposal_path(proposal: proposal), method: :post, class: 'btn  btn-danger' %>
               <% end %>
               <br> <br> <br>
           </div>
@@ -95,20 +95,43 @@
   <div class="col-md-12">
     <div class="comments green-box">
        <h2> Comments: </h2>
-     </div>
+    </div>
     <div class="comments white-box">
-        <div class="stat">
-        <% if @posts %>
-          <ul class="list-group">
-            <% @posts.each do |post| %>
-            <% if post.project == @project %>
-              <li class="list-group-item"><%= post.content %> </li>
-              <% end %>
-            <% end %>
-          </ul>
-        <% end %>
+      <ul class="post-list">
+        <div class = "row">
+          <div class = "col-md-6">
+            <p>Content</p>
+          </div>
+          <div class = "col-md-2">
+            <p>Developer</p>
+          </div>
+          <div class = "col-md-2">
+            <p>Created on</p>
+          </div>
         </div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add a post</button>
+        <% if @posts %>
+          <% @posts.each do |post| %>
+            <% if post.project == @project %>
+              <div class = "row">
+                <li class="">
+                  <div class = "col-md-6">
+                    <%= post.content %>
+                  </div>
+                  <div class = "col-md-2">
+                    <%= post.developer.first_name %>
+                  </div>
+                  <div class = "col-md-2">
+                    <%= post.created_at.strftime("%FT%T") %>
+                  </div>
+                </li>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+      <div class= "post-footer">
+        <button type="button" class="btn btn-success text-right" data-toggle="modal" data-target=".bs-example-modal-lg">Add a post</button>
+      </div>
     </div>
   </div>
 
