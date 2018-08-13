@@ -75,11 +75,10 @@
     <div class="charity-info">
       <h2> Comments: </h2>
       <div class="stat">
-
         <div class="stat-content">
           <% @posts.each do |post| %>
             <% if post.project == @project %>
-              <li><%= post.content %> <%= post.project %> </li>
+              <li><%= post.content %>  </li>
             <% end %>
           <% end %>
         </div>

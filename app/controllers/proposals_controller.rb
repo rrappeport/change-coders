@@ -9,11 +9,11 @@ class ProposalsController < ApplicationController
     @developer = current_developer
     if @proposal.save
       CharityMailer.new_request(@project, @developer).deliver_now
-      redirect_to developer_dashboard_path
       flash[:notice] = "Thanks for applying!"
+      redirect_to developer_dashboard_path
     else
-      redirect_to project_path(@project)
       flash[:alert] = "Error"
+      redirect_to project_path(@project)
     end
   end
 

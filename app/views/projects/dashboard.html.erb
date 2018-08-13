@@ -63,7 +63,9 @@
       <% if @posts %>
         <div class="stat-content">
           <% @posts.each do |post| %>
+          <% if post.project == @project %>
             <li><%= post.content %> </li>
+            <% end %>
           <% end %>
         </div>
       <% end %>

@@ -75,6 +75,7 @@ class ProjectsController < ApplicationController
     authorize @project
     @charity = @project.charity
     @skills = @project.skills
+    @posts = Post.all
   end
 
   private

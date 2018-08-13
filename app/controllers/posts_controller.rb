@@ -5,13 +5,15 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(content: params[:post][:content], project_id: params[:project_id])
+    @post = Post.new(post_params)
     @project = Project.find(params[:project_id])
+    @post.project = @project
     # authorize @post
     if @post.save
       redirect_to projects_dashboard_path(@project)
     else
-      render :new
+      flash[:alert] = "Please try again"
+      redirect_to projects_dashboard_path(@project)
     end
   end
 
