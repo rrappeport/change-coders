@@ -1,43 +1,73 @@
+<figure>
+  <code id="cover-image" style="display: none;"></code>
+  <img class="cover-img" data-embed-id="cover-image" alt="Mastercard cover image" src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/job29abatch6-s58-volunteer-06.jpg?h=370&dpr=1.5&fit=default&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&ixlib=js-1.1.1&s=ff7d84730aba9c978a091143af44bd3d">
+</figure>
 
-<%# @id = current_developer.id %>
-<!-- Change to current_developer -->
-<h2> Hi, <%= @developer.first_name %> <%= @developer.last_name %></h2>
-<!-- Change to current_developer -->
-<h4>Email: <%= @developer.email %></h4>
-<h4>Description: <%= @developer.description %></h4>
-<h4>Experience: <%= @developer.experience %></h4>
-<h4>Linkedin_username: <%= @developer.linkedin_username %></h4>
-<h4>Github_username: <%= @developer.github_username %></h4>
-<h4>photo: <%= @developer.avatar %></h4>
-<h4>firstname: <%= @developer.first_name %></h4>
-<h4>lastname: <%= @developer.last_name %></h4>
+<div class="container">
+
+  <div class="col-md-12">
+    <div class="comments green-box">
+      <h2> Hi, <%= @developer.first_name %> <%= @developer.last_name %></h2>
+    </div>
+    <div class="project-info white-box">
+      <%# @id = current_developer.id %>
+      <!-- Change to current_developer -->
+      <!-- Change to current_developer -->
+      <h4>Email: <%= @developer.email %></h4>
+      <h4>Description: <%= @developer.description %></h4>
+      <h4>Experience: <%= @developer.experience %></h4>
+      <h4>Linkedin_username: <%= @developer.linkedin_username %></h4>
+      <h4>Github_username: <%= @developer.github_username %></h4>
+      <h4>photo: <%= @developer.avatar %></h4>
+      <h4>firstname: <%= @developer.first_name %></h4>
+      <h4>lastname: <%= @developer.last_name %></h4>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="comments green-box">
+      <h2>Your projects: </h2>
+    </div>
+    <div class="project-info white-box">
+      <div class = "row">
+      <% @projects.each do |project| %>
+        <div class="col-md-4  text-center">
+          <p>name: <%= project.name  %> </p>
+          <p>status: <%= project.status %></p>
+          <p>deadline: <%= project.deadline  %></p>
+          <p>id: <%= project.id  %></p>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="comments green-box">
+      <h2> My skills </h2>
+    </div>
+    <div class="skills white-box">
+      <div class="stat-content">
+        <% @skills.each do |skill| %>
+          <li><%= skill.name %> <%= link_to "Remove", developer_developer_skill_path(@developer, skill) , method: :delete%></li>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
 
-<h2>Your projects: </h2>
-
-<% @projects.each do |project| %>
-  <p>name: <%= project.name  %> </p>
-  <p>status: <%= project.status %></p>
-  <p>deadline: <%= project.deadline  %></p>
-  <p>id: <%= project.id  %></p>
-<% end %>
-
-<h2> My skills </h2>
-<div class="stat">
-  <div class="stat-content">
-    <% @skills.each do |skill| %>
-      <li><%= skill.name %> <%= link_to "Remove", developer_developer_skill_path(@developer, skill) , method: :delete%></li>
-    <% end %>
+  <div class="col-md-12">
+    <div class="comments green-box">
+      <h2>Your aplications</h2>
+    </div>
+    <div class="skills white-box">
+      <% @proposals.each do |proposal| %>
+        <div>
+        <%= proposal.project.name  %>
+        ---->
+        <%= proposal.state  %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
-
-<h2>Your aplications</h2>
-<% @proposals.each do |proposal| %>
-  <div>
-  <%= proposal.project.name  %>
-  ---->
-  <%= proposal.state  %>
-  </div>
-<% end %>
-
