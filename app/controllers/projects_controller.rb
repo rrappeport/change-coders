@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @skills = @project.skills
     authorize @project
   end
 
@@ -58,6 +59,7 @@ class ProjectsController < ApplicationController
     @proposals = @project.proposals
     authorize @project
     @charity = @project.charity
+    @skills = @project.skills
   end
 
   private

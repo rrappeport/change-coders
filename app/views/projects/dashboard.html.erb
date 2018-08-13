@@ -14,6 +14,18 @@
   <p>Email: <%= @project.charity.email %></p>
   <p>Website: <%= @project.charity.website %></p>
   <p>Category: <%= @project.charity.category %></p>
+<<<<<<< HEAD
+=======
+</div>
+
+<h2> Skills requiered </h2>
+<div class="stat">
+  <div class="stat-content">
+    <% @skills.each do |skill| %>
+      <li><%= skill.name %><%= link_to "Remove", "#" %> </li>
+    <% end %>
+  </div>
+>>>>>>> 3baf46dedb1dfa4936579a0db29181adc582eb20
 </div>
 
 <div class="team-info">
