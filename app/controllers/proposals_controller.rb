@@ -17,6 +17,8 @@ class ProposalsController < ApplicationController
   def accept
     @project = Project.find(params[:project_id])
     @proposal = Proposal.find(params[:proposal])
+
+
     @proposal.state = "Accepted"
     if @proposal.save!
       member = Member.new

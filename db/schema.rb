@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_115741) do
   create_table "proposals", force: :cascade do |t|
     t.bigint "developer_id"
     t.bigint "project_id"
-    t.string "state"
+    t.string "state", default: "Pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["developer_id"], name: "index_proposals_on_developer_id"

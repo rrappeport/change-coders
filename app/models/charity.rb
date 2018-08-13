@@ -4,6 +4,7 @@ class Charity < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :projects, dependent: :destroy
+  has_many :proposals, through: :projects
   validates :address, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
