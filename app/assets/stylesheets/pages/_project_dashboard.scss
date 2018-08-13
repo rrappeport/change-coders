@@ -1,0 +1,19 @@
+.white-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  width: 100%;
+  margin: 20px;
+  height: auto;
+  padding: 10px 30px;
+}
+
+.green-box {
+  background: $green;
+  color: white;
+  border: 1px solid #ddd;
+  width: 100%;
+  margin: 20px;
+  height: auto;
+  padding: 10px 30px;
+}
+
