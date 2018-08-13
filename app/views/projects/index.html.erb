@@ -2,26 +2,25 @@
 
   <div class="row project-list">
     <div class="col-md-3 check-boxes">
-        <%= form_for(:project, :url => {:action => "index"}, :html => {:method => :get}) do %>
-      <div>
-        <h4> Search by category </h4>
-        <% Project::CATEGORIES.each do |category| %>
-          <div class= "categories-search">
-            <%= check_box_tag "category", category %> <%= category %>
+      <%= form_for(:project, :url => {:action => "index"}, :html => {:method => :get}, remote: true, id: 'my_form') do %>
+        <% hidden_field_tag :filter, tag.name %>
+        <div>
+          <h4> Search by category </h4>
+          <% Project::CATEGORIES.each do |category| %>
+            <div class= "categories-search">
+              <%= check_box_tag "category", category %> <%= category %>
+            </div>
+          <% end %>
+        </div>
+        <br>
+        <div>
+          <h4> Search by status </h4>
+          <% Project::STATUSES.each do |status| %>
+            <div class= "statuses-search">
+              <%= check_box_tag "status", status %> <%= status %>
           </div>
         <% end %>
       </div>
-      <br>
-      <div>
-        <h4> Search by status </h4>
-        <% Project::STATUSES.each do |status| %>
-          <div class= "statuses-search">
-            <%= check_box_tag "status", status %> <%= status %>
-          </div>
-        <% end %>
-      </div>
-
-
       <br>
       <div>
         <h4> Search by deadline </h4>
@@ -44,36 +43,13 @@
     <%= submit_tag("Search", class:'btn btn-success index-search-button')%>
          <% end %>
     </div>
+
     </div>
-    <div class="col-md-9 index-results">
-    <% @projects.each do |project| %>
-
-          <div class="card-index">
-
-            <div class="card-index-image col-xs-3" style="background-image: url(https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg)">
-            </div>
-
-            <div class="card-index-content col-xs-7">
-              <h4>Project Name: <%= link_to project.name, project_path(project)%></h4>
-              <p>Project Details: "I need help to make my website look better. I love saving Bali Reptiles but unfortuanately I do not know how to build websites. This site needs work on the front end and also on the back end functionality."</p>
-              <p>Charity: <%= project.charity.name %> (<%= project.charity.category %>)</p>
-              <p>Status: <%= project.status %>, Type: <%= project.work_type %></p>
-              <p>Deadline: <%= project.deadline %></p>
-            </div>
-
-            <div class="col-md-2 text-center">
-              <%= link_to "Read More", project_path(project), class:'align-self-end btn btn-success btn-index' %>
-            </div>
-
-          </div>
-
-    <%end %>
+    <div id="filter" class="col-md-9">
+      <%= render "project_list", projects: @projects %>
     </div>
   </div>
 </div>
-
-
-
 
 
 

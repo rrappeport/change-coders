@@ -1,0 +1,8 @@
+
+function renderProjects(html) {
+  const projects = document.getElementById('filter');
+  console.log(projects, html)
+  projects.innerHTML = html;
+}
+
+  renderProjects('<%= j render "projects/project_list", projects: @projects %>');
