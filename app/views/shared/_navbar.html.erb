@@ -1,20 +1,20 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <a href="/" class="navbar-wagon-brand">
-    <img src="images/logo.png" alt="home">
+    <!-- <img src="logo.png" alt="home"> -->
+    <%= image_tag "logo.png", height: 70 %>
   </a>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Host</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
+    <a href="/" class="navbar-wagon-item navbar-wagon-link">Home</a>
+    <a href="/projects/" class="navbar-wagon-item navbar-wagon-link">All Projects</a>
 
     <!-- When developer is signed in -->
 
     <% if developer_signed_in? %>
-      <div class="navbar-wagon-item">
+      <div class="navbar-wagon-item navbar-wagon-link">
         <div class="dropdown">
           <% if current_developer[:avatar]%>
             <%= image_tag "#{current_developer.avatar}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
@@ -45,7 +45,7 @@
     <!-- When charity is signed in -->
 
     <% elsif charity_signed_in?%>
-      <div class="navbar-wagon-item">
+      <div class="navbar-wagon-item navbar-wagon-link">
         <div class="dropdown">
           <% if current_charity[:photo]%>
             <%= image_tag "#{current_charity.photo}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
@@ -78,7 +78,7 @@
 
     <% else %>
       <%#= link_to t(".sign_in", default: "Developer login"), new_developer_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <a href="/developers/auth/github">Sign in with GitHub</a>
+      <a  class="navbar-wagon-item navbar-wagon-link" href="/developers/auth/github">Sign in with GitHub</a>
       <%= link_to t(".sign_in", default: "Charity login"), new_charity_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
