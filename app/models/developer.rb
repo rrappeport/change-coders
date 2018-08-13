@@ -12,6 +12,7 @@ class Developer < ApplicationRecord
   has_many :developer_skills
   has_many :skills, through: :developer_skills
   mount_uploader :avatar, PhotoUploader
+  has_many :posts
   # has_many :projects throgh:
 
 

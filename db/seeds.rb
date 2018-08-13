@@ -35,6 +35,8 @@ PROJECT_NAME = ["Charity New Website", "Charity Add Map", "Redesign My Site", "R
 TYPE = ["New", "Update", "Rebuild"]
 PROGRAMMING_LANGUAGE = ["C", "C++", "C#", "Clojure", "CoffeeScript", "CSS", "Go", "Haskell", "Java", "JavaScript", "Lua", "Matlab", "Objective-C", "Peral", "PHP", "Python", "R", "Ruby", "Scala", "Shell", "Swift", "TeX", "Vim script"]
 
+puts "destroying posts"
+Post.destroy_all
 puts "destroying dev_skills"
 DeveloperSkill.destroy_all
 puts "destroying project_skills"
