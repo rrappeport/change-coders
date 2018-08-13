@@ -19,9 +19,10 @@ class ProposalsController < ApplicationController
 
   def accept
     @project = Project.find(params[:project_id])
+byebug
+    # Control acception by Pundit
     @proposal = Proposal.find(params[:proposal])
-
-
+    authorize @proposal
 
     @proposal.state = "Accepted"
     if @proposal.save!
@@ -39,6 +40,8 @@ class ProposalsController < ApplicationController
   def reject
     @project = Project.find(params[:project_id])
     @proposal = Proposal.find(params[:proposal])
+
+    authorize @proposal
     @proposal.state = "Rejected"
     @proposal.save!
     redirect_to projects_dashboard_path(@project)
