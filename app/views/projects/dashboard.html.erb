@@ -1,61 +1,140 @@
+<figure>
+  <code id="cover-image" style="display: none;"></code>
+  <img class="cover-img" data-embed-id="cover-image" alt="Mastercard cover image" src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/job29abatch6-s58-volunteer-06.jpg?h=370&dpr=1.5&fit=default&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&ixlib=js-1.1.1&s=ff7d84730aba9c978a091143af44bd3d">
+</figure>
 
-<div class="project-info">
-  <h2>Project info </h2>
-  <h1>Project name:<%= @project.name %></h1>
-  <h3>Charity:<%= @charity.name %></h3>
-  <p>Status: <%= @project.status  %></p>
-  <p>Type: <%= @project.work_type %></p>
-</div>
-
-<div class="charity-info">
-  <h2>Charity info </h2>
-  <p>Logo: <%= @project.charity.logo %></p>
-  <h3>Location:<%= @project.charity.address %></h3>
-  <p>Email: <%= @project.charity.email %></p>
-  <p>Website: <%= @project.charity.website %></p>
-  <p>Category: <%= @project.charity.category %></p>
-
-</div>
-
-<h2> Skills requiered </h2>
-<div class="stat">
-  <div class="stat-content">
-    <% @skills.each do |skill| %>
-      <li><%= skill.name %><%= link_to "Remove", project_project_skill_path(@project, skill) , method: :delete%> </li>
-    <% end %>
+<div class="container">
+  <div class="col-md-12">
+    <div class="comments green-box">
+      <h2>Project info </h2>
+     </div>
+    <div class="project-info white-box">
+      <p>Project name:<%= @project.name %></p>
+      <p>Charity:<%= @charity.name %></p>
+      <p>Status: <%= @project.status  %></p>
+      <p>Type: <%= @project.work_type %></p>
+    </div>
   </div>
 
-</div>
 
-<div class="team-info">
-  <h3>Team Members: </h3>
-  <% @project.developers.each do |developer| %>
-    <div class="col-md-4">
-      <p><%= developer.avatar %></p>
-      <h3>Name: <%= developer.first_name %> <%= developer.last_name %></h3>
-      <p>Email: <%= developer.email %></p>
-      <p><%= developer.github_username %></p>
-      <% if @project.leader_id == developer.id %>
-        <h4> LEADER <h4>
-      <% end %>
-      <%= link_to "Remove from the team", project_member_path(@project, developer), method: :delete, data: { confirm: "Are you sure?" } %>
-    </div>
-  <% end %>
-</div>
-
-<div class="applications-info">
   <div class="col-md-12">
-    <h3>New join requests: </h3>
-    <% @proposals.each do |proposal| %>
-      <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
-      <p><%= proposal.state%></p>
-      <% if proposal.state == "Pending" %>
-        <%= link_to "Accept application", accept_proposal_path(proposal: proposal), method: :post %>
-        <%= link_to "Reject application", reject_proposal_path(proposal: proposal), method: :post %>
+    <div class="comments green-box">
+      <h2>Charity info </h2>
+    </div>
+    <div class="charity-info-dashboard white-box">
+      <p>Logo: <%= @project.charity.logo %></p>
+      <p>Location:<%= @project.charity.address %></p>
+      <p>Email: <%= @project.charity.email %></p>
+      <p>Website: <%= @project.charity.website %></p>
+      <p>Category: <%= @project.charity.category %></p>
+    </div>
+  </div>
 
-      <% end %>
-      <br> <br> <br>
-    <% end %>
+
+  <div class="col-md-12">
+    <div class="comments green-box">
+      <h2> Skills requiered </h2>
+    </div>
+    <div class="skills-info white-box">
+      <div class="stat">
+        <div class="stat-content">
+          <% @skills.each do |skill| %>
+            <li><%= skill.name %> <%= link_to "Remove", project_project_skill_path(@project, skill) , method: :delete %> </li>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-12">
+    <div class="comments green-box">
+      <h3>Team Members: </h3>
+    </div>
+    <div class="team-info white-box">
+      <div class = "row">
+        <% @project.developers.each do |developer| %>
+          <div class="col-md-4  text-center">
+            <p><%= developer.avatar %></p>
+            <p>Name: <%= developer.first_name %> <%= developer.last_name %></p>
+            <p>Email: <%= developer.email %></p>
+            <p><%= developer.github_username %></p>
+            <% if @project.leader_id == developer.id %>
+              <h4> LEADER </h4>
+            <% end %>
+            <%= link_to "Remove from the team", project_member_path(@project, developer), method: :delete, class: 'btn btn-warning', data: { confirm: "Are you sure?" } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-12">
+      <div class="comments green-box">
+        <h3>New join requests: </h3>
+      </div>
+    <div class="applications-info white-box">
+        <div class = "row">
+          <% @proposals.each do |proposal| %>
+            <div class="col-md-4 text-center">
+              <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
+              <p><%= proposal.state%></p>
+              <% if proposal.state == "Pending" %>
+                <%= link_to "Accept application", accept_proposal_path(proposal: proposal), method: :post, class: 'btn' %>
+                <%= link_to "Reject application", reject_proposal_path(proposal: proposal), method: :post, class: 'btn' %>
+              <% end %>
+              <br> <br> <br>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-12">
+    <div class="comments green-box">
+       <h2> Comments: </h2>
+     </div>
+    <div class="comments white-box">
+        <div class="stat">
+        <% if @posts %>
+          <ul class="list-group">
+            <% @posts.each do |post| %>
+            <% if post.project == @project %>
+              <li class="list-group-item"><%= post.content %> </li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+        </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add a post</button>
+    </div>
+  </div>
+
+
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Post a comment</h4>
+        </div>
+
+        <div class="modal-body">
+          <%= simple_form_for [@project, Post.new] do |f| %>
+            <%= f.input :content %>
+        </div>
+        <div class="modal-footer form-inline">
+            <%= f.submit "Post", class: "btn btn-primary" %>
+          <% end %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

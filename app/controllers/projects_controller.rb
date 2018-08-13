@@ -14,8 +14,17 @@ class ProjectsController < ApplicationController
       @charities = Charity.where(category: params[:category])
       @projects = @projects.where(charity_id: @charities.pluck(:id))
     end
+    if params[:skill].present?
+      @skills = Skill.where(name: params[:skill]).first
+      projects = @projects
+      @projects = @skill.projects
+    end
     if params[:deadline].present?
         @projects = @projects.where("deadline <= ? ", Date.today + params[:deadline].to_i.day)
+    end
+    respond_to do |format|
+      format.js
+      format.html
     end
   end
 
@@ -24,7 +33,7 @@ class ProjectsController < ApplicationController
     @skills = @project.skills
     authorize @project
     @charity = @project.charity
-
+    @posts = Post.all
     @markers =
       [{
         lat: @charity.latitude,
@@ -71,6 +80,7 @@ class ProjectsController < ApplicationController
     authorize @project
     @charity = @project.charity
     @skills = @project.skills
+    @posts = Post.all
   end
 
   private

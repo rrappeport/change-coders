@@ -34,19 +34,19 @@
 
   <div class="col-md-12">
     <div class="charity-info">
-        <h1>More About <%= @project.charity.name %></a></h1>
-        <h3>Emergency Response</h3>
-        <p>A strong network of trusted partners enables Direct Relief to assess immediate healthcare needs, understand the situation on the ground, and respond quickly and efficiently when a disaster strikes."</p>
+      <h1>More About <%= @project.charity.name %></a></h1>
+      <h3>Emergency Response</h3>
+      <p>A strong network of trusted partners enables Direct Relief to assess immediate healthcare needs, understand the situation on the ground, and respond quickly and efficiently when a disaster strikes."</p>
 
-        <h3>Products with Purpose</h3>
-        <p>Based on years of experience, Direct Relief designs and deploys a range of humanitarian products to support vulnerable communities throughout the world.</p>
+      <h3>Products with Purpose</h3>
+      <p>Based on years of experience, Direct Relief designs and deploys a range of humanitarian products to support vulnerable communities throughout the world.</p>
 
-        <h3>Issues & Solutions</h3>
-        <p>Direct Relief’s medical assistance programs equip health professionals in resource-poor communities to meet the challenges of diagnosing, treating, and caring for people in need."</p>
+      <h3>Issues & Solutions</h3>
+      <p>Direct Relief’s medical assistance programs equip health professionals in resource-poor communities to meet the challenges of diagnosing, treating, and caring for people in need."</p>
     </div>
   </div>
 
-    <div class="col-md-12">
+  <div class="col-md-12">
     <div class="charity-info">
       <h2> Skills requiered </h2>
       <div class="stat">
@@ -71,6 +71,23 @@
     </button>
   </div>
 
+  <div class="col-md-12">
+    <div class="charity-info">
+      <h2> Comments: </h2>
+      <div class="stat">
+        <div class="stat-content">
+          <% @posts.each do |post| %>
+            <% if post.project == @project %>
+              <li><%= post.content %>  </li>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
   <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
     <div class="modal-dialog" role="document">
@@ -89,3 +106,5 @@
     </div>
   </div>
 </div>
+
+
