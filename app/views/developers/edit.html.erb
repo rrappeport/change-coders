@@ -1,24 +1,68 @@
-<h2>Edit profile</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-post">
+        <h2>Edit profile</h2>
+        <%= simple_form_for(@developer) do |f| %>
+          <%= f.error_notification %>
+            <div class="row">
+              <div class="col-xs-6">
+                <%= f.input :first_name, required: false %>
+              </div>
+              <div class="col-xs-6">
+                <%= f.input :last_name, required: false %>
+              </div>
+              <div class="col-xs-6">
+                <%= f.input :github_username, required: false %>
+              </div>
+              <div class="col-xs-6">
+                <%= f.input :linkedin_username, required: false %>
+              </div>
+              <div class="col-xs-12">
+                <%= f.input :address, required: false %>
+              </div>
+              <div class="col-xs-12">
+                <%= f.input :description, required: false %>
+              </div>
+              <div class="col-xs-12">
+                <%= f.input :experience, required: false %>
+              </div>
+              <div class="col-xs-6">
+                <%= f.input :avatar, required: false %>
+                <%= f.input :avatar_cache, as: :hidden %>
+              </div>
+              <div class="col-xs-6">
+                <%= f.input :birth_date, required: false %>
 
-<%= simple_form_for(@developer) do |f| %>
-  <%= f.error_notification %>
+              </div>
+            </div>
 
-  <div class="form-inputs">
-    <%= f.input :first_name, required: false %>
-    <%= f.input :last_name, required: false %>
-    <%= f.input :github_username, required: false %>
-    <%= f.input :address, required: false %>
-    <%= f.input :linkedin_username, required: false %>
-    <%= f.input :description, required: false %>
-    <%= f.input :experience, required: false %>
-    <%= f.input :avatar, required: false %>
-    <%= f.input :avatar_cache, as: :hidden %>
-    <%= f.input :birth_date, required: false %>
+            <div class="form-group">
+              <label class="control-label check_boxes optional">Skills</label>
+                <input type="hidden" name="developer[skill_ids][]" value="">
+                <fieldset class="skill-choices">
+                  <% Skill.all.each do |skill| %>
+                    <div class="skill-choice">
+                      <input type="checkbox" class="checkbox-hidden" value="<%= skill.id%>" name="developer[skill_ids][]" id="developer_skill_ids_<%= skill.id%>" >
+                      <label class="" for="developer_skill_ids<%= skill.id%>">
+                        <%= skill.name %>
+                        <i class="fa fa-check"></i>
+                      </label>
+                    </div>
+                  <% end %>
+                </fieldset>
+            </div>
+
+            <div class="col-xs-6">
+              <div class="form-actions">
+                <%= f.button :submit, "Update" %>
+              </div>
+            </div>
+        <% end %>
+
+        <%= link_to "Back", :back %>
+
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<%= link_to "Back", :back %>
+</div>
