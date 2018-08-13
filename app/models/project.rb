@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
-  STATUSES = ['pending', 'active', 'done', 'In Progress']
+  STATUSES = ['Pending', 'Active', 'Done', 'In Progress']
   TYPES = ['Rebuild', "New", "Update"]
-  CATEGORIES = ['Environment', "Community Development", "Animals"]
+  CATEGORIES = ["Animals", "Community Development", "Education", "Health", "Environment", "Human Rights"]
   DEADLINES = [15, 30, 60]
 
   belongs_to :charity
@@ -13,3 +13,4 @@ class Project < ApplicationRecord
   has_many :proposals
   has_many :posts
 end
+
