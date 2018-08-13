@@ -4,7 +4,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new
     @project = Project.find(params[:project_id])
     @proposal.project = @project
-    authorize @proposal
+    # authorize @proposal
     @proposal.developer = current_developer
     @developer = current_developer
     if @proposal.save
