@@ -45,14 +45,14 @@ puts "destroying member"
 Member.destroy_all
 puts "destroying proposal"
 Proposal.destroy_all
-puts "destroying develoepr"
+puts "destroying developer"
 Developer.destroy_all
 puts "destroying project"
 Project.destroy_all
 puts "destroying charity"
 Charity.destroy_all
 
-puts "creating new develoepr"
+puts "creating new developer"
 (1..5).to_a.each do |number|
 developer = Developer.new(
   first_name: NAME.sample,

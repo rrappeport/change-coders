@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row project-list">
     <div class="col-md-3 check-boxes">
       <%= form_for(:project, :url => {:action => "index"}, :html => {:method => :get}, remote: true, id: 'my_form') do %>
@@ -43,7 +42,6 @@
     <%= submit_tag("Search", class:'btn btn-success index-search-button')%>
          <% end %>
     </div>
-
     </div>
     <div id="filter" class="col-md-9">
       <%= render "project_list", projects: @projects %>
