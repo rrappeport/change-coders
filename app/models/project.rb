@@ -11,4 +11,5 @@ class Project < ApplicationRecord
   has_many :skills, through: :project_skills
   has_many :chatrooms
   has_many :proposals
+  has_many :posts
 end

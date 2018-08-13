@@ -68,3 +68,73 @@ padding: 30px;
 .project-section {
   padding: 50px 0;
 }
+// Specific CSS for your home-page
+.banner-content h1 {
+  color: white;
+  padding: 20px;
+}
+
+.banner-content h3 {
+  color: white;
+  padding-bottom: 30px;
+}
+
+#home-banner {
+  height: calc(100vh - 50px);
+  background-size: cover !important;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#about-home {
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 10px 20px 0 20px;
+}
+
+.form-control {
+  height: 51px;
+}
+
+#home-about, #home-services, #home-pets {
+  padding: 50px 25px;
+}
+
+.wrapper {
+  background-color: #f9f9f9;
+}
+
+.signup-button {
+  padding-bottom: 50px;
+}
+
+.homepage {
+padding: 30px;
+}
+
+.homepage h2 {
+ color: $green;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-light-grey {
+    background-color: $light-gray; /* light grey */
+}
+
+.homepage .glyphicon {
+  color: $green;
+  font-size: 30px;
+}
+
+.projects-button {
+  margin: 50px 0px;
+}
+
+.project-section {
+  padding: 50px 0;
+}
