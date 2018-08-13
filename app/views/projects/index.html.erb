@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="row">
+  <div class="row project-list">
     <div class="col-md-3 check-boxes">
       <%= form_for(:project, :url => {:action => "index"}, :html => {:method => :get}, remote: true, id: 'my_form') do %>
         <% hidden_field_tag :filter, tag.name %>
@@ -18,40 +18,38 @@
           <% Project::STATUSES.each do |status| %>
             <div class= "statuses-search">
               <%= check_box_tag "status", status %> <%= status %>
-            </div>
-          <% end %>
-        </div>
-        <br>
-        <div>
-          <h4> Search by deadline </h4>
-          <% Project::DEADLINES.each do |deadline| %>
-            <div class= "deadlines-search">
-              <%= check_box_tag "deadline", deadline %> within <%= deadline %> days
-            </div>
-          <% end %>
-        </div>
-        <br>
-        <div>
-          <h4> Search by type </h4>
-          <% Project::TYPES.each do |work_type| %>
-            <div class= "types-search">
-              <%= check_box_tag "work_type", work_type %> <%= work_type %>
-            </div>
-          <% end %>
-        </div>
-        <div class="text-center">
-          <%= submit_tag("Search", class:'btn btn-success index-search-button')%>
-        </div>
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <div>
+        <h4> Search by deadline </h4>
+        <% Project::DEADLINES.each do |deadline| %>
+          <div class= "deadlines-search">
+            <%= check_box_tag "deadline", deadline %> within <%= deadline %> days
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <div>
+        <h4> Search by type </h4>
+        <% Project::TYPES.each do |work_type| %>
+      <div class= "types-search">
+        <%= check_box_tag "work_type", work_type %> <%= work_type %>
+      </div>
       <% end %>
+    </div>
+    <div class="text-center">
+    <%= submit_tag("Search", class:'btn btn-success index-search-button')%>
+         <% end %>
+    </div>
+
     </div>
     <div id="filter" class="col-md-9">
       <%= render "project_list", projects: @projects %>
     </div>
   </div>
 </div>
-
-
-
 
 
 

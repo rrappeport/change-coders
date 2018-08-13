@@ -6,11 +6,14 @@ class ProposalsController < ApplicationController
     @proposal.project = @project
     authorize @proposal
     @proposal.developer = current_developer
+    @developer = current_developer
     if @proposal.save
-      redirect_to developer_dashboard_path
+      CharityMailer.new_request(@project, @developer).deliver_now
       flash[:notice] = "Thanks for applying!"
+      redirect_to developer_dashboard_path
     else
-      render 'project_path(@project)', flash[:alert] = "Error"
+      flash[:alert] = "Error"
+      redirect_to project_path(@project)
     end
   end
 
@@ -25,6 +28,7 @@ class ProposalsController < ApplicationController
       member.save!
       @project.leader_id = member.developer_id
       @project.save!
+      DeveloperMailer.application_status(@proposal).deliver_now
     end
       redirect_to projects_dashboard_path(@project)
   end
@@ -35,6 +39,7 @@ class ProposalsController < ApplicationController
     @proposal.state = "Rejected"
     @proposal.save!
     redirect_to projects_dashboard_path(@project)
+    DeveloperMailer.application_status(@proposal).deliver_now
   end
 
 end

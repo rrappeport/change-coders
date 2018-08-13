@@ -46,7 +46,7 @@
     </div>
   </div>
 
-    <div class="col-md-12">
+  <div class="col-md-12">
     <div class="charity-info">
       <h2> Skills requiered </h2>
       <div class="stat">
@@ -71,6 +71,23 @@
     </button>
   </div>
 
+  <div class="col-md-12">
+    <div class="charity-info">
+      <h2> Comments: </h2>
+      <div class="stat">
+        <div class="stat-content">
+          <% @posts.each do |post| %>
+            <% if post.project == @project %>
+              <li><%= post.content %>  </li>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
   <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
     <div class="modal-dialog" role="document">
@@ -89,3 +106,5 @@
     </div>
   </div>
 </div>
+
+

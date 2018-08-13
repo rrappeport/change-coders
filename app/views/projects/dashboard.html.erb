@@ -1,61 +1,103 @@
+<div class="container">
+  <div class="project-info">
+    <h2>Project info </h2>
+    <h1>Project name:<%= @project.name %></h1>
+    <h3>Charity:<%= @charity.name %></h3>
+    <p>Status: <%= @project.status  %></p>
+    <p>Type: <%= @project.work_type %></p>
+  </div>
 
-<div class="project-info">
-  <h2>Project info </h2>
-  <h1>Project name:<%= @project.name %></h1>
-  <h3>Charity:<%= @charity.name %></h3>
-  <p>Status: <%= @project.status  %></p>
-  <p>Type: <%= @project.work_type %></p>
-</div>
+  <div class="charity-info">
+    <h2>Charity info </h2>
+    <p>Logo: <%= @project.charity.logo %></p>
+    <h3>Location:<%= @project.charity.address %></h3>
+    <p>Email: <%= @project.charity.email %></p>
+    <p>Website: <%= @project.charity.website %></p>
+    <p>Category: <%= @project.charity.category %></p>
+  </div>
 
-<div class="charity-info">
-  <h2>Charity info </h2>
-  <p>Logo: <%= @project.charity.logo %></p>
-  <h3>Location:<%= @project.charity.address %></h3>
-  <p>Email: <%= @project.charity.email %></p>
-  <p>Website: <%= @project.charity.website %></p>
-  <p>Category: <%= @project.charity.category %></p>
+  <h2> Skills requiered </h2>
+  <div class="stat">
+    <div class="stat-content">
+      <% @skills.each do |skill| %>
+        <li><%= skill.name %><%= link_to "Remove", project_project_skill_path(@project, skill) , method: :delete%> </li>
+      <% end %>
+    </div>
+  </div>
 
-</div>
-
-<h2> Skills requiered </h2>
-<div class="stat">
-  <div class="stat-content">
-    <% @skills.each do |skill| %>
-      <li><%= skill.name %><%= link_to "Remove", project_project_skill_path(@project, skill) , method: :delete%> </li>
+  <div class="team-info">
+    <h3>Team Members: </h3>
+    <% @project.developers.each do |developer| %>
+      <div class="col-md-4">
+        <p><%= developer.avatar %></p>
+        <h3>Name: <%= developer.first_name %> <%= developer.last_name %></h3>
+        <p>Email: <%= developer.email %></p>
+        <p><%= developer.github_username %></p>
+        <% if @project.leader_id == developer.id %>
+          <h4> LEADER <h4>
+        <% end %>
+        <%= link_to "Remove from the team", project_member_path(@project, developer), method: :delete, data: { confirm: "Are you sure?" } %>
+      </div>
     <% end %>
   </div>
 
-</div>
-
-<div class="team-info">
-  <h3>Team Members: </h3>
-  <% @project.developers.each do |developer| %>
-    <div class="col-md-4">
-      <p><%= developer.avatar %></p>
-      <h3>Name: <%= developer.first_name %> <%= developer.last_name %></h3>
-      <p>Email: <%= developer.email %></p>
-      <p><%= developer.github_username %></p>
-      <% if @project.leader_id == developer.id %>
-        <h4> LEADER <h4>
+  <div class="applications-info">
+    <div class="col-md-12">
+      <h3>New join requests: </h3>
+      <% @proposals.each do |proposal| %>
+        <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
+        <p><%= proposal.state%></p>
+        <% if proposal.state == "Pending" %>
+          <%= link_to "Accept application", accept_proposal_path(proposal: proposal), method: :post %>
+          <%= link_to "Reject application", reject_proposal_path(proposal: proposal), method: :post %>
+        <% end %>
+        <br> <br> <br>
       <% end %>
-      <%= link_to "Remove from the team", project_member_path(@project, developer), method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
-  <% end %>
-</div>
+  </div>
 
-<div class="applications-info">
   <div class="col-md-12">
-    <h3>New join requests: </h3>
-    <% @proposals.each do |proposal| %>
-      <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
-      <p><%= proposal.state%></p>
-      <% if proposal.state == "Pending" %>
-        <%= link_to "Accept application", accept_proposal_path(proposal: proposal), method: :post %>
-        <%= link_to "Reject application", reject_proposal_path(proposal: proposal), method: :post %>
-
+    <div class="charity-info">
+      <h2> Comments: </h2>
+      <div class="stat">
+      <% if @posts %>
+        <div class="stat-content">
+          <% @posts.each do |post| %>
+          <% if post.project == @project %>
+            <li><%= post.content %> </li>
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
-      <br> <br> <br>
-    <% end %>
+      </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add a post</button>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Post a comment</h4>
+        </div>
+
+        <div class="modal-body">
+          <%= simple_form_for [@project, Post.new] do |f| %>
+            <%= f.input :content %>
+        </div>
+        <div class="modal-footer form-inline">
+            <%= f.submit "Post", class: "btn btn-primary" %>
+          <% end %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_115741) do
+ActiveRecord::Schema.define(version: 2018_08_12_141302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,14 @@ ActiveRecord::Schema.define(version: 2018_08_10_115741) do
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "content"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_posts_on_project_id"
+  end
+
   create_table "project_skills", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "skill_id"
@@ -148,6 +156,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_115741) do
   add_foreign_key "members", "developers"
   add_foreign_key "members", "projects"
   add_foreign_key "messages", "chatrooms"
+  add_foreign_key "posts", "projects"
   add_foreign_key "project_skills", "projects"
   add_foreign_key "project_skills", "skills"
   add_foreign_key "projects", "charities"
