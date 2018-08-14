@@ -2,5 +2,14 @@
   background-size: cover;
   width: 200px;
   height: 200px;
-  border-radius: 50%
+  border-radius: 50%;
+  border: 10px solid $green;
+}
+
+.user-avatar-sml{
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid $green;
 }

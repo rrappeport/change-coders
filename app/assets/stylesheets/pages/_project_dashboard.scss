@@ -1,24 +1,42 @@
 .white-box {
   background: #fff;
-  border: 1px solid #ddd;
+  // border: 1px solid #ddd;
   width: 100%;
-  margin: 20px;
   height: auto;
-  padding: 10px 30px;
+  padding: 20px 40px;
+  h3 {
+    color: $green;
+  }
 }
 
 .green-box {
   background: $green;
   color: white;
-  border: 1px solid #ddd;
+  // border: 1px solid #ddd;
   width: 100%;
-  margin: 20px;
   height: auto;
   padding: 10px 30px;
+  text-transform: uppercase;
+}
+
+.gray-box {
+  background: $gray;
+  // border: 1px solid #ddd;
+  width: 100%;
+  height: auto;
+  padding: 20px 40px;
+  h3 {
+    color: $green;
+  }
 }
 
 .post-list {
   list-style: none;
+  padding: 10px;
+}
+
+.green-background {
+  background-color: $green-hover;
 }
 
 .li {
@@ -27,10 +45,15 @@
 
 .post-footer {
   display: flex;
+  justify-content: right;
+  margin-right: 71px;
+  padding: 10px;
+  }
+.team-member {
+  padding: 20px;
+}
 
-justify-content: right;
-
-margin-right: 71px;
-
-padding: 10px;
+.space-around {
+  display: flex;
+  justify-content: space-around;
 }

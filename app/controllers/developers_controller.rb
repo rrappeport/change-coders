@@ -25,6 +25,9 @@ class DevelopersController < ApplicationController
 
   def update
     @developer = Developer.find(params[:id])
+    params[:developer][:skill_ids].reject(&:empty?).each do |skill_id|
+      @developer.skills << Skill.find(skill_id)
+    end
     if @developer.update(developer_params)
       redirect_to developer_path(@developer)
     else

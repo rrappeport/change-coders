@@ -36,7 +36,7 @@ class Developer < ApplicationRecord
       user.save
     end
   end
-  if !:avatar
+  # if !:avatar
     mount_uploader :avatar, PhotoUploader
-  end
+  # end
 end

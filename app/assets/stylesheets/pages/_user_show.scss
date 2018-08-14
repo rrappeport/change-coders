@@ -10,11 +10,6 @@
   padding : 15px;
 }
 
-.user-avatar {
-  height: 300px;
-  width: 300px;
-}
-
 .user-photo {
   display: flex;
   flex-direction: column;
@@ -24,16 +19,17 @@
 
 .projects-box {
   padding: 10px;
-  border: 1px solid $green;
-  border-radius: 20px;
-  margin: 5px 15px;
+  border-radius: 10px;
+  margin: 5px;
   width: 300px;
-}
+  background-color: $green-hover;
+  }
 
 .projects-box:hover {
-    background-color: $green-hover;
-    border: none;
-  }
+  background-color: $green-hover;
+  border: 2px 2px 5px $green-hover;
+  color: $green;
+}
 
 .flex-box {
   display: flex;
