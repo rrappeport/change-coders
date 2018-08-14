@@ -1,0 +1,43 @@
+.relative{
+  position: relative;
+}
+.absolute {
+  position:absolute;
+  top:0px;
+  left: 60px;
+}
+.show-header {
+  height: 250px;
+  margin: 0;
+}
+.stick-to-bottom{
+  color: white;
+  text-align: right;
+}
+
+.stick-to-top{
+  margin-top: 20px;
+}
+
+.green-box h4{
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+.see-throuh-box{
+  background-color: none;
+  height: 100px;
+  padding: 0;
+}
+.dev-description {
+  font-style: italic;
+}
+
+.edit-icon {
+  text-align: right;
+  .fa {
+    color: $green;
+  }
+  .fa:hover {
+    color: $green-lighter;
+  }
+}

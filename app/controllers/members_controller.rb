@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
 
   def destroy
-    @member = Member.find_by(developer_id: params[:id])
+    @member = Member.find(params[:id])
     # byebug
 
     authorize @member

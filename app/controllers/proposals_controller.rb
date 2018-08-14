@@ -2,6 +2,7 @@ class ProposalsController < ApplicationController
 
   def create
     @proposal = Proposal.new
+    authorize @proposal
     @project = Project.find(params[:project_id])
     @proposal.project = @project
     # authorize @proposal
@@ -22,8 +23,7 @@ class ProposalsController < ApplicationController
     # Control acception by Pundit
     @proposal = Proposal.find(params[:proposal])
     authorize @proposal
-
-    @proposal.state = "Accepted"
+    @proposal.accept
     if @proposal.save!
       member = Member.new
       member.developer = @proposal.developer

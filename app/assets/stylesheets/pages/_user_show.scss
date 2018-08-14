@@ -1,0 +1,52 @@
+.star-rating {
+  padding: 10px;
+  margin: 20px 0;
+}
+.border-spaced {
+  padding : 15px;
+  border-bottom: 1px solid $green;
+}
+.border-spaced-bottom {
+  padding : 15px;
+}
+
+.user-photo {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.projects-box {
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px;
+  width: 300px;
+  background-color: $green-hover;
+  }
+
+.projects-box:hover {
+  background-color: $green-hover;
+  border: 2px 2px 5px $green-hover;
+  color: $green;
+}
+
+.flex-box {
+  display: flex;
+  justify-content: space-around!important;
+}
+
+.box-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+  background: black;
+  opacity: 0;
+}
+
+.project-info {
+  position:relative;
+}

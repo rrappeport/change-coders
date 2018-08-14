@@ -22,9 +22,11 @@
         </div>
       </div>
       <div>
-        <button type="button" class="btn btn-success btn-apply" data-toggle="modal" data-target="#myModal">
-          <strong>Apply Now</strong>
-        </button>
+        <% if policy(Proposal.new(project: @project)).create? %>
+            <button type="button" class="btn btn-primary show-buttons" data-toggle="modal" data-target="#myModal">
+            Apply
+          </button>
+        <% end %>
       </div>
     </div>
   </div>
@@ -71,11 +73,18 @@
   </div>
 
   <div class="col-md-12 text-center">
-    <%= link_to "Dashboard", projects_dashboard_path(@project), class:'btn btn-success show-buttons'  %>
+    <% if policy(@project).dashboard? %>
+      <%= link_to "Dashboard", projects_dashboard_path(@project), class:'btn btn-success show-buttons'  %>
+    <% end %>
+  <% if policy(@project).edit? %>
     <%= link_to "Edit", edit_project_path(@project), class:'btn btn-default show-buttons'  %>
-    <button type="button" class="btn btn-primary show-buttons" data-toggle="modal" data-target="#myModal">
+    <% end %>
+  <% if policy(Proposal.new(project: @project)).create? %>
+      <button type="button" class="btn btn-primary show-buttons" data-toggle="modal" data-target="#myModal">
       Apply
     </button>
+  <% end %>
+
   </div>
 
   <div class="col-md-12">

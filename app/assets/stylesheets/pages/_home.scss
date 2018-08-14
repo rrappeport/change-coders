@@ -1,4 +1,8 @@
 // Specific CSS for your home-page
+body {
+  color: #212829;
+}
+
 .banner-content h1 {
   color: white;
   padding: 20px;
@@ -54,7 +58,7 @@ padding: 30px;
 }
 
 .bg-light-grey {
-    background-color: $light-gray; /* light grey */
+  background-color: $light-gray; /* light grey */
 }
 
 .homepage .glyphicon {

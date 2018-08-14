@@ -5,13 +5,13 @@ class Developer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
-  has_many :proposals
+  has_many :proposals, dependent: :destroy
 
   has_many :members
   has_many :projects, through: :members
   has_many :developer_skills
   has_many :skills, through: :developer_skills
-  mount_uploader :avatar, PhotoUploader
+
   has_many :posts
   # has_many :projects throgh:
 
@@ -36,4 +36,7 @@ class Developer < ApplicationRecord
       user.save
     end
   end
+  # if !:avatar
+    mount_uploader :avatar, PhotoUploader
+  # end
 end
