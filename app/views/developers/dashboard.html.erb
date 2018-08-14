@@ -29,7 +29,6 @@
       <% if @developer.avatar? %>
         <div class = "user-avatar absolute" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
             url('<%= cl_image_path @developer.avatar %>')"></div>
-        </div>
       <% else %>
         <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar absolute"%>
       <% end %>
@@ -37,10 +36,8 @@
   </div>
 
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h3 >MY PROJECTS</h3>
-    </div>
     <div class="project-info white-box">
+      <h3 >MY PROJECTS</h3>
       <div class = "row">
       <% @projects.each do |project| %>
         <div class="col-md-4  text-center projects-box">
@@ -55,14 +52,17 @@
   </div>
 
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h3> MY SKILLS </h3>
-    </div>
     <div class="skills white-box">
-      <div class="stat-content">
-        <% @skills.each do |skill| %>
-          <li><%= skill.name %> <%= link_to "Remove", developer_developer_skill_path(@developer, skill) , method: :delete%></li>
-        <% end %>
+      <h3> MY SKILLS </h3>
+      <div class="form-group">
+        <div class="skill-display">
+          <% @skills.each do |skill| %>
+            <div class = "text-center">
+              <div class="skill-choice"><%= skill.name %></div>
+              <%= link_to "Remove", developer_developer_skill_path(@developer, skill) , method: :delete %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -70,10 +70,8 @@
 
 
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h3>MY APPLICATIONS</h3>
-    </div>
     <div class="skills white-box">
+      <h3>MY APPLICATIONS</h3>
       <% @proposals.each do |proposal| %>
         <div>
           <%= link_to proposal.project.name, project_path(proposal.project)  %>

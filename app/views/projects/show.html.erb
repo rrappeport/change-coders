@@ -54,13 +54,13 @@
   <div class="col-md-12">
     <div class="charity-info">
       <h3 class= "project-h3"> Skills Required </h3>
-      <div class="stat">
-        <div class="stat-content">
-          <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Ruby</li>
-          </ul>
+      <div class="form-group">
+        <div class="skill-display">
+          <% @project.skills.each do |skill| %>
+            <div class = "text-center">
+              <div class="skill-choice"><%= skill.name %></div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

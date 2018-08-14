@@ -1,11 +1,13 @@
 .white-box {
   background: #fff;
-  // border: 1px solid #ddd;
+  border: 1px solid #ddd;
   width: 100%;
   height: auto;
   padding: 20px 40px;
+  margin: 10px 0;
   h3 {
     color: $green;
+    text-transform:uppercase;
   }
 }
 
@@ -53,7 +55,17 @@
   padding: 20px;
 }
 
+.team-member-info {
+  height: 140px;
+  padding: 20px;
+  h4 {
+    color: $green-lighter;
+    font-weight: 700;
+  }
+}
+
 .space-around {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }

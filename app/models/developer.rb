@@ -9,10 +9,10 @@ class Developer < ApplicationRecord
 
   has_many :members
   has_many :projects, through: :members
-  has_many :developer_skills
+  has_many :developer_skills, dependent: :destroy
   has_many :skills, through: :developer_skills
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   # has_many :projects throgh:
 
 
