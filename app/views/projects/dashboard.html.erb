@@ -79,7 +79,7 @@
               <% end %>
             </div>
              <% if policy(member).destroy? && current_developer != member.developer%>
-            <%= link_to "Remove from the team", project_member_path(@project, developer), method: :delete, class: 'btn btn-warning', data: { confirm: "Are you sure?" } %>
+            <%= link_to "Remove from the team", project_member_path(@project, member.developer), method: :delete, class: 'btn btn-warning', data: { confirm: "Are you sure?" } %>
             <% end %>
 
           </div>
