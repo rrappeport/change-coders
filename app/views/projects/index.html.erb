@@ -64,9 +64,10 @@
     <div class="f16">
       <%= text_field_tag :address, params[:address], placeholder: 'Country', id: "country", class: "form-control" %>
     </div>
-    <div class="text-center">
-    <%= submit_tag("Search", class:'btn btn-success index-search-button')%>
-         <% end %>
+    <div class="search-buttons">
+      <%= submit_tag("Search", class:'btn btn-success button-search')%>
+      <%= link_to "Reset", projects_path, class: "btn btn-danger button-search" %>
+    <% end %>
     </div>
     </div>
     <div id="filter" class="col-md-9">
