@@ -50,8 +50,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @skills = @project.skills
     authorize @project
+    @skills = @project.skills
     @charity = @project.charity
     @posts = Post.all
     @markers =
@@ -96,10 +96,11 @@ class ProjectsController < ApplicationController
 
   def dashboard
     @project = Project.find(params[:project_id])
+    authorize @project
     @proposals = @project.proposals
     authorize @project
     @charity = @project.charity
-    @skills = @project.skills
+    @skills = @project.project_skills
     @posts = Post.all
   end
 

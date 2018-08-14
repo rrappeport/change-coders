@@ -16,6 +16,7 @@ class ProjectPolicy < ApplicationPolicy
   def show?
     return true
   end
+
   def edit?
     autorize_charity
   end
@@ -35,6 +36,7 @@ class ProjectPolicy < ApplicationPolicy
   private
 
   def user_is_owner_or_team_member
+
     (user.class == Charity && record.charity_id == user.id) ||
     (user.class == Developer && record.members.where(developer_id: user.id).any?)
   end
