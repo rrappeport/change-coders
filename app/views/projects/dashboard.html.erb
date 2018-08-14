@@ -17,13 +17,23 @@
 
   <div class="col-md-12">
 
-    <div class="charity-info-dashboard white-box text-right">
-      <h3>Charity info </h3>
-      <p>Logo: <%= @project.charity.logo %></p>
-      <p>Location:<%= @project.charity.address %></p>
-      <p>Email: <%= @project.charity.email %></p>
-      <p>Website: <%= @project.charity.website %></p>
-      <p>Category: <%= @project.charity.category %></p>
+    <div class="charity-info-dashboard white-box ">
+      <div class="row">
+        <div class = "col-md-6">
+          <% if @project.charity.logo? %>
+            <%= cl_image_tag @project.logo, class: "user-avatar-sml" %>
+          <% else %>
+            <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjFbGzCB7sAeKl1FMboHXQiDZ3KSd7G5CPmNOZ_EGBLY3fzTOjxQ", width: 300%>
+          <% end %>
+        </div>
+        <div class = "col-md-6 text-right">
+          <h3>Charity info </h3>
+          <p>Location:<%= @project.charity.address %></p>
+          <p>Email: <%= @project.charity.email %></p>
+          <p>Website: <%= @project.charity.website %></p>
+          <p>Category: <%= @project.charity.category %></p>
+        </div>
+      </div>
     </div>
   </div>`
 
@@ -31,6 +41,7 @@
   <div class="col-md-12">
     <div class="skills-info white-box">
       <h3> Skills requiered </h3>
+
       <div class="post-list">
         <% @skills.each do |project_skill| %>
         <!-- if user can see the button && delete a skill -->
@@ -40,9 +51,11 @@
             <% end %>
           </li>
         <% end %>
+
       </div>
     </div>
   </div>
+
 
 
   <div class="col-md-12">
@@ -50,27 +63,25 @@
     <div class="team-info white-box">
       <h3 class = "text-center">Team Members: </h3>
       <div class = "row">
-        <div class ="space-around">
-        <% @project.members.each do |member| %>
+        <div class ="form-group">
+            <% @project.members.each do |member| %>
           <div class="col-md-4  text-center team-member">
-            <% if member.developer.avatar? %>
-              <div class = "user-avatar-sml" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                  url('<%= cl_image_path member.developer.avatar %>')"></div>
-              </div>
-            <% else %>
-              <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-sml"%>
-            <% end %>
-            <p><%= member.developer.avatar %></p>
-            <p>Name: <%= member.developer.first_name %> <%= member.developer.last_name %></p>
+               <% if member.developer.avatar? %>
+                <%= cl_image_tag member.developer.avatar, class: "user-avatar-sml" %>
+              <% else %>
+                <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-sml"%>
+              <% end %>
+            <div class = "team-member-info">
+               <p>Name: <%= member.developer.first_name %> <%= member.developer.last_name %></p>
             <p>Email: <%= member.developer.email %></p>
-            <% if @project.leader_id == member.developer.id %>
-              <h4> LEADER </h4>
+              <% if @project.leader_id == member.developer.id %>
+                <h4> LEADER </h4>
+              <% end %>
+            </div>
+             <% if policy(member).destroy? && current_developer != member.developer%>
+            <%= link_to "Remove from the team", project_member_path(@project, developer), method: :delete, class: 'btn btn-warning', data: { confirm: "Are you sure?" } %>
             <% end %>
-             <!-- if user can see the button && delete a member -->
 
-            <% if policy(member).destroy? && current_developer != member.developer%>
-            <%= link_to "Remove from the team", project_member_path(@project, member), method: :delete, class: 'btn btn-warning', data: { confirm: "Are you sure?" } %>
-            <% end %>
           </div>
         <% end %>
         </div>
@@ -81,22 +92,22 @@
 
   <div class="col-md-12">
     <div class="applications-info white-box">
-        <h3 class = "text-center">New join requests: </h3>
-        <div class = "row">
-
-
-          <div class ="space-around">
-            <% @proposals.each do |proposal| %>
-              <div class="col-md-4 text-center  projects-box">
-                <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
-                <p><%= proposal.state %></p>
-                 <!-- if user can see the buttons && autorize proposal-->
-                <% if (proposal.state == "Pending" || "pending") &&  policy(proposal).accept? %>
-                  <%= link_to "Accept ", accept_proposal_path(proposal: proposal), method: :post, class: 'btn btn-success' %>
-                  <%= link_to "Reject", reject_proposal_path(proposal: proposal), method: :post, class: 'btn  btn-danger' %>
+      <h3 class = "text-center">New join requests: </h3>
+      <div class = "row">
+        <div class ="form-group">
+          <% @proposals.each do |proposal| %>
+            <% if proposal.state.downcase == "pending" &&  policy(proposal).accept? %>
+              <div class="col-md-4 text-center  ">
+                <% if proposal.developer.avatar? %>
+                  <%= cl_image_tag proposal.developer.avatar, class: "user-avatar-sml black-n-white" %>
+                <% else %>
+                  <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-sml black-n-white"%>
                 <% end %>
-                <br> <br> <br>
-            </div>
+                <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
+                <%= link_to "Accept ", accept_proposal_path(proposal: proposal), method: :post, class: 'btn btn-success' %>
+                <%= link_to "Reject", reject_proposal_path(proposal: proposal), method: :post, class: 'btn  btn-danger' %>
+              </div>
+            <% end %>
           <% end %>
         </div>
 

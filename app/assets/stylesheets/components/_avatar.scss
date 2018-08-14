@@ -7,9 +7,17 @@
 }
 
 .user-avatar-sml{
-  background-size: cover;
+  object-fit: cover;
   width: 150px;
   height: 150px;
   border-radius: 50%;
   border: 5px solid $green;
+}
+
+.avatar {
+  background-size: cover;
+}
+
+.black-n-white{
+  filter: grayscale(100%);
 }

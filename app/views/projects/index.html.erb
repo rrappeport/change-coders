@@ -3,6 +3,8 @@
     <div class="col-md-3 check-boxes">
       <%= form_for(:project, :url => {:action => "index"}, :html => {:method => :get}, remote: true, id: 'my_form') do %>
         <% hidden_field_tag :filter, tag.name %>
+         <%= hidden_field_tag :charities, @charities %>
+         <%= hidden_field_tag :projects, @projects.pluck(:id) %>
         <div>
           <h4> Search by category </h4>
           <% Project::CATEGORIES.each do |category| %>
@@ -38,6 +40,11 @@
       </div>
       <% end %>
     </div>
+    <br>
+    <h4> Search by Country </h4>
+    <div class="f16">
+      <%= text_field_tag :address, params[:address], placeholder: 'Country', id: "country", class: "form-control" %>
+    </div>
     <div class="text-center">
     <%= submit_tag("Search", class:'btn btn-success index-search-button')%>
          <% end %>
@@ -52,3 +59,19 @@
 
 
 
+
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.9.0"></script>
+<script>
+(function() {
+  var placesAutocomplete = places({
+    container: document.querySelector('#country'),
+    type: 'country',
+    templates: {
+      suggestion: function(suggestion) {
+        return '<i class="flag ' + suggestion.countryCode + '"></i> ' +
+          suggestion.highlight.name;
+      }
+    }
+  });
+})();
+</script>
