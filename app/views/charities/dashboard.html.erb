@@ -9,24 +9,24 @@
     <div class="see-throuh-box">
       <div class="col-md-4"></div>
       <div class="col-md-8 ">
-        <h1 class="stick-to-bottom"> <%= @developer.first_name %> <%= @developer.last_name %></h1>
+        <h1 class="stick-to-bottom"> <%= @charity.name %></h1>
       </div>
     </div>
     <div class="show-header white-box">
       <div class="col-md-4"></div>
       <div class="col-md-6">
-        <h4 class="stick-to-top"><%= @developer.email %></h4>
+        <h4 class="stick-to-top"><%= %></h4>
       </div>
       <div class="col-md-2 edit-icon">
-        <%= link_to edit_developer_path(current_developer) do %>
+        <%= link_to edit_charity_registration_path(current_charity) do %>
         <i class="fa fa-edit"></i>
         <% end %>
       </div>
       <div class="col-md-4"></div>
       <div class="col-md-8 dev-description">
-        <h4 class="stick-to-top"> <%= @developer.description %></h4>
+        <h4 class="stick-to-top"> <%=  %></h4>
       </div>
-      <% if @developer.avatar? %>
+      <% if @charity.logo? %>
         <div class = "user-avatar absolute" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
             url('<%= cl_image_path @developer.avatar %>')"></div>
       <% else %>
@@ -56,12 +56,12 @@
       <h3> MY SKILLS </h3>
       <div class="form-group">
         <div class="skill-display">
-          <% @skills.each do |skill| %>
+          <%   %>
             <div class = "text-center">
-              <div class="skill-choice"><%= skill.name %></div>
-              <%= link_to "Remove", developer_developer_skill_path(@developer, skill) , method: :delete %>
-            </div>
-          <% end %>
+              <div class="skill-choice"><%= %></div>
+                   <%= link_to "Remove" , method: :delete %>
+                </div>
+          <%  %>
         </div>
       </div>
     </div>
@@ -71,11 +71,11 @@
 
   <div class="col-md-12">
     <div class="skills white-box">
-      <h3>MY APPLICATIONS</h3>
+      <h3>Received Proposals</h3>
       <% @proposals.each do |proposal| %>
         <div>
-          <%= link_to proposal.project.name, project_path(proposal.project)  %>
-          <%= proposal.state  %>
+          <p> <%= link_to proposal.project.name, project_path(proposal.project)  %> </p>
+          <p> <%= link_to proposal.developer.first_name, developer_path(proposal.developer.id)  %> </p>
         </div>
       <% end %>
     </div>
