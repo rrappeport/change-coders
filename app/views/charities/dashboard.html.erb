@@ -1,0 +1,84 @@
+<figure>
+  <code id="cover-image" style="display: none;"></code>
+  <img class="cover-img" data-embed-id="cover-image" alt="Mastercard cover image" src="https://images.unsplash.com/photo-1533562179840-9cce77549aa6?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1600&h=400&fit=crop&ixid=eyJhcHBfaWQiOjF9&s=461c16b2ba620b62655c9c0ad08ddd78">
+</figure>
+
+<div class="container">
+
+  <div class="col-md-12 ralative">
+    <div class="see-throuh-box">
+      <div class="col-md-4"></div>
+      <div class="col-md-8 ">
+        <h1 class="stick-to-bottom"> <%= @charity.name %></h1>
+      </div>
+    </div>
+    <div class="show-header white-box">
+      <div class="col-md-4"></div>
+      <div class="col-md-6">
+        <h4 class="stick-to-top"><%= %></h4>
+      </div>
+      <div class="col-md-2 edit-icon">
+        <%= link_to edit_charity_registration_path(current_charity) do %>
+        <i class="fa fa-edit"></i>
+        <% end %>
+      </div>
+      <div class="col-md-4"></div>
+      <div class="col-md-8 dev-description">
+        <h4 class="stick-to-top"> <%=  %></h4>
+      </div>
+      <% if @charity.logo? %>
+        <div class = "user-avatar absolute" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+            url('<%= cl_image_path @developer.avatar %>')"></div>
+      <% else %>
+        <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar absolute"%>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="project-info white-box">
+      <h3 >MY PROJECTS</h3>
+      <div class = "row">
+      <% @projects.each do |project| %>
+        <div class="col-md-4  text-center projects-box">
+          <h3><%= project.name  %> </h3>
+          <p>Status: <%= project.status %></p>
+          <p>Deadline: <%= project.deadline  %></p>
+          <%= link_to "", project_path(project), class: 'box-link'  %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="skills white-box">
+      <h3> MY SKILLS </h3>
+      <div class="form-group">
+        <div class="skill-display">
+          <%   %>
+            <div class = "text-center">
+              <div class="skill-choice"><%= %></div>
+                   <%= link_to "Remove" , method: :delete %>
+                </div>
+          <%  %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-md-12">
+    <div class="skills white-box">
+      <h3>Received Proposals</h3>
+      <% @proposals.each do |proposal| %>
+        <div>
+          <p> <%= link_to proposal.project.name, project_path(proposal.project)  %> </p>
+          <p> <%= link_to proposal.developer.first_name, developer_path(proposal.developer.id)  %> </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</div>
