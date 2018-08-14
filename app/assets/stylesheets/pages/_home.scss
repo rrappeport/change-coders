@@ -20,7 +20,7 @@ body {
 }
 
 #home-banner {
-  margin-top: 70px;
+  // margin-top: 70px;
   height: calc(100vh - 70px);
   background-size: cover !important;
   background-position: center;
@@ -37,6 +37,7 @@ body {
 
 .form-control {
   height: 51px;
+  color: $dark-gray;
 }
 
 #home-about, #home-services, #home-pets {
