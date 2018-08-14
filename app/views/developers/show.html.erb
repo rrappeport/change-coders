@@ -71,12 +71,12 @@
       <h2>  <%= @developer.first_name %>'s skills </h2>
     </div>
     <div class="project-info white-box">
-      <div class="stat">
-        <div class="stat-content">
-          <% @skills.each do |skill| %>
-            <li><%= skill.name %> </li>
-          <% end %>
-        </div>
+      <div class="skill-display">
+        <% @developer.skills.each do |skill| %>
+          <div class = "text-center">
+            <div class="skill-choice"><%= skill.name %></div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
