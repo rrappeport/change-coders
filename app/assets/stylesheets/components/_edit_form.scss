@@ -1,0 +1,59 @@
+.form-post {
+  background: white;
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    color: #666666;
+    margin-bottom: 50px;
+    margin-top: 0px;
+  }
+  .btn {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+  }
+}
+
+// Checkboxes design
+.skill-choices {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.skill-choice {
+  margin: 5px;
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 30%;
+  text-align: center;
+  height: 70px;
+  position: relative;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $green;
+  color: white;
+  opacity: 1;
+  }
+}
+.checkbox-hidden {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: black;
+  opacity: 0;
+}
