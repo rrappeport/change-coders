@@ -2,8 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
    # [...]
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_developer!, unless: :devise_controller?
+  # before_action :authenticate_developer!, unless: :devise_controller?
   # before_action :authenticate_charity!
+  before_action :authenticate!, unless: :devise_controller?
 
   # after_action :verify_authorized, except: [:index, :dashboard, ], unless: :skip_pundit?
   # after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
@@ -38,10 +39,10 @@ class ApplicationController < ActionController::Base
   protected
 
   # TODO: fix before action for both models
-  # def authenticate!
-  #   :authenticate_developer! || :authenticate_charity!
-  #   @current_user = developer_signed_in? ? current_developer : current_charity
-  # end
+  def authenticate!
+    :authenticate_developer! || :authenticate_charity!
+    current_user = developer_signed_in? ? current_developer : current_charity
+  end
 
   private
 

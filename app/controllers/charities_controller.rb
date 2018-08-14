@@ -1,5 +1,5 @@
 class CharitiesController < ApplicationController
-  before_action :authenticate_charity!, only: [:dashboard]
+  # before_action :authenticate_charity!, only: [:dashboard]
 
   def index
     @charities = Charity.all

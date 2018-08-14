@@ -25,10 +25,18 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def dashboard?
-    return true
+    user_is_owner_or_team_member
   end
 
   def autorize_charity
     user.class == Charity && record.charity_id == user.id
   end
+
+  private
+
+  def user_is_owner_or_team_member
+    (user.class == Charity && record.charity_id == user.id) ||
+    (user.class == Developer && record.members.where(developer_id: user.id).any?)
+  end
+
 end
