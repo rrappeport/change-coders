@@ -2,8 +2,14 @@
 
   <div class="card-index-container">
     <div class="card-index-charity">
-      <div class= "avatar-small" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path project.charity.logo %>')">
-      </div>
+      <% if project.charity.logo.model[:logo] %>
+        <div class= "avatar-small" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path project.charity.logo %>')">
+        </div>
+        <%#= cl_image_tag "project.charity.logo", width: "50", height: "50" %>
+      <% else %>
+        <%= image_tag "https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg", width: "50", height: "50" %>
+      <% end %>
+
 
       <p><%= project.charity.name %></p>
     </div>

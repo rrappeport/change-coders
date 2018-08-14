@@ -3,7 +3,7 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 10px solid $green;
+  border: 10px solid $green-lighter;
 }
 
 .user-avatar-sml{
@@ -11,7 +11,7 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 5px solid $green;
+  border: 5px solid $green-lighter;
 }
 
 .avatar {
@@ -29,4 +29,12 @@
   background-size: cover;
   background-position: center;
   margin-right: 10px;
+}
+.charity-avatar-lg {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
 }

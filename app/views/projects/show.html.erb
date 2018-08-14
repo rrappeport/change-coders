@@ -7,7 +7,13 @@
 <div class="container">
   <div class="col-md-12">
     <div class="card-show">
-      <div class="card-index-image col-md-3" style="background-image: url(https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg)"></div>
+      <% if @project.charity.logo.model[:logo] %>
+        <div class= "charity-avatar-lg col-md-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @project.charity.logo %>')">
+        </div>
+        <%#= cl_image_tag @project.charity.logo, class: "charity-avatar-lg" %>
+      <% else %>
+        <%= image_tag "https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg", width: "100", height: "100" %>
+      <% end %>
       <div class="card-show-content col-md-6">
         <h1 class= "project-h1"><%= @project.name %></h1>
         <h3 class= "project-h3"><%= @project.charity.name %></h3>
@@ -21,28 +27,33 @@
       </div>
       <div class="show-apply col-md-3">
         <% if policy(Proposal.new(project: @project)).create? %>
-            <button type="button" class="btn btn-success show-buttons" data-toggle="modal" data-target="#myModal">
+          <button type="button" class="btn btn-success show-buttons" data-toggle="modal" data-target="#myModal">
             Apply
           </button>
         <% end %>
       </div>
     </div>
   </div>
+
+
   <div class="col-md-12">
-    <div class="card-show">
-      <div class="card-show-content col-md-10">
-        <h3 class= "project-h3">Project Details</h3>
-        <p>"I need help to make my website look better. I love saving Bali Reptiles but unfortuanately I do not know how to build websites. This site needs work on the front end and also on the back end functionality. Please also include nice images of reptiles. I really like reptiles."</p>
-      </div>
-      <div class="card-show-status col-md-2 text-center">
-        <p> <%= @project.status%></p>
-        <p> <%= @project.work_type %></p>
+    <div class="show-container project-info">
+      <div class="row">
+        <div class="card-show-content col-md-10">
+          <h3 class= "project-h3">Project Details</h3>
+          <p>"I need help to make my website look better. I love saving Bali Reptiles but unfortuanately I do not know how to build websites. This site needs work on the front end and also on the back end functionality. Please also include nice images of reptiles. I really like reptiles."</p>
+          <p class="italic"> end by <%= @project.deadline %></p>
+        </div>
+        <div class="card-show-status col-md-2 text-center">
+          <p  class="larger-violet-p"> <%= @project.status%></p>
+          <p> <%= @project.work_type %></p>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="col-md-12">
-    <div class="charity-info">
+    <div class="show-container">
       <h3 class= "project-h3">More About <%= @project.charity.name %></a></h3>
       <h4 class= "project-h4">Emergency Response</h4>
       <p>A strong network of trusted partners enables Direct Relief to assess immediate healthcare needs, understand the situation on the ground, and respond quickly and efficiently when a disaster strikes."</p>
@@ -56,7 +67,7 @@
   </div>
 
   <div class="col-md-12">
-    <div class="charity-info">
+    <div class="show-container">
       <h3 class= "project-h3"> Skills Required </h3>
       <div class="form-group">
         <div class="skill-display">
@@ -84,7 +95,7 @@
   </div>
 
   <div class="col-md-12">
-    <div class="charity-info">
+    <div class="show-container">
       <h3 class= "project-h3"> Comments: </h3>
       <div class="stat">
         <div class="stat-content">
