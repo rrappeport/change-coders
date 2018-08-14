@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada|Montserrat:400,500" rel="stylesheet">
+
 <div class="navbar-wagon">
   <!-- Logo -->
   <a href="/" class="navbar-wagon-brand">
@@ -7,16 +9,16 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <a href="/" class="navbar-wagon-item navbar-wagon-link">Home</a>
-    <a href="/projects/" class="navbar-wagon-item navbar-wagon-link">All Projects</a>
+<!--
+    <a href="/" class="navbar-wagon-item navbar-wagon-link">Home</a> -->
+    <a href="/projects/" class="navbar-wagon-item navbar-wagon-link">All projects</a>
 
     <!-- When developer is signed in -->
 
     <% if developer_signed_in? %>
       <div class="navbar-wagon-item navbar-wagon-link">
         <div class="dropdown">
-          <% if current_developer.avatar.file%>
+          <% if current_developer.avatar.file %>
             <div class = "avatar dropdown-toggle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path current_developer.avatar %>')", id="navbar-wagon-menu", data-toggle = "dropdown"></div>
           <% else %>
             <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
