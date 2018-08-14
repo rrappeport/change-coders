@@ -38,20 +38,20 @@
   </div>`
 
 
+
   <div class="col-md-12">
     <div class="skills-info white-box">
       <h3> Skills requiered </h3>
-
-      <div class="post-list">
-        <% @skills.each do |project_skill| %>
-        <!-- if user can see the button && delete a skill -->
-          <li><%= project_skill.skill.name %>
-            <% if policy(project_skill).destroy? %>
-            <%= link_to "Remove", project_project_skill_path(@project, project_skill) , method: :delete %>
-            <% end %>
-          </li>
-        <% end %>
-
+        <div class="skill-display">
+          <% @skills.each do |project_skill| %>
+            <div class = "text-center">
+              <div class="skill-choice"><%= project_skill.skill.name %></div>
+              <% if policy(project_skill).destroy? %>
+                <%= link_to "Remove", project_project_skill_path(@project, project_skill) , method: :delete %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -79,7 +79,7 @@
               <% end %>
             </div>
              <% if policy(member).destroy? && current_developer != member.developer%>
-            <%= link_to "Remove from the team", project_member_path(@project, member.developer), method: :delete, class: 'btn btn-warning', data: { confirm: "Are you sure?" } %>
+            <%= link_to "Remove from the team", project_member_path(@project, member.developer), method: :delete, class: 'btn btn-reset', data: { confirm: "Are you sure?" } %>
             <% end %>
 
           </div>
@@ -97,7 +97,7 @@
         <div class ="form-group">
           <% @proposals.each do |proposal| %>
             <% if proposal.state.downcase == "pending" &&  policy(proposal).accept? %>
-              <div class="col-md-4 text-center  ">
+              <div class="col-md-4 text-center application-card ">
                 <% if proposal.developer.avatar? %>
                   <%= cl_image_tag proposal.developer.avatar, class: "user-avatar-sml black-n-white" %>
                 <% else %>
@@ -105,7 +105,7 @@
                 <% end %>
                 <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
                 <%= link_to "Accept ", accept_proposal_path(proposal: proposal), method: :post, class: 'btn btn-success' %>
-                <%= link_to "Reject", reject_proposal_path(proposal: proposal), method: :post, class: 'btn  btn-danger' %>
+                <%= link_to "Reject", reject_proposal_path(proposal: proposal), method: :post, class: 'btn  btn-reset' %>
               </div>
             <% end %>
           <% end %>
