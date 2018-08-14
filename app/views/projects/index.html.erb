@@ -6,48 +6,68 @@
          <%= hidden_field_tag :charities, @charities %>
          <%= hidden_field_tag :projects, @projects.pluck(:id) %>
         <div>
-          <h4> Search by category </h4>
-          <% Project::CATEGORIES.each do |category| %>
-            <div class= "categories-search">
-              <%= check_box_tag "category", category %> <%= category %>
-            </div>
-          <% end %>
+          <h4 class="filter-heading"> Search by Category <i class="fas fa-chevron-up fa-xs"></i></h4>
+          <div class="filter-container hidden-options">
+            <% Project::CATEGORIES.each do |category| %>
+              <div class= "categories-search">
+                <%= check_box_tag "category", category %> <%= category %>
+              </div>
+            <% end %>
+          </div>
         </div>
         <br>
         <div>
-          <h4> Search by status </h4>
-          <% Project::STATUSES.each do |status| %>
-            <div class= "statuses-search">
-              <%= check_box_tag "status", status %> <%= status %>
+          <h4 class="filter-heading"> Search by Status <i class="fas fa-chevron-up fa-xs"></i></h4>
+          <div class="filter-container hidden-options">
+            <% Project::STATUSES.each do |status| %>
+              <div class= "statuses-search">
+                <%= check_box_tag "status", status %> <%= status %>
+            </div>
+            <% end %>
           </div>
-        <% end %>
       </div>
       <br>
       <div>
-        <h4> Search by deadline </h4>
-        <% Project::DEADLINES.each do |deadline| %>
-          <div class= "deadlines-search">
-            <%= check_box_tag "deadline", deadline %> within <%= deadline %> days
-          </div>
-        <% end %>
+        <h4 class="filter-heading"> Search by Deadline <i class="fas fa-chevron-up fa-xs"></i></h4>
+        <div class="filter-container hidden-options">
+          <% Project::DEADLINES.each do |deadline| %>
+            <div class= "deadlines-search">
+              <%= check_box_tag "deadline", deadline %> within <%= deadline %> days
+            </div>
+          <% end %>
+        </div>
       </div>
       <br>
       <div>
-        <h4> Search by type </h4>
-        <% Project::TYPES.each do |work_type| %>
-      <div class= "types-search">
-        <%= check_box_tag "work_type", work_type %> <%= work_type %>
+        <h4 class="filter-heading"> Search by Type <i class="fas fa-chevron-up fa-xs"></i></h4>
+        <div class="filter-container hidden-options">
+          <% Project::TYPES.each do |work_type| %>
+            <div class= "types-search">
+          <%= check_box_tag "work_type", work_type %> <%= work_type %>
+        </div>
+        <% end %>
       </div>
-      <% end %>
+    </div>
+    <br>
+    <div>
+      <h4 class="filter-heading"> Search by Skill <i class="fas fa-chevron-up fa-xs"></i></h4>
+      <div class="filter-container hidden-options">
+        <% Project::SKILLS.each do |skill| %>
+          <div class= "skills-search">
+            <%= check_box_tag "skill", skill %> <%= skill %>
+          </div>
+        <% end %>
+      </div>
     </div>
     <br>
     <h4> Search by Country </h4>
     <div class="f16">
       <%= text_field_tag :address, params[:address], placeholder: 'Country', id: "country", class: "form-control" %>
     </div>
-    <div class="text-center">
-    <%= submit_tag("Search", class:'btn btn-success index-search-button')%>
-         <% end %>
+    <div class="search-buttons">
+      <%= submit_tag("Search", class:'btn btn-success button-search')%>
+      <%= link_to "Reset", projects_path, class: "btn btn-danger button-search" %>
+    <% end %>
     </div>
     </div>
     <div id="filter" class="col-md-9">

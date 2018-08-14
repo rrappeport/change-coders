@@ -3,16 +3,17 @@
 }
 .absolute {
   position:absolute;
-  top:0px;
+  top: -100px;
   left: 60px;
 }
 .show-header {
-  height: 250px;
+  min-height: 150px;
   margin: 0;
 }
 .stick-to-bottom{
   color: white;
   text-align: right;
+  padding-top: 300px;
 }
 
 .stick-to-top{

@@ -10,9 +10,7 @@
       <div class="card-index-image col-md-3" style="background-image: url(https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg)"></div>
       <div class="card-show-content col-md-6">
         <h1 class= "project-h1"><%= @project.name %></h1>
-        <h3 class= "project-h3">Charity:  <%= @project.charity.name %></h3>
-        <p> <strong>Status:</strong>  <%= @project.status%></p>
-        <p> <strong>Type:</strong> <%= @project.work_type %></p>
+        <h3 class= "project-h3"><%= @project.charity.name %></h3>
         <div class="contact-links">
           <a href="#"><i class="far fa-envelope"></i>   <% @project.charity.email %></a>
           <a href="#"><i class="fas fa-desktop"></i>   <% @project.charity.website %></a>
@@ -21,18 +19,24 @@
           <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
-      <div>
-        <button type="button" class="btn btn-success btn-apply" data-toggle="modal" data-target="#myModal">
-          <strong>Apply Now</strong>
-        </button>
+      <div class="show-apply col-md-3">
+        <% if policy(Proposal.new(project: @project)).create? %>
+            <button type="button" class="btn btn-success show-buttons" data-toggle="modal" data-target="#myModal">
+            Apply
+          </button>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="col-md-12">
     <div class="card-show">
-      <div class="card-show-content">
+      <div class="card-show-content col-md-10">
         <h3 class= "project-h3">Project Details</h3>
         <p>"I need help to make my website look better. I love saving Bali Reptiles but unfortuanately I do not know how to build websites. This site needs work on the front end and also on the back end functionality. Please also include nice images of reptiles. I really like reptiles."</p>
+      </div>
+      <div class="card-show-status col-md-2 text-center">
+        <p> <%= @project.status%></p>
+        <p> <%= @project.work_type %></p>
       </div>
     </div>
   </div>
@@ -71,11 +75,12 @@
   </div>
 
   <div class="col-md-12 text-center">
-    <%= link_to "Dashboard", projects_dashboard_path(@project), class:'btn btn-success show-buttons'  %>
+    <% if policy(@project).dashboard? %>
+      <%= link_to "Dashboard", projects_dashboard_path(@project), class:'btn btn-success show-buttons'  %>
+    <% end %>
+  <% if policy(@project).edit? %>
     <%= link_to "Edit", edit_project_path(@project), class:'btn btn-default show-buttons'  %>
-    <button type="button" class="btn btn-primary show-buttons" data-toggle="modal" data-target="#myModal">
-      Apply
-    </button>
+    <% end %>
   </div>
 
   <div class="col-md-12">

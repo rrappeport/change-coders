@@ -33,7 +33,7 @@
                 <%= f.input :avatar_cache, as: :hidden %>
               </div>
               <div class="col-xs-6">
-                <%= f.input :birth_date, required: false %>
+                <%= f.input :birth_date, as: :string, required: false, input_html: {class: "datepicker"} %>
 
               </div>
             </div>

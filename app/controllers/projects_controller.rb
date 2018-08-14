@@ -17,11 +17,16 @@ class ProjectsController < ApplicationController
       @charities = Charity.where(category: params[:category])
       @projects = @projects.where(charity_id: @charities.pluck(:id))
     end
+    # if params[:skill].present?
+    #   @skills = Skill.where(name: params[:skill])
+    #   @projects = @projects.where(project_skill_id: @skills.pluck(:id))
+    # end
     if params[:skill].present?
-      @skills = Skill.where(name: params[:skill]).first
-      projects = @projects
-      @projects = @skill.projects
-    end
+     @skill = Skill.where(name: params[:skill]).first
+     projects = @projects
+     @projects = @skill.projects
+   end
+
     if params[:deadline].present?
         @projects = @projects.where("deadline <= ? ", Date.today + params[:deadline].to_i.day)
     end
@@ -50,8 +55,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @skills = @project.skills
     authorize @project
+    @skills = @project.skills
     @charity = @project.charity
     @posts = Post.all
     @markers =
@@ -96,15 +101,16 @@ class ProjectsController < ApplicationController
 
   def dashboard
     @project = Project.find(params[:project_id])
+    authorize @project
     @proposals = @project.proposals
     authorize @project
     @charity = @project.charity
-    @skills = @project.skills
+    @skills = @project.project_skills
     @posts = Post.all
   end
 
   private
   def project_params
-    params.require(:project).permit(:type, :status, :github, :deadline, :charity_id, :name, :details)
+    params.require(:project).permit(:type, :status, :github, :deadline, :charity_id, :name, :details, project_skills_id)
   end
 end

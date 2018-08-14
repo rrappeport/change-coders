@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   TYPES = ['Rebuild', "New", "Update"]
   CATEGORIES = ["Animals", "Community Development", "Education", "Health", "Environment", "Human Rights"]
   DEADLINES = [15, 30, 60]
+  SKILLS = ["C", "C++", "C#", "Clojure", "CoffeeScript", "CSS", "Go", "Haskell", "Java", "JavaScript", "Lua", "Matlab", "Objective-C", "Peral", "PHP", "Python", "R", "Ruby", "Scala", "Shell", "Swift", "TeX", "Vim script"]
 
   belongs_to :charity
   has_many :members, dependent: :destroy

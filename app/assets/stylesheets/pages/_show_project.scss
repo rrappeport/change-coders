@@ -18,6 +18,9 @@
   margin: 20px;
   height: auto;
   padding: 10px 30px;
+  p{
+    margin: 0;
+  }
 }
 
 
@@ -29,9 +32,12 @@
 
 
 .show-buttons {
-  margin-right: 10px;
-  margin-bottom: 10px;
-  width: 150px;
+  width: 200px;
+  height: 50px;
+}
+
+.show-apply {
+  margin: 0;
 }
 
 .charity-info {
@@ -49,8 +55,8 @@
   align-items: center;
 }
 .contact-links a {
-  color: black;
-  opacity: 0.15;
+  color: $violet;
+  opacity: 0.5;
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
@@ -67,7 +73,7 @@
 }
 
 .project-h3 {
-  color: $green;
+  color: $green-lighter;
 }
 
 .project-h4 {
@@ -84,4 +90,8 @@
 
 .btn-apply {
   padding: 20px 40px;
+}
+
+.fa {
+  color: $violet;
 }
