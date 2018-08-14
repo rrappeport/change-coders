@@ -62,6 +62,8 @@
             <% if @project.leader_id == developer.id %>
               <h4> LEADER </h4>
             <% end %>
+             <!-- if user can see the button && delete a member -->
+            <%= policy(member).destroy? %>
             <%= link_to "Remove from the team", project_member_path(@project, developer), method: :delete, class: 'btn btn-warning', data: { confirm: "Are you sure?" } %>
           </div>
         <% end %>
@@ -80,7 +82,8 @@
             <div class="col-md-4 text-center">
               <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
               <p><%= proposal.state%></p>
-              <% if proposal.state == "Pending" || "pending" %>
+              <!-- if user can see the buttons && autorize proposal-->
+              <% if proposal.state == "Pending" || "pending" &&  policy(proposal).accept? %>
                 <%= link_to "Accept ", accept_proposal_path(proposal: proposal), method: :post, class: 'btn btn-success' %>
                 <%= link_to "Reject", reject_proposal_path(proposal: proposal), method: :post, class: 'btn  btn-danger' %>
               <% end %>

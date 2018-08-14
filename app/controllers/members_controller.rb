@@ -1,6 +1,9 @@
 class MembersController < ApplicationController
+
   def destroy
     @member = Member.find_by(developer_id: params[:id])
+    # byebug
+
     authorize @member
     @member.destroy
     redirect_to projects_dashboard_path(params[:project_id])
