@@ -3,6 +3,12 @@ body {
   color: #212829;
 }
 
+.pattern {
+  background-image: url("http://backgroundlabs.com/files/white-leather-texture-1945.png");
+  background-repeat: repeat;
+  height: 400px;
+}
+
 .banner-content h1 {
   color: white;
   padding: 20px;
@@ -61,6 +67,13 @@ padding: 30px;
   background-color: $light-gray; /* light grey */
 }
 
+.bg-purple {
+  background-color: $violet;
+  h2 {
+    color: white;
+  } /* light grey */
+}
+
 .homepage .glyphicon {
   color: $green;
   font-size: 30px;
@@ -107,9 +120,9 @@ padding: 30px;
   padding: 50px 25px;
 }
 
-.wrapper {
-  background-color: #f9f9f9;
-}
+// .wrapper {
+//   background-color: #f9f9f9;
+// }
 
 .signup-button {
   padding-bottom: 50px;
@@ -132,7 +145,7 @@ padding: 30px;
 }
 
 .homepage .glyphicon {
-  color: $green;
+  color: $violet;
   font-size: 30px;
 }
 

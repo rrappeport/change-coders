@@ -6,10 +6,12 @@
 <div class="container">
 
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h2> <%= @developer.first_name %> <%= @developer.last_name %></h2>
-    </div>
     <div class="project-info white-box">
+      <div class="col-md-4">
+      </div>
+        <div class="col-md-8">
+          <h2> <%= @developer.first_name %> <%= @developer.last_name %></h2>
+        </div>
       <div class = "row" >
         <div class="col-md-4 user-photo">
           <% if @developer.avatar? %>
@@ -26,7 +28,7 @@
         </div>
         <div class="col-md-8">
           <div class = "border-spaced">
-            <h4>Email: <%= @developer.email %></h4>
+            <h4><%= @developer.email %></h4>
           </div>
           <div class = "border-spaced">
             <h4>Description: <%= @developer.description %></h4>
@@ -49,10 +51,8 @@
 
 
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h2> <%= @developer.first_name %>'s projects </h2>
-    </div>
     <div class="project-info white-box flex-box text-center">
+      <h2> <%= @developer.first_name %>'s projects </h2>
       <div class="row">
         <% @projects.each do |project| %>
           <div class="col-md-3  text-center projects-box">
@@ -67,10 +67,8 @@
   </div>
 
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h2>  <%= @developer.first_name %>'s skills </h2>
-    </div>
     <div class="project-info white-box">
+      <h2>  <%= @developer.first_name %>'s skills </h2>
       <div class="skill-display">
         <% @developer.skills.each do |skill| %>
           <div class = "text-center">
