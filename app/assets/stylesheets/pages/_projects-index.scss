@@ -7,3 +7,30 @@
   margin-top: 80px;
 }
 
+.hidden-options {
+  -webkit-transition: all 2s ease;
+  -moz-transition: all 2s ease;
+  -o-transition: all 2s ease;
+  -ms-transition: all 2s ease;
+  transition: all 2s ease;
+  display: none;
+
+}
+
+
+.active-options {
+  -webkit-transition: all 2s ease;
+  -moz-transition: all 2s ease;
+  -o-transition: all 2s ease;
+  -ms-transition: all 2s ease;
+  transition: all 2s ease;
+  display: block;
+
+}
+
+.fa-xs {
+  float: right;
+  margin-top: 6px;
+}
+
+

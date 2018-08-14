@@ -57,9 +57,9 @@
       <div class="stat">
         <div class="stat-content">
           <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Ruby</li>
+            <% @skills.each do |skill| %>
+              <li><%= skill.name %>  </li>
+            <% end %>
           </ul>
         </div>
       </div>

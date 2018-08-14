@@ -14,11 +14,16 @@ class ProjectsController < ApplicationController
       @charities = Charity.where(category: params[:category])
       @projects = @projects.where(charity_id: @charities.pluck(:id))
     end
+    # if params[:skill].present?
+    #   @skills = Skill.where(name: params[:skill])
+    #   @projects = @projects.where(project_skill_id: @skills.pluck(:id))
+    # end
     if params[:skill].present?
-      @skills = Skill.where(name: params[:skill]).first
-      projects = @projects
-      @projects = @skill.projects
-    end
+     @skill = Skill.where(name: params[:skill]).first
+     projects = @projects
+     @projects = @skill.projects
+   end
+
     if params[:deadline].present?
         @projects = @projects.where("deadline <= ? ", Date.today + params[:deadline].to_i.day)
     end
@@ -85,6 +90,6 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:type, :status, :github, :deadline, :charity_id, :name, :details)
+    params.require(:project).permit(:type, :status, :github, :deadline, :charity_id, :name, :details, project_skills_id)
   end
 end
