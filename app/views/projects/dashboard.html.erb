@@ -5,10 +5,8 @@
 
 <div class="container">
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h2>Project info </h2>
-     </div>
     <div class="project-info white-box">
+      <h3>Project info </h3>
       <p>Project name:<%= @project.name %></p>
       <p>Charity:<%= @charity.name %></p>
       <p>Status: <%= @project.status  %></p>
@@ -18,28 +16,75 @@
 
 
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h2>Charity info </h2>
-    </div>
-    <div class="charity-info-dashboard white-box">
+
+    <div class="charity-info-dashboard white-box text-right">
+      <h3>Charity info </h3>
       <p>Logo: <%= @project.charity.logo %></p>
       <p>Location:<%= @project.charity.address %></p>
       <p>Email: <%= @project.charity.email %></p>
       <p>Website: <%= @project.charity.website %></p>
       <p>Category: <%= @project.charity.category %></p>
     </div>
+  </div>`
+
+
+  <div class="col-md-12">
+    <div class="skills-info white-box">
+      <h3> Skills requiered </h3>
+      <div class="post-list">
+        <% @skills.each do |skill| %>
+          <li><%= skill.name %> <%= link_to "Remove", project_project_skill_path(@project, skill) , method: :delete %> </li>
+        <% end %>
+      </div>
+    </div>
   </div>
 
 
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h2> Skills requiered </h2>
+
+    <div class="team-info white-box">
+      <h3 class = "text-center">Team Members: </h3>
+      <div class = "row">
+        <div class ="space-around">
+        <% @project.developers.each do |developer| %>
+          <div class="col-md-4  text-center team-member">
+            <% if developer.avatar? %>
+              <div class = "user-avatar-sml" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                  url('<%= cl_image_path developer.avatar %>')"></div>
+              </div>
+            <% else %>
+              <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-sml"%>
+            <% end %>
+            <p><%= developer.avatar %></p>
+            <p>Name: <%= developer.first_name %> <%= developer.last_name %></p>
+            <p>Email: <%= developer.email %></p>
+            <% if @project.leader_id == developer.id %>
+              <h4> LEADER </h4>
+            <% end %>
+            <%= link_to "Remove from the team", project_member_path(@project, developer), method: :delete, class: 'btn btn-warning', data: { confirm: "Are you sure?" } %>
+          </div>
+        <% end %>
+        </div>
+      </div>
     </div>
-    <div class="skills-info white-box">
-      <div class="stat">
-        <div class="stat-content">
-          <% @skills.each do |skill| %>
-            <li><%= skill.name %> <%= link_to "Remove", project_project_skill_path(@project, skill) , method: :delete %> </li>
+  </div>
+
+
+  <div class="col-md-12">
+    <div class="applications-info white-box">
+        <h3 class = "text-center">New join requests: </h3>
+        <div class = "row">
+          <div class ="space-around">
+            <% @proposals.each do |proposal| %>
+              <div class="col-md-4 text-center  projects-box">
+                <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
+                <p><%= proposal.state%></p>
+                <% if proposal.state == "Pending" || "pending" %>
+                  <%= link_to "Accept ", accept_proposal_path(proposal: proposal), method: :post, class: 'btn btn-success' %>
+                  <%= link_to "Reject", reject_proposal_path(proposal: proposal), method: :post, class: 'btn  btn-danger' %>
+                <% end %>
+                <br> <br> <br>
+            </div>
           <% end %>
         </div>
       </div>
@@ -48,65 +93,21 @@
 
 
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h3>Team Members: </h3>
-    </div>
-    <div class="team-info white-box">
-      <div class = "row">
-        <% @project.developers.each do |developer| %>
-          <div class="col-md-4  text-center">
-            <p><%= developer.avatar %></p>
-            <p>Name: <%= developer.first_name %> <%= developer.last_name %></p>
-            <p>Email: <%= developer.email %></p>
-            <p><%= developer.github_username %></p>
-            <% if @project.leader_id == developer.id %>
-              <h4> LEADER </h4>
-            <% end %>
-            <%= link_to "Remove from the team", project_member_path(@project, developer), method: :delete, class: 'btn btn-warning', data: { confirm: "Are you sure?" } %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
 
-
-  <div class="col-md-12">
-      <div class="comments green-box">
-        <h3>New join requests: </h3>
-      </div>
-    <div class="applications-info white-box">
-        <div class = "row">
-          <% @proposals.each do |proposal| %>
-            <div class="col-md-4 text-center">
-              <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
-              <p><%= proposal.state%></p>
-              <% if proposal.state == "Pending" || "pending" %>
-                <%= link_to "Accept ", accept_proposal_path(proposal: proposal), method: :post, class: 'btn btn-success' %>
-                <%= link_to "Reject", reject_proposal_path(proposal: proposal), method: :post, class: 'btn  btn-danger' %>
-              <% end %>
-              <br> <br> <br>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-md-12">
-    <div class="comments green-box">
-       <h2> Comments: </h2>
-    </div>
     <div class="comments white-box">
-      <ul class="post-list">
-        <div class = "row">
-          <div class = "col-md-6">
-            <p>Content</p>
-          </div>
-          <div class = "col-md-2">
-            <p>Developer</p>
-          </div>
-          <div class = "col-md-2">
-            <p>Created on</p>
+       <h3> Comments: </h3>
+      <ul class="post-list green-background">
+        <div class = "border-spaced">
+          <div class = "row">
+            <div class = "col-md-8">
+              <p>Content</p>
+            </div>
+            <div class = "col-md-2">
+              <p>Developer</p>
+            </div>
+            <div class = "col-md-2">
+              <p>Created on</p>
+            </div>
           </div>
         </div>
         <% if @posts %>
@@ -114,15 +115,17 @@
             <% if post.project == @project %>
               <div class = "row">
                 <li class="">
-                  <div class = "col-md-6">
-                    <%= post.content %>
-                  </div>
-                  <div class = "col-md-2">
-                    <%= post.developer.first_name %>
-                  </div>
-                  <div class = "col-md-2">
-                    <%= post.created_at.strftime("%FT%T") %>
-                  </div>
+                  <div class = "border-spaced-bottom">
+                    <div class = "col-md-8">
+                      <%= post.content %>
+                    </div>
+                    <div class = "col-md-2">
+                      <%= post.developer.first_name %>
+                    </div>
+                    <div class = "col-md-2">
+                      <%= post.created_at.strftime("%D %T") %>
+                    </div>
+                </div>
                 </li>
               </div>
             <% end %>

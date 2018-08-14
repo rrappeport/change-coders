@@ -5,37 +5,49 @@
 
 <div class="container">
 
-  <div class="col-md-12">
-    <div class="comments green-box">
-      <h2> Hi, <%= @developer.first_name %> <%= @developer.last_name %></h2>
+  <div class="col-md-12 ralative">
+    <div class="see-throuh-box">
+      <div class="col-md-4"></div>
+      <div class="col-md-8 ">
+        <h1 class="stick-to-bottom"> <%= @developer.first_name %> <%= @developer.last_name %></h1>
+      </div>
     </div>
-    <div class="project-info white-box">
-      <%# @id = current_developer.id %>
-      <!-- Change to current_developer -->
-      <!-- Change to current_developer -->
-      <h4>Email: <%= @developer.email %></h4>
-      <h4>Description: <%= @developer.description %></h4>
-      <h4>Experience: <%= @developer.experience %></h4>
-      <h4>Linkedin_username: <%= @developer.linkedin_username %></h4>
-      <h4>Github_username: <%= @developer.github_username %></h4>
-      <h4>Photo: <%= @developer.avatar %></h4>
-      <h4>First Name: <%= @developer.first_name %></h4>
-      <h4>Last Name: <%= @developer.last_name %></h4>
+    <div class="show-header white-box">
+      <div class="col-md-4"></div>
+      <div class="col-md-6">
+        <h4 class="stick-to-top"><%= @developer.email %></h4>
+      </div>
+      <div class="col-md-2 edit-icon">
+        <%= link_to edit_developer_path(current_developer) do %>
+        <i class="fa fa-edit"></i>
+        <% end %>
+      </div>
+      <div class="col-md-4"></div>
+      <div class="col-md-8 dev-description">
+        <h4 class="stick-to-top"> <%= @developer.description %></h4>
+      </div>
+      <% if @developer.avatar? %>
+        <div class = "user-avatar absolute" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+            url('<%= cl_image_path @developer.avatar %>')"></div>
+        </div>
+      <% else %>
+        <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar absolute"%>
+      <% end %>
     </div>
   </div>
 
   <div class="col-md-12">
     <div class="comments green-box">
-      <h2>Your Projects: </h2>
+      <h3 >MY PROJECTS</h3>
     </div>
     <div class="project-info white-box">
       <div class = "row">
       <% @projects.each do |project| %>
-        <div class="col-md-4  text-center">
-          <p>Name: <%= project.name  %> </p>
+        <div class="col-md-4  text-center projects-box">
+          <h3><%= project.name  %> </h3>
           <p>Status: <%= project.status %></p>
           <p>Deadline: <%= project.deadline  %></p>
-          <p>ID: <%= project.id  %></p>
+          <%= link_to "", project_path(project), class: 'box-link'  %>
         </div>
       <% end %>
       </div>
@@ -44,7 +56,7 @@
 
   <div class="col-md-12">
     <div class="comments green-box">
-      <h2> My Skills </h2>
+      <h3> MY SKILLS </h3>
     </div>
     <div class="skills white-box">
       <div class="stat-content">
@@ -59,17 +71,16 @@
 
   <div class="col-md-12">
     <div class="comments green-box">
-      <h2>Your Applications</h2>
+      <h3>MY APPLICATIONS</h3>
     </div>
     <div class="skills white-box">
       <% @proposals.each do |proposal| %>
         <div>
-        <%= proposal.project.name  %>
-        ---->
-        <%= proposal.state  %>
+          <%= link_to proposal.project.name, project_path(proposal.project)  %>
+          <%= proposal.state  %>
         </div>
       <% end %>
     </div>
-
+  </div>
   </div>
 </div>

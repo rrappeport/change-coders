@@ -25,6 +25,9 @@ class DevelopersController < ApplicationController
 
   def update
     @developer = Developer.find(params[:id])
+    params[:developer][:skill_ids].reject(&:empty?).each do |skill_id|
+      @developer.skills << Skill.find(skill_id)
+    end
     if @developer.update(developer_params)
       redirect_to developer_path(@developer)
     else
@@ -39,14 +42,9 @@ class DevelopersController < ApplicationController
   private
 
   def developer_params
-    params.require(:developer).permit(:first_name, :last_name, :address, :description, :experience, :linkedin_username, :avatar, :birth_date)
+    params.require(:developer).permit(:first_name, :last_name, :address, :description, :experience, :linkedin_username, :avatar, :birth_date, :github_username, :avatar_cache, :skill_ids)
   end
 
-  private
-
-  def developer_params
-    params.require(:developer).permit(:first_name, :last_name, :address, :description, :experience, :linkedin_username, :avatar, :birth_date)
-  end
 end
 
 

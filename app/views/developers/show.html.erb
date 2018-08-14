@@ -1,36 +1,85 @@
-<h2><%= @developer.first_name %> <%= @developer.last_name %></h2>
-<p>super developer</p>
-<p>info: </p>
-<h4>Email: <%= @developer.email %></h4>
-<h4>Description: <%= @developer.description %></h4>
-<h4>Experience: <%= @developer.experience %></h4>
-<h4>Linkedin_username: <%= @developer.linkedin_username %></h4>
-<h4>Github_username: <%= @developer.github_username %></h4>
+<figure>
+  <code id="cover-image" style="display: none;"></code>
+  <img class="cover-img" data-embed-id="cover-image" alt="Mastercard cover image" src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/job29abatch6-s58-volunteer-06.jpg?h=370&dpr=1.5&fit=default&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&ixlib=js-1.1.1&s=ff7d84730aba9c978a091143af44bd3d">
+</figure>
+
+<div class="container">
+
+  <div class="col-md-12">
+    <div class="comments green-box">
+      <h2> <%= @developer.first_name %> <%= @developer.last_name %></h2>
+    </div>
+    <div class="project-info white-box">
+      <div class = "row" >
+        <div class="col-md-4 user-photo">
+          <% if @developer.avatar? %>
+            <div class = "user-avatar"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('<%= cl_image_path @developer.avatar %>')"></div>
+          <% else %>
+            <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar"%>
+          <% end %>
+          <div class = "star-rating">
+            <div class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star off"></i></div>
+          </div>
+          <a href="#" class="btn btn-primary btn-lg btn-top-margin" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Get in touch</a>
+        </div>
+        <div class="col-md-8">
+          <div class = "border-spaced">
+            <h4>Email: <%= @developer.email %></h4>
+          </div>
+          <div class = "border-spaced">
+            <h4>Description: <%= @developer.description %></h4>
+          </div>
+          <div class = "border-spaced">
+            <h4>Experience: <%= @developer.experience %></h4>
+          </div>
+          <div class = "border-spaced">
+            <h4>Linkedin_username: <%= @developer.linkedin_username %></h4>
+          </div>
+          <div class = "border-spaced-bottom">
+            <h4>Github_username: <%= @developer.github_username %></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-<div class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star off"></i></div>
-<a href="#" class="btn btn-primary btn-lg btn-top-margin" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Get in touch</a>
-</div>
-</div>
 
-<h2> My projects </h2>
-<div class="stat">
-  <div class="stat-content">
-    <h5>Projects</h5>
-    <% @projects.each do |project| %>
-    <p>name: <%= project.name  %> </p>
-    <p>status: <%= project.status %></p>
-    <p>deadline: <%= project.deadline  %></p>
-    <p>id: <%= project.id  %></p>
-  <% end %>
+
+  <div class="col-md-12">
+    <div class="comments green-box">
+      <h2> <%= @developer.first_name %>'s projects </h2>
+    </div>
+    <div class="project-info white-box flex-box text-center">
+      <div class="row">
+        <% @projects.each do |project| %>
+          <div class="col-md-3  text-center projects-box">
+            <h3><%= project.name  %> </h3>
+            <p>Status: <%= project.status %></p>
+            <p>Deadline: <%= project.deadline  %></p>
+            <%= link_to "", project_path(project), class: 'box-link'  %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="comments green-box">
+      <h2>  <%= @developer.first_name %>'s skills </h2>
+    </div>
+    <div class="project-info white-box">
+      <div class="stat">
+        <div class="stat-content">
+          <% @skills.each do |skill| %>
+            <li><%= skill.name %> </li>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<h2> My skills </h2>
-<div class="stat">
-  <div class="stat-content">
-    <% @skills.each do |skill| %>
-      <li><%= skill.name %> </li>
-    <% end %>
-  </div>
-</div>
+
