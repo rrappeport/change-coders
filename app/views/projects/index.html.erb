@@ -3,6 +3,8 @@
     <div class="col-md-3 check-boxes">
       <%= form_for(:project, :url => {:action => "index"}, :html => {:method => :get}, remote: true, id: 'my_form') do %>
         <% hidden_field_tag :filter, tag.name %>
+         <%= hidden_field_tag :charities, @charities.nil?  %>
+         <%= hidden_field_tag :projects, @projects.pluck(:id) %>
         <div>
           <h4> Search by category </h4>
           <% Project::CATEGORIES.each do |category| %>

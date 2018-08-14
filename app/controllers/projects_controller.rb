@@ -5,9 +5,12 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = policy_scope(Project)
-
     @projects = @projects.where(nil)
-
+    if params[:address].present?
+      @charities = Charity.where("address LIKE ?", "%#{params[:address]}%")
+      @projects = @projects.where(charity_id: @charities.pluck(:id))
+    end
+    byebug
     @projects = @projects.where(status: params[:status]) if params[:status].present?
     @projects = @projects.where(work_type: params[:work_type]) if params[:work_type].present?
     if params[:category].present?
