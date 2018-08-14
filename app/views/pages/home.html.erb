@@ -2,15 +2,14 @@
  <div class="banner-content text-center">
   <h1>Change Coders</h1>
    <h3>Get coding experience by working on projects for nonprofits!</h3>
-   <%= form_for(:project, :url => {:controller => "projects",:action => "index"}, :html => {:method => :get}) do %>
+<!--    <%= form_for(:project, :url => {:controller => "projects",:action => "index"}, :html => {:method => :get}) do %>
       <% hidden_field_tag :filter, tag.name %>
-      <h4> Search by category </h4>
       <%= label :address, "" %>
       <%= text_field_tag :address, params[:address], placeholder: 'Country', :input_html => { :value => 'Germany' }, id: "charity_address" %>
       <div class="text-center">
         <%= submit_tag("View All Projects", class:'btn btn-success btn-lg')%>
       </div>
-    <% end %>
+    <% end %> -->
    <%= link_to "View All Projects", projects_path, class: "btn btn-success btn-lg" %>
  </div>
 </div>
