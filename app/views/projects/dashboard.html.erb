@@ -42,13 +42,16 @@
   <div class="col-md-12">
     <div class="skills-info white-box">
       <h3> Skills requiered </h3>
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+        Add more skills
+      </button>
       <div class="skill-display">
         <% @skills.each do |project_skill| %>
           <div class = "text-center">
             <div class="skill-choice"><%= project_skill.skill.name %></div>
-            <% if policy(project_skill).destroy? %>
+            <% #if policy(project_skill).destroy? %>
               <%= link_to "Remove", project_project_skill_path(@project, project_skill) , method: :delete %>
-            <% end %>
+            <% #end %>
           </div>
         <% end %>
       </div>
@@ -63,22 +66,24 @@
         <div class ="form-group">
             <% @project.members.each do |member| %>
           <div class="col-md-4  text-center team-member">
-               <% if member.developer.avatar? %>
+            <div class="team-member-profile">
+              <% if member.developer.avatar? %>
                 <%= cl_image_tag member.developer.avatar, class: "user-avatar-sml" %>
               <% else %>
                 <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-sml"%>
               <% end %>
-            <div class = "team-member-info">
-               <p>Name: <%= member.developer.first_name %> <%= member.developer.last_name %></p>
-            <p>Email: <%= member.developer.email %></p>
-              <% if @project.leader_id == member.developer.id %>
-                <h4> LEADER </h4>
-              <% end %>
+              <div class = "team-member-info">
+                <p><%= member.developer.first_name %> <%= member.developer.last_name %></p>
+                <p><%= member.developer.email %></p>
+                <% if @project.leader_id == member.developer.id %>
+                  <h4> LEADER </h4>
+                <% end %>
+              </div>
+              <%= link_to "", developer_path(member.developer), class: "clickable" %>
             </div>
-             <% if policy(member).destroy? && current_developer != member.developer%>
-            <%= link_to "Remove from the team", project_member_path(@project, member.developer), method: :delete, class: 'btn btn-reset', data: { confirm: "Are you sure?" } %>
+            <% if policy(member).destroy? && current_developer != member.developer%>
+              <%= link_to "Remove from the team", project_member_path(@project, member.developer), method: :delete, class: 'btn btn-reset', data: { confirm: "Are you sure?" } %>
             <% end %>
-
           </div>
         <% end %>
         </div>
@@ -95,12 +100,15 @@
           <% @proposals.each do |proposal| %>
             <% if proposal.state.downcase == "pending" &&  policy(proposal).accept? %>
               <div class="col-md-4 text-center application-card ">
-                <% if proposal.developer.avatar? %>
-                  <%= cl_image_tag proposal.developer.avatar, class: "user-avatar-sml black-n-white" %>
-                <% else %>
-                  <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-sml black-n-white"%>
-                <% end %>
-                <p><%= link_to proposal.developer.first_name, developer_path(proposal.developer) %></p>
+                <div class="team-member-profile">
+                  <% if proposal.developer.avatar? %>
+                    <%= cl_image_tag proposal.developer.avatar, class: "user-avatar-sml black-n-white" %>
+                  <% else %>
+                    <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-sml black-n-white"%>
+                  <% end %>
+                  <p><%=proposal.developer.first_name %></p>
+                  <%= link_to "", developer_path(proposal.developer), class: "clickable" %>
+                </div>
                 <%= link_to "Accept ", accept_proposal_path(proposal: proposal), method: :post, class: 'btn btn-success' %>
                 <%= link_to "Reject", reject_proposal_path(proposal: proposal), method: :post, class: 'btn  btn-reset' %>
               </div>
@@ -184,4 +192,45 @@
     </div>
   </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Choose skills</h4>
+      </div>
+      <div class="modal-body">
+
+        <%= simple_form_for(@project) do |f| %>
+          <div class="form-group">
+            <label class="control-label check_boxes optional">
+                <h1>Skills</h1>
+            </label>
+            <input type="hidden" name="project[skill_ids][]" value="">
+            <fieldset class="skill-choices">
+              <% Skill.all.each do |skill| %>
+                <div class="skill-choice">
+                  <input type="checkbox" class="checkbox-hidden" value="<%= skill.id%>" name="project[skill_ids][]" id="project_skill_ids_<%= skill.id%>" >
+                  <label class="" for="project_skill_ids<%= skill.id%>">
+                    <%= skill.name %>
+                    <i class="fa fa-check"></i>
+                  </label>
+                </div>
+              <% end %>
+            </fieldset>
+          </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-reset" data-dismiss="modal">Close</button>
+         <%= f.button :submit, "Update", class: "btn btn-success" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
 

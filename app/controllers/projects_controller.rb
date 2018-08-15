@@ -75,8 +75,11 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     authorize @project
+    params[:project][:skill_ids].reject(&:empty?).each do |skill_id|
+      @project.skills << Skill.find(skill_id)
+    end
     if @project.update(project_params)
-      redirect_to project_path(@pro=> ject)
+      redirect_to project_path(@project)
     else
       render :edit
     end
@@ -111,6 +114,6 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:type, :status, :github, :deadline, :charity_id, :name, :details, project_skills_id)
+    params.require(:project).permit(:type, :status, :github, :deadline, :charity_id, :name, :details, :skill_ids)
   end
 end
