@@ -55,6 +55,14 @@
     </div>
   </div>
 
+   <div class="col-md-12">
+      <h3 class= "project-h3"> SnapShot From The Current Website</h3>
+      <div class="thumbnail" data-src="<%= cl_image_path @project.photo %>">
+        <%= cl_image_tag @project.photo, width: "100", height: "100"%>
+      </div>
+
+  </div>
+
   <div class="col-md-12">
     <div class="show-container">
       <h3 class= "project-h3">More About <%= @project.charity.name %></a></h3>

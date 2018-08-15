@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "basiclightbox": "^4.0.3",
     "bootstrap": "3",
     "flatpickr": "^4.5.1",
     "gmaps": "^0.4.24",
