@@ -74,8 +74,7 @@
         <div class="skill-display">
           <% @project.skills.each do |skill| %>
             <div class = "text-center">
-              <i class="devicon-<%= skill.name %>-plain colored"></i>
-              <div class="skill-choice"><%= skill.name %></div>
+              <div class="skill-choice"><i class="devicon-<%= skill.name %>-plain colored"></i>  <%= skill.name %></div>
             </div>
           <% end %>
         </div>
