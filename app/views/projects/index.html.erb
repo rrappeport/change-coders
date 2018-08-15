@@ -1,12 +1,18 @@
+<figure>
+  <img class="cover-img" data-embed-id="cover-image" alt="Mastercard cover image" src="https://images.unsplash.com/photo-1533562179840-9cce77549aa6?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1600&h=400&fit=crop&ixid=eyJhcHBfaWQiOjF9&s=461c16b2ba620b62655c9c0ad08ddd78">
+</figure>
+
 <div class="container">
   <div class="row project-list">
-    <div class="col-md-3 check-boxes">
+    <div class="col-md-3 index-checkboxes">
+      <h3 class="text-center search-title">Search</h3>
+      <br>
       <%= form_for(:project, :url => {:action => "index"}, :html => {:method => :get}, remote: true, id: 'my_form') do %>
         <% hidden_field_tag :filter, tag.name %>
          <%= hidden_field_tag :charities, @charities %>
          <%= hidden_field_tag :projects, @projects.pluck(:id) %>
         <div>
-          <h4 class="filter-heading"> Search by Category <i class="fas fa-chevron-up fa-xs"></i></h4>
+          <h4 class="filter-heading"> Category <i class="fas fa-chevron-down fa-xs"></i></h4>
           <div class="filter-container hidden-options">
             <% Project::CATEGORIES.each do |category| %>
               <div class= "categories-search">
@@ -17,7 +23,7 @@
         </div>
         <br>
         <div>
-          <h4 class="filter-heading"> Search by Status <i class="fas fa-chevron-up fa-xs"></i></h4>
+          <h4 class="filter-heading"> Status <i class="fas fa-chevron-down fa-xs"></i></h4>
           <div class="filter-container hidden-options">
             <% Project::STATUSES.each do |status| %>
               <div class= "statuses-search">
@@ -28,18 +34,18 @@
       </div>
       <br>
       <div>
-        <h4 class="filter-heading"> Search by Deadline <i class="fas fa-chevron-up fa-xs"></i></h4>
+        <h4 class="filter-heading"> Deadline <i class="fas fa-chevron-down fa-xs"></i></h4>
         <div class="filter-container hidden-options">
           <% Project::DEADLINES.each do |deadline| %>
             <div class= "deadlines-search">
-              <%= check_box_tag "deadline", deadline %> within <%= deadline %> days
+              <%= check_box_tag "deadline", deadline %> Within <%= deadline %> Days
             </div>
           <% end %>
         </div>
       </div>
       <br>
       <div>
-        <h4 class="filter-heading"> Search by Type <i class="fas fa-chevron-up fa-xs"></i></h4>
+        <h4 class="filter-heading"> Type <i class="fas fa-chevron-down fa-xs"></i></h4>
         <div class="filter-container hidden-options">
           <% Project::TYPES.each do |work_type| %>
             <div class= "types-search">
@@ -50,7 +56,7 @@
     </div>
     <br>
     <div>
-      <h4 class="filter-heading"> Search by Skill <i class="fas fa-chevron-up fa-xs"></i></h4>
+      <h4 class="filter-heading"> Skill <i class="fas fa-chevron-down fa-xs"></i></h4>
       <div class="filter-container hidden-options">
         <% Project::SKILLS.each do |skill| %>
           <div class= "skills-search">
@@ -60,7 +66,7 @@
       </div>
     </div>
     <br>
-    <h4> Search by Country </h4>
+    <h4 class="country-search"> Country </h4>
     <div class="f16">
       <%= text_field_tag :address, params[:address], placeholder: 'Country', id: "country", class: "form-control" %>
     </div>
