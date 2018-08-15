@@ -103,6 +103,7 @@ class ProjectsController < ApplicationController
   end
 
   def dashboard
+    @charities = Charity.all
     @project = Project.find(params[:project_id])
     authorize @project
     @proposals = @project.proposals
