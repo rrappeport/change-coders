@@ -13,5 +13,6 @@ class Project < ApplicationRecord
   has_many :chatrooms
   has_many :proposals
   has_many :posts
+  mount_uploader :photo, PhotoUploader
 end
 

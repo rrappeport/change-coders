@@ -241,6 +241,7 @@ The Ark provides all veterinarian preventatives to include: juvenile spay/neuter
 food and a loving “at home” environment for rescued animals while they wait to be adopted into a new loving home.",
     category: "Animal",
   )
+charity.remote_logo_url = url
 charity.save
 puts "creating new developer"
 (1..5).to_a.each do |number|
@@ -271,6 +272,7 @@ developer = Developer.new(
   # )
   # charity.save!
   puts "creating new project"
+  url =  "https://www.belnovosti.by/sites/default/files/blogs/15-12-2016/4_63.jpg"
   project = Project.new(
     name: PROJECT_NAME.sample,
     charity: Charity.all.sample,
@@ -280,6 +282,8 @@ developer = Developer.new(
     deadline: Date.today+30.day,
     details: "I need help to make my website look better. I love saving Bali Reptiles but unfortuanately I do not know how to build websites. This site needs work on the front end and also on the back end functionality. Please also include nice images of reptiles. I really like reptiles."
   )
+  project.remote_photo_url = url
+
     project.save!
     puts "creating new members"
     3.times do
