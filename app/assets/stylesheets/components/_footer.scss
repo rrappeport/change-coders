@@ -1,21 +1,28 @@
 .footer {
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-  padding: 0px 50px;
+  // background: white;
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  height: 220px;
+  padding: 0;
   color: rgba(0,0,0,0.3);
+  // width: 100%;
+  margin: 0;
 }
 .footer-links {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.footer-right-part {
+  margin-right: 40px;
+  width: 200px;
 }
 .footer-links a {
   color: black;
   opacity: 0.50;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 16px;
   padding: 0px 10px;
 }
 .footer-links a:hover {
@@ -23,4 +30,108 @@
 }
 .footer .fa-heart {
   color: #D23333;
+}
+
+.footer-container {
+  padding: 80px;
+  margin: 0;
+  background-image: url("footer.png");
+  background-repeat: repeat-x;
+  background-repeat: repeat-y;
+  background-size: cover !important;
+  background-position: center;
+  width: 100%;
+}
+
+ul {
+   list-style: none;
+   padding: 0;
+
+}
+
+li {
+  color: light-gray;
+  font-size: 14px;
+}
+
+h4{
+   color: gray;
+   font-size: 16px;
+}
+.footer-address {
+  color: light-gray;
+  font-size: 14px;
+}
+
+.footer-left {
+  color: gray;
+}
+.email {
+  position: relative;
+  width: 100%;
+  max-width: 240px;
+}
+.email input {
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  border: 0;
+  border-radius: 4px;
+  line-height: 24px;
+  padding: 8px 36px 8px 14px;
+  box-shadow: 0 4px 12px -2px rgba(107, 117, 161, 0.16);
+  color: #797C86;
+}
+.email input::-webkit-input-placeholder {
+  color: #C7C8CC;
+}
+.email input:-moz-placeholder {
+  color: #C7C8CC;
+}
+.email input::-moz-placeholder {
+  color: #C7C8CC;
+}
+.email input:-ms-input-placeholder {
+  color: #C7C8CC;
+}
+.email svg {
+  position: absolute;
+  z-index: 1;
+  right: 14px;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  margin: -10px 0 0 0;
+}
+.email svg polyline,
+.email svg path {
+  stroke: #D1D7E3;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke .3s ease 0s;
+}
+.email svg path {
+  stroke-dasharray: 64;
+  stroke-dashoffset: 127;
+  transition: stroke-dasharray .8s ease .8s, stroke-dashoffset .8s ease .5s;
+}
+.email svg polyline {
+  stroke-dasharray: 18;
+  stroke-dashoffset: 18;
+  transition: stroke-dashoffset .5s ease 0s;
+}
+.email.success svg polyline,
+.email.success svg path {
+  stroke: #69DD95;
+}
+.email.success svg path {
+  stroke-dasharray: 46;
+  stroke-dashoffset: 150;
+  transition: stroke-dasharray .6s ease 0s, stroke-dashoffset .8s ease .3s, stroke .3s ease .6s;
+}
+.email.success svg polyline {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset .5s ease .6s, stroke .3s ease .6s;
 }
