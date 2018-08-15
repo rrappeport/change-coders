@@ -79,7 +79,7 @@ class ProjectsController < ApplicationController
       @project.skills << Skill.find(skill_id)
     end
     if @project.update(project_params)
-      redirect_to project_path(@project)
+      redirect_to projects_dashboard_path(@project)
     else
       render :edit
     end

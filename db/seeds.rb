@@ -33,7 +33,7 @@ WEBSITE = ["https://www.charityworld.com", "https://www.animals.com", "https://w
 CATEGORY = ["Animals", "Community Development", "Education", "Health", "Environment", "Human Rights", "Poverty"]
 PROJECT_NAME = ["Charity New Website", "Charity Add Map", "Redesign My Site", "Ruby Work Needed"]
 TYPE = ["New", "Update", "Rebuild"]
-PROGRAMMING_LANGUAGE = ["c", "c++", "c#", "clojure", "coffeeScript", "css3", "go", "haskell", "java", "javaScript", "lua", "Matlab", "Objective-C", "Peral", "php", "python", "r", "ruby", "scala", "shell", "swift", "tex", "vim script"]
+PROGRAMMING_LANGUAGE = ["c", "c++", "c#", "clojure", "coffeeScript", "css3", "go", "haskell", "java", "javaScript", "lua", "matlab", "objective-C", "peral", "php", "python", "r", "ruby", "scala", "shell", "swift", "tex", "vim script"]
 
 puts "destroying posts"
 Post.destroy_all
@@ -277,7 +277,8 @@ developer = Developer.new(
     github: GITHUB.sample,
     work_type: TYPE.sample,
     status: "In Progress",
-    deadline: Date.today+30.day
+    deadline: Date.today+30.day,
+    details: "I need help to make my website look better. I love saving Bali Reptiles but unfortuanately I do not know how to build websites. This site needs work on the front end and also on the back end functionality. Please also include nice images of reptiles. I really like reptiles."
   )
     project.save!
     puts "creating new members"
