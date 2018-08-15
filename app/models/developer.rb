@@ -37,7 +37,4 @@ class Developer < ApplicationRecord
       user.save
     end
   end
-  if !:avatar
-
-  end
 end
