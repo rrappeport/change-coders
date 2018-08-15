@@ -3,7 +3,6 @@ body {
   color: #212829;
 }
 
-
 .pattern {
   background-image: url("http://backgroundlabs.com/files/white-leather-texture-1945.png");
   background-repeat: repeat;
@@ -21,8 +20,7 @@ body {
 }
 
 #home-banner {
-  // margin-top: 70px;
-  height: calc(100vh - 70px);
+  height: 100vh;
   background-size: cover !important;
   background-position: center;
   display: flex;
@@ -88,73 +86,64 @@ padding: 30px;
 .project-section {
   padding: 50px 0;
 }
-// Specific CSS for your home-page
-.banner-content h1 {
-  color: white;
-  padding: 20px;
-}
-
-.banner-content h3 {
-  color: white;
-  padding-bottom: 30px;
-}
-
-#home-banner {
-  height: calc(100vh - 50px);
-  background-size: cover !important;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#about-home {
-  background-color: #f9f9f9;
-  text-align: center;
-  padding: 10px 20px 0 20px;
-}
-
-.form-control {
-  height: 51px;
-}
-
-#home-about, #home-services, #home-pets {
-  padding: 50px 25px;
-}
-
-// .wrapper {
-//   background-color: #f9f9f9;
+// // Specific CSS for your home-page
+// .banner-content h1 {
+//   color: white;
+//   padding: 20px;
 // }
 
-.signup-button {
-  padding-bottom: 50px;
-}
+// .banner-content h3 {
+//   color: white;
+//   padding-bottom: 30px;
+// }
 
-.homepage {
-padding: 30px;
-}
+// #about-home {
+//   background-color: #f9f9f9;
+//   text-align: center;
+//   padding: 10px 20px 0 20px;
+// }
 
-.homepage h2 {
- color: $green;
-}
+// .form-control {
+//   height: 51px;
+// }
 
-.bg-white {
-  background-color: white;
-}
+// #home-about, #home-services, #home-pets {
+//   padding: 50px 25px;
+// }
 
-.bg-light-grey {
-    background-color: $light-gray; /* light grey */
-}
+// // .wrapper {
+// //   background-color: #f9f9f9;
+// // }
 
-.homepage .glyphicon {
-  color: $violet;
-  font-size: 30px;
-}
+// .signup-button {
+//   padding-bottom: 50px;
+// }
 
-.projects-button {
-  margin: 50px 0px;
-}
+// .homepage {
+// padding: 30px;
+// }
 
-.project-section {
-  padding: 50px 0;
-}
+// .homepage h2 {
+//  color: $green;
+// }
+
+// .bg-white {
+//   background-color: white;
+// }
+
+// .bg-light-grey {
+//     background-color: $light-gray; /* light grey */
+// }
+
+// .homepage .glyphicon {
+//   color: $violet;
+//   font-size: 30px;
+// }
+
+// .projects-button {
+//   margin: 50px 0px;
+// }
+
+// .project-section {
+//   padding: 50px 0;
+// }
