@@ -33,7 +33,7 @@ WEBSITE = ["https://www.charityworld.com", "https://www.animals.com", "https://w
 CATEGORY = ["Animals", "Community Development", "Education", "Health", "Environment", "Human Rights", "Poverty"]
 PROJECT_NAME = ["Charity New Website", "Charity Add Map", "Redesign My Site", "Ruby Work Needed"]
 TYPE = ["New", "Update", "Rebuild"]
-PROGRAMMING_LANGUAGE = ["C", "C++", "C#", "Clojure", "CoffeeScript", "CSS", "Go", "Haskell", "Java", "JavaScript", "Lua", "Matlab", "Objective-C", "Peral", "PHP", "Python", "R", "Ruby", "Scala", "Shell", "Swift", "TeX", "Vim script"]
+PROGRAMMING_LANGUAGE = ["c", "c++", "c#", "clojure", "coffeeScript", "css3", "go", "haskell", "java", "javaScript", "lua", "Matlab", "Objective-C", "Peral", "php", "python", "r", "ruby", "scala", "shell", "swift", "tex", "vim script"]
 
 puts "destroying posts"
 Post.destroy_all
