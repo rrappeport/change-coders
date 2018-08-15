@@ -86,6 +86,43 @@ padding: 30px;
 .project-section {
   padding: 50px 0;
 }
+
+.login-icon {
+  margin-left: 5px;
+}
+
+.roll-in-left {
+  -webkit-animation: roll-in-left 1.5s ease-in both;
+          animation: roll-in-left 1.5s ease-in both;
+}
+
+@-webkit-keyframes roll-in-left {
+  0% {
+    -webkit-transform: translateX(-800px) rotate(-540deg);
+            transform: translateX(-800px) rotate(-540deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) rotate(0deg);
+            transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+@keyframes roll-in-left {
+  0% {
+    -webkit-transform: translateX(-800px) rotate(-540deg);
+            transform: translateX(-800px) rotate(-540deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) rotate(0deg);
+            transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+
+
 // // Specific CSS for your home-page
 // .banner-content h1 {
 //   color: white;

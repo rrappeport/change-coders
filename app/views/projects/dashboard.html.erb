@@ -4,66 +4,77 @@
 </figure>
 
 <div class="container">
-  <div class="col-md-12">
-    <div class="project-info white-box">
-      <h3>Project info </h3>
-      <div class="row">
-        <div class="col-md-6">
-          <p>Project name:<%= @project.name %></p>
-          <p>Charity:<%= @charity.name %></p>
-          <p>Status: <%= @project.status  %></p>
-          <p>Type: <%= @project.work_type %></p>
-        </div>
-        <div class="col-md-6">
-          <p>Project details: <%= @project.details %></p>
-        </div>
-      </div>
+  <div class="row">
+  <div class="col-md-3">
+    <div class="white-box similar-projects">
+      <h2> Similar projects</h2>
+      <% @charities.each do |charity|%>
+        <%= charity.name %>
+        <br>
+      <% end %>
+      <%#= @charities.find_by(category: @project.charity.category).each do |charity| %>
+        <%# charity.projects each do |project| %>
+          <%#= project.name %>
+          <%#= project.deadline %>
+        <% #end %>
+      <% #end %>
     </div>
   </div>
 
-
-  <div class="col-md-12">
-
-    <div class="charity-info-dashboard white-box ">
+  <div class="col-md-9">
+    <div class="project-info-dahsboard white-box">
+      <h3><%= @project.name %></h3>
       <div class="row">
-        <div class = "col-md-6">
-          <% if @project.charity.logo? %>
-            <%= cl_image_tag @project.charity.logo, class: "user-avatar-sml" %>
-          <% else %>
-            <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjFbGzCB7sAeKl1FMboHXQiDZ3KSd7G5CPmNOZ_EGBLY3fzTOjxQ", width: 300%>
-          <% end %>
-        </div>
-        <div class = "col-md-6 text-right">
-          <h3>Charity info </h3>
-          <p>Location:<%= @project.charity.address %></p>
-          <p>Email: <%= @project.charity.email %></p>
-          <p>Website: <%= @project.charity.website %></p>
-          <p>Category: <%= @project.charity.category %></p>
+        <div class="col-md-12">
+          <p>Project details:</p>
+          <p> <%= @project.details %></p>
+          <p>Type of project: <%= @project.work_type %></p>
         </div>
       </div>
-    </div>
-  </div>`
-
-
-
-  <div class="col-md-12">
-    <div class="skills-info white-box">
-      <h3> Skills requiered </h3>
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-        Add more skills
-      </button>
+      <div class = "days-left">
+        <p><%= @project.status  %></p>
+        <p> <%= (@project.deadline - Date.today).to_i %> days left</p>
+      </div>
       <div class="skill-display">
         <% @skills.each do |project_skill| %>
           <div class = "text-center">
             <div class="skill-choice"><i class="devicon-<%= project_skill.skill.name %>-plain colored"></i>  <%= project_skill.skill.name %></div>
             <%# if policy(project_skill).destroy? %>
-              <%= link_to "Remove", project_project_skill_path(@project, project_skill) , method: :delete %>
+              <%= link_to "Remove", project_project_skill_path(@project, project_skill),class: "remove", method: :delete %>
             <% #end %>
           </div>
         <% end %>
       </div>
+      <button type="button" class="btn btn-success display-right" data-toggle="modal" data-target="#myModal">
+        Add more skills
+      </button>
     </div>
   </div>
+
+
+  <div class="col-md-9">
+    <div class="charity-info-dashboard white-box ">
+      <div class="row">
+        <div class = "col-md-6">
+          <div class="charity-logo-center">
+            <% if @project.charity.logo? %>
+              <%= cl_image_tag @project.charity.logo, class: "user-avatar-sml" %>
+            <% else %>
+              <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjFbGzCB7sAeKl1FMboHXQiDZ3KSd7G5CPmNOZ_EGBLY3fzTOjxQ", width: 300%>
+            <% end %>
+          </div>
+        </div>
+        <div class = "col-md-6 text-right">
+          <h3><%= @charity.name %></h3>
+          <h4><%= @project.charity.category %></h4>
+          <p><%= @project.charity.address %></p>
+          <p><%= @project.charity.email %></p>
+          <p><%= @project.charity.website %></p>
+        </div>
+      </div>
+    </div>
+  </div>`
+</div>
 
   <div class="col-md-12">
 
