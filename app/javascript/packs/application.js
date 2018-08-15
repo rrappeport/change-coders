@@ -8,7 +8,9 @@ initUpdateNavbarOnScroll();
 
 import { autocomplete } from 'components/autocomplete';
 import { initSkillChoice } from 'components/skill_choice';
+import { subscribeForm } from 'components/footer';
 // [...]
 autocomplete();
 initMap();
 initSkillChoice();
+subscribeForm();
