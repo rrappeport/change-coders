@@ -7,13 +7,15 @@
 <div class="container">
   <div class="col-md-12">
     <div class="card-show">
-      <% if @project.charity.logo.model[:logo] %>
-        <div class= "charity-avatar-lg col-md-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @project.charity.logo %>')">
-        </div>
-        <%#= cl_image_tag @project.charity.logo, class: "charity-avatar-lg" %>
-      <% else %>
-        <%= image_tag "https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg", width: "100", height: "100" %>
-      <% end %>
+      <div class="card-show-logo">
+        <% if @project.charity.logo.model[:logo] %>
+          <div class= "charity-avatar-lg col-md-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @project.charity.logo %>')">
+          </div>
+          <%#= cl_image_tag @project.charity.logo, class: "charity-avatar-lg" %>
+        <% else %>
+          <%= image_tag "https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg", width: "100", height: "100" %>
+        <% end %>
+      </div>
       <div class="card-show-content col-md-6">
         <h1 class= "project-h1"><%= @project.name %></h1>
         <h3 class= "project-h3"><%= @project.charity.name %></h3>
@@ -97,7 +99,7 @@
 
   <div class="col-md-12">
     <div class="show-container">
-      <h3 class= "project-h3"> Comments: </h3>
+      <h3 class= "project-h3"> Project Updates </h3>
       <div class="stat">
         <div class="stat-content">
           <% @posts.each do |post| %>
