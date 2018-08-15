@@ -7,10 +7,17 @@
   <div class="col-md-12">
     <div class="project-info white-box">
       <h3>Project info </h3>
-      <p>Project name:<%= @project.name %></p>
-      <p>Charity:<%= @charity.name %></p>
-      <p>Status: <%= @project.status  %></p>
-      <p>Type: <%= @project.work_type %></p>
+      <div class="row">
+        <div class="col-md-6">
+          <p>Project name:<%= @project.name %></p>
+          <p>Charity:<%= @charity.name %></p>
+          <p>Status: <%= @project.status  %></p>
+          <p>Type: <%= @project.work_type %></p>
+        </div>
+        <div class="col-md-6">
+          <p>Project details: <%= @project.details %></p>
+        </div>
+      </div>
     </div>
   </div>
 
