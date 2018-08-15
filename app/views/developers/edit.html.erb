@@ -48,6 +48,7 @@
                 <div class="skill-choice">
                   <input type="checkbox" class="checkbox-hidden" value="<%= skill.id%>" name="developer[skill_ids][]" id="developer_skill_ids_<%= skill.id%>" >
                   <label class="" for="developer_skill_ids<%= skill.id%>">
+                    <i class="devicon-<%= skill.name %>-plain colored"></i>
                     <%= skill.name %>
                     <i class="fa fa-check"></i>
                   </label>

@@ -45,6 +45,7 @@
       <div class="skill-display">
         <% @skills.each do |project_skill| %>
           <div class = "text-center">
+            <i class="devicon-<%= project_skill.skill.name %>-plain colored"></i>
             <div class="skill-choice"><%= project_skill.skill.name %></div>
             <% if policy(project_skill).destroy? %>
               <%= link_to "Remove", project_project_skill_path(@project, project_skill) , method: :delete %>
