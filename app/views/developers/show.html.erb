@@ -6,10 +6,12 @@
 <div class="container">
 
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h2> <%= @developer.first_name %> <%= @developer.last_name %></h2>
-    </div>
     <div class="project-info white-box">
+      <div class="col-md-4">
+      </div>
+        <div class="col-md-8">
+          <h2> <%= @developer.first_name %> <%= @developer.last_name %></h2>
+        </div>
       <div class = "row" >
         <div class="col-md-4 user-photo">
           <% if @developer.avatar? %>
@@ -22,11 +24,11 @@
           <div class = "star-rating">
             <div class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star off"></i></div>
           </div>
-          <a href="#" class="btn btn-primary btn-lg btn-top-margin" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Get in touch</a>
+          <a href="#" class="btn btn-reset btn-top-margin" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Get in touch</a>
         </div>
         <div class="col-md-8">
           <div class = "border-spaced">
-            <h4>Email: <%= @developer.email %></h4>
+            <h4><%= @developer.email %></h4>
           </div>
           <div class = "border-spaced">
             <h4>Description: <%= @developer.description %></h4>
@@ -49,32 +51,32 @@
 
 
   <div class="col-md-12">
-    <div class="comments green-box">
+    <div class="project-info white-box text-center">
       <h2> <%= @developer.first_name %>'s projects </h2>
-    </div>
-    <div class="project-info white-box flex-box text-center">
       <div class="row">
-        <% @projects.each do |project| %>
-          <div class="col-md-3  text-center projects-box">
-            <h3><%= project.name  %> </h3>
-            <p>Status: <%= project.status %></p>
-            <p>Deadline: <%= project.deadline  %></p>
-            <%= link_to "", project_path(project), class: 'box-link'  %>
-          </div>
-        <% end %>
+        <div class="form-group">
+          <% @projects.each do |project| %>
+            <div class="col-md-3  text-center projects-box">
+              <h3><%= project.name  %> </h3>
+              <p>Status: <%= project.status %></p>
+              <p>Deadline: <%= project.deadline  %></p>
+              <%= link_to "", project_path(project), class: 'box-link'  %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="col-md-12">
-    <div class="comments green-box">
-      <h2>  <%= @developer.first_name %>'s skills </h2>
-    </div>
     <div class="project-info white-box">
+      <h2>  <%= @developer.first_name %>'s skills </h2>
       <div class="skill-display">
         <% @developer.skills.each do |skill| %>
           <div class = "text-center">
-            <div class="skill-choice"><%= skill.name %></div>
+            <div class="skill-choice">
+              <i class="devicon-<%= skill.name %>-plain colored"></i>
+              <%= skill.name %></div>
           </div>
         <% end %>
       </div>

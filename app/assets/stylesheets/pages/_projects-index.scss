@@ -1,9 +1,59 @@
-.check-boxes{
+.index-checkboxes{
   top: 80px;
   position: sticky !important;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: #fff;
+  padding: 20px;
 }
 
 .project-list {
-  margin-top: 80px;
+  margin-top: 140px;
 }
 
+.search-title {
+  padding:0;
+  margin:0;
+}
+
+.country-search {
+  margin-bottom: 25px;
+}
+
+
+
+.hidden-options {
+  -webkit-transition: all 2s ease;
+  -moz-transition: all 2s ease;
+  -o-transition: all 2s ease;
+  -ms-transition: all 2s ease;
+  transition: all 2s ease;
+  display: none;
+
+}
+
+
+.active-options {
+  -webkit-transition: all 2s ease;
+  -moz-transition: all 2s ease;
+  -o-transition: all 2s ease;
+  -ms-transition: all 2s ease;
+  transition: all 2s ease;
+  display: block;
+
+}
+
+.fa-xs {
+  float: right;
+  margin-top: 6px;
+}
+
+.button-search {
+  padding: 10px 25px;
+  margin: 20px 0;
+}
+
+.search-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}

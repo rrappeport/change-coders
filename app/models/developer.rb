@@ -14,6 +14,7 @@ class Developer < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   # has_many :projects throgh:
+  mount_uploader :avatar, PhotoUploader
 
 
 
@@ -31,12 +32,9 @@ class Developer < ApplicationRecord
         user.last_name = auth.info.name.split.last
       end
       user.github_username = auth.info.nickname
-      user.avatar = auth.info.image
+      user.remote_avatar_url = auth.info.image
       user.description = auth.extra.raw_info.bio
       user.save
     end
   end
-  # if !:avatar
-    mount_uploader :avatar, PhotoUploader
-  # end
 end

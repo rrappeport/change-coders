@@ -8,39 +8,110 @@
       height: 300px;
     }
 
-    .card-index-image {
-      height: 290px;
-      border-right: 1px solid $light-gray;
-      background-position: center;
-    }
+  .card-index-image {
+    height: 290px;
+    border-right: 1px solid $light-gray;
+    background-position: center;
+  }
 
-    .card-index-content {
-      margin-left: 3%;
-      padding-right: 2%;
-      width: 73%;
-      padding: 5px;
-      border-right: 1px solid $light-gray;
-    }
+  .card-index-content {
+    margin-left: 3%;
+    padding-right: 2%;
+    width: 73%;
+    padding: 5px;
+    border-right: 1px solid $light-gray;
+  }
 
-    .card-index-content h4 a {
-      margin: 15px 0;
-      color: $green;
-    }
+  .card-index-content h4 a {
+    margin: 15px 0;
+    color: $green;
+  }
 
-    .btn-index {
-      padding: 20px 10px !important;
-    }
+  .btn-index {
+    padding: 20px 10px !important;
+  }
 
-    .check-boxes {
-      border: 1px solid #ddd;
-      margin: 20px 0;
-      background: #fff;
-      padding: 20px;
-    }
+  .check-boxes {
+    border: 1px solid #ddd;
+    margin: 20px 0;
+    background: #fff;
+    padding: 20px;
+  }
 
-    .index-search-button {
-      margin: 30px 20px 20px 20px;
-      padding: 10px 30px;
-    }
+  .index-search-button {
+    margin: 30px 20px 20px 20px;
+    padding: 10px 30px;
+  }
 
+.card-index-container {
+  background: white;
+  padding: 25px;
+  margin-bottom: 25px;
+  position: relative;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+}
 
+.card-index-charity {
+  display: flex;
+  align-items: center;
+  img  {
+    border: 1px solid #0000001a;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.card-index-project {
+  h2 {
+    font-weight: 500;
+  }
+
+  a {
+    color: $green-lighter;
+    text-decoration: none;
+  }
+}
+
+.card-index-category {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  color: $violet;
+}
+
+.card-index-type {
+  position: absolute;
+  top: 60px;
+  right: 25px;
+  font-size: 13px;
+  padding: 5px 20px;
+  background: #f3f3f3;
+  border-radius: 25px;
+  color: #909090;
+}
+
+.card-index-details {
+  display: flex;
+  font-size: 14px;
+}
+
+.card-index-progess {
+  font-style: italic;
+  margin-left: 5px;
+}
+
+.card-index-deadline {
+  margin-right: 5px;
+  font-weight: 500;
+}
+
+.mute-75 {
+  opacity: 0.75;
+}
+
+.mute-50 {
+  opacity: 0.50;
+}

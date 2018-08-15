@@ -1,12 +1,42 @@
-.btn {
-  color: #412c49;
-  letter-spacing: 2px;
-  height: 60px;
-  display: flex;
+// .btn {
+//   color: $green;
+//   letter-spacing: 2px;
+//   height: 60px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   border-radius: 10px;
+//   background: white;
+//   font-weight: bold;
+//   border: 1px solid $green;
+// }
+
+
+.btn-reset {
+  color: $violet;
+  border-color: $violet;
+  background-color: white;
+}
+
+.btn-reset:hover {
+  color: white;
+  border-color: $violet;
+  background-color: $violet;
+}
+
+.btn-homepage {
+  color: white;
+  background-color: $green-lighter;
+  width: 225px;
+  height: 55px;
+  display: -webkit-inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  background: #cfc7d1;
-  font-weight: bold;
-  box-shadow: 1px 1px 2px #afa3b3;
 }
+
+
+.btn-success {
+    color: $green;
+    border-color: $green;
+    background-color: white;
+};

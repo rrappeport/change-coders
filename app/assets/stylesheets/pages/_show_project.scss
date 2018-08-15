@@ -8,6 +8,14 @@
   margin-bottom: -100px;
 }
 
+.show-container {
+  background: #fff;
+  border: 1px solid #ddd;
+  width: 100%;
+  margin: 20px;
+  height: auto;
+  padding: 10px 30px;
+}
 
 .card-show {
   background: #fff;
@@ -18,8 +26,26 @@
   margin: 20px;
   height: auto;
   padding: 10px 30px;
+  p{
+    margin: 0;
+  }
 }
 
+.card-show-status{
+  position: absolute;
+  bottom: 50px;
+  right: 20px;
+  font-size: 15px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.project-info {
+  min-height: 300px;
+  position: relative;
+}
 
 .flex-media {
   display: flex;
@@ -29,28 +55,25 @@
 
 
 .show-buttons {
-  margin-right: 10px;
-  margin-bottom: 10px;
-  width: 150px;
+  width: 200px;
+  height: 50px;
 }
 
-.charity-info {
-  background: #fff;
-  border: 1px solid #ddd;
-  width: 100%;
-  margin: 20px;
-  height: auto;
-  padding: 10px 30px;
+.show-apply {
+    margin-left: 100px;
 }
+
 
 
 .contact-links {
   display: flex;
   align-items: center;
+  padding-top: 85px;
 }
+
 .contact-links a {
-  color: black;
-  opacity: 0.15;
+  color: $violet;
+  opacity: 0.5;
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
@@ -67,7 +90,7 @@
 }
 
 .project-h3 {
-  color: $green;
+  color: $green-lighter;
 }
 
 .project-h4 {
@@ -84,4 +107,22 @@
 
 .btn-apply {
   padding: 20px 40px;
+}
+
+.fa {
+  color: $violet;
+}
+
+.larger-violet-p {
+  color: $violet;
+  font-size: 20px;
+}
+
+
+.card-show-content {
+  margin-left: 100px;
+}
+
+.card-show-logo {
+  margin-left: 50px;
 }
