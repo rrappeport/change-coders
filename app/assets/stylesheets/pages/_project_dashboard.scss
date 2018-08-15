@@ -96,7 +96,47 @@
   }
 }
 
+.project-info-dahsboard {
+  padding: 20px 80px;
+  position: relative
+}
 
-// .team-member-profile :hover {
-//   background-color: $green-lighter;
-// }
+.days-left {
+  font-style: italic;
+  position: absolute;
+  top: 45px;
+  right: 80px;
+}
+
+.charity-info-dashboard{
+  padding: 20px 80px;
+  p {
+    font-size: 15px;
+  }
+  h4 {
+    font-size: 24px;
+    color: #05a58d;
+  }
+}
+
+.charity-logo-center {
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.display-right {
+  margin-left: 520px;
+}
+
+.remove {
+  color: $green-lighter;
+  font-style: italic;
+  &:hover {
+    text-decoration: none;
+    color: $green;
+  }
+}
+
+.similar-projects {
+  height: 710px;
+}
