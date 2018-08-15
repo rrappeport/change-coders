@@ -1,7 +1,7 @@
 class ProposalPolicy < ApplicationPolicy
 
   def create?
-    user && user.proposals.where(project: record.project).empty?
+    user && user.proposals.where(project: record.project).empty?  || !user
   end
 
   def accept?
