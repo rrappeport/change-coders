@@ -23,6 +23,7 @@
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
         </div>
       </div>
       <div class="show-apply col-md-3">
@@ -73,7 +74,7 @@
         <div class="skill-display">
           <% @project.skills.each do |skill| %>
             <div class = "text-center">
-              <div class="skill-choice"><%= skill.name %></div>
+              <div class="skill-choice"><i class="devicon-<%= skill.name %>-plain colored"></i>  <%= skill.name %></div>
             </div>
           <% end %>
         </div>
