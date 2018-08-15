@@ -48,6 +48,7 @@
   padding: 25px;
   margin-bottom: 25px;
   position: relative;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
 }
 
 .card-index-charity {
@@ -65,7 +66,12 @@
 
 .card-index-project {
   h2 {
-    font-weight: 600;
+    font-weight: 500;
+  }
+
+  a {
+    color: $green-lighter;
+    text-decoration: none;
   }
 }
 
@@ -73,14 +79,14 @@
   position: absolute;
   top: 25px;
   right: 25px;
-  color: $green-lighter;
+  color: $violet;
 }
 
 .card-index-type {
   position: absolute;
   top: 60px;
   right: 25px;
-  font-size: 12px;
+  font-size: 13px;
   padding: 5px 20px;
   background: #f3f3f3;
   border-radius: 25px;
