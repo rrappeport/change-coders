@@ -104,14 +104,7 @@
     <div class="col-md-12">
       <div class="white-box">
         <h3 class= "project-h3">More About <%= @project.charity.name %></a></h3>
-        <h4 class= "project-h4">Emergency Response</h4>
-        <p>A strong network of trusted partners enables Direct Relief to assess immediate healthcare needs, understand the situation on the ground, and respond quickly and efficiently when a disaster strikes."</p>
-
-        <h4 class= "project-h4">Products with Purpose</h4>
-        <p>Based on years of experience, Direct Relief designs and deploys a range of humanitarian products to support vulnerable communities throughout the world.</p>
-
-        <h4 class= "project-h4">Issues & Solutions</h4>
-        <p>Direct Relief’s medical assistance programs equip health professionals in resource-poor communities to meet the challenges of diagnosing, treating, and caring for people in need."</p>
+        <p><%= @project.charity.description %></p>
       </div>
     </div>
 
@@ -139,12 +132,12 @@
               <h4 class = "text-center">No developers working on this project yet</h4>
             <% else %>
               <% @project.members.each do |member| %>
-                <div class="col-md-3  text-center team-member">
+                <div class="col-md-4 text-center team-member">
                   <div class="team-member-profile">
                     <% if member.developer.avatar? %>
-                      <%= cl_image_tag member.developer.avatar, class: "user-avatar-xs" %>
+                      <%= cl_image_tag member.developer.avatar, class: "user-avatar" %>
                     <% else %>
-                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-xs"%>
+                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar"%>
                     <% end %>
                     <div class = "team-member-info">
                       <p><%= member.developer.first_name %> <%= member.developer.last_name %></p>
