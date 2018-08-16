@@ -5,116 +5,189 @@
 
 
 <div class="container">
-  <div class="col-md-12">
-    <div class="card-show">
-      <div class="card-show-logo">
-        <% if @project.charity.logo.model[:logo] %>
-          <div class= "charity-avatar-lg col-md-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @project.charity.logo %>')">
+  <div class="row row-eq-height project-show-conatiner">
+
+    <div class="col-md-3">
+      <div class="similar-projects sp-show">
+        <div class="text-center arrows">
+          <div class="arrow">
+            <% if @project.previous %>
+              <%= link_to project_path(@project.previous) do %>
+                <i class="fas fa-arrow-left"></i>
+              <% end %>
+              <% end %>
           </div>
-          <%#= cl_image_tag @project.charity.logo, class: "charity-avatar-lg" %>
-        <% else %>
-          <%= image_tag "https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg", width: "100", height: "100" %>
-        <% end %>
-      </div>
-      <div class="card-show-content col-md-6">
-        <h1 class= "project-h1"><%= @project.name %></h1>
-        <h3 class= "project-h3"><%= @project.charity.name %></h3>
-        <div class="contact-links">
-          <a href="#"><i class="far fa-envelope"></i>   <% @project.charity.email %></a>
-          <a href="#"><i class="fas fa-desktop"></i>   <% @project.charity.website %></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-      <div class="show-apply col-md-3">
-        <% if policy(Proposal.new(project: @project)).create? %>
-          <button type="button" class="btn btn-success show-buttons" data-toggle="modal" data-target="#myModal">
-            Apply
-          </button>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-md-12">
-    <div class="show-container project-info">
-      <div class="row">
-        <div class="card-show-content col-md-10">
-          <h3 class= "project-h3">Project Details</h3>
-          <p><%= @project.details %></p>
-          <p class="italic"> end by <%= @project.deadline %></p>
-        </div>
-        <div class="card-show-status col-md-2 text-center">
-          <p  class="larger-violet-p"> <%= @project.status%></p>
-          <p> <%= @project.work_type %></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-   <div class="col-md-12">
-      <h3 class= "project-h3"> SnapShot From The Current Website</h3>
-      <div class="thumbnail" data-src="<%= cl_image_path @project.photo %>">
-        <%= cl_image_tag @project.photo, width: "100", height: "100"%>
-      </div>
-
-  </div>
-
-  <div class="col-md-12">
-    <div class="show-container">
-      <h3 class= "project-h3">More About <%= @project.charity.name %></a></h3>
-      <h4 class= "project-h4">Emergency Response</h4>
-      <p>A strong network of trusted partners enables Direct Relief to assess immediate healthcare needs, understand the situation on the ground, and respond quickly and efficiently when a disaster strikes."</p>
-
-      <h4 class= "project-h4">Products with Purpose</h4>
-      <p>Based on years of experience, Direct Relief designs and deploys a range of humanitarian products to support vulnerable communities throughout the world.</p>
-
-      <h4 class= "project-h4">Issues & Solutions</h4>
-      <p>Direct Relief’s medical assistance programs equip health professionals in resource-poor communities to meet the challenges of diagnosing, treating, and caring for people in need."</p>
-    </div>
-  </div>
-
-  <div class="col-md-12">
-    <div class="show-container">
-      <h3 class= "project-h3"> Skills Required </h3>
-      <div class="form-group">
-        <div class="skill-display">
-          <% @project.skills.each do |skill| %>
-            <div class = "text-center">
-              <div class="skill-choice"><i class="devicon-<%= skill.name %>-plain colored"></i>  <%= skill.name %></div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-12">
-    <div id="map" data-markers=<%= @markers.to_json %>> Here the map</div>
-  </div>
-
-  <div class="col-md-12 text-center">
-    <% if policy(@project).dashboard? %>
-      <%= link_to "Dashboard", projects_dashboard_path(@project), class:'btn btn-success show-buttons'  %>
-    <% end %>
-  <% if policy(@project).edit? %>
-    <%= link_to "Edit", edit_project_path(@project), class:'btn btn-default show-buttons'  %>
-    <% end %>
-  </div>
-
-  <div class="col-md-12">
-    <div class="show-container">
-      <h3 class= "project-h3"> Project Updates </h3>
-      <div class="stat">
-        <div class="stat-content">
-          <% @posts.each do |post| %>
-            <% if post.project == @project %>
-              <li><%= post.content %>  </li>
+          <div class="arrow">
+            <%= link_to "All", projects_path %>
+          </div>
+          <div class="arrow">
+            <% if @project.next %>
+              <%= link_to project_path(@project.next) do %>
+                <i class="fas fa-arrow-right"></i>
+              <% end %>
             <% end %>
+          </div>
+        </div>
+
+        <h2> Similar projects</h2>
+        <% @similar_projects.each do |project|%>
+          <% if project != @project %>
+            <%= link_to project.name, project_path(project), class:"mute-75 similar-project-link"%>
           <% end %>
+          <br>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="project-show-box white-box">
+            <h2 class=""><%= @project.name %></h2>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="project-show-logo">
+                  <% if @project.charity.logo.model[:logo] %>
+                    <div class= "charity-avatar-lg col-md-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @project.charity.logo %>')">
+                    </div>
+                    <%#= cl_image_tag @project.charity.logo, class: "charity-avatar-lg" %>
+                  <% else %>
+                    <%= image_tag "https://image.shutterstock.com/image-vector/people-charity-logo-template-design-260nw-612981149.jpg", width: "100", height: "100" %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="project-show-content col-md-6">
+                <h3 class= "project-h3"><%= @project.charity.name %></h3>
+                <div class="contact-links">
+                  <a href="#"><i class="far fa-envelope"></i>   <% @project.charity.email %></a>
+                  <a href="#"><i class="fas fa-desktop"></i>   <% @project.charity.website %></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-facebook"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+              <div class="show-apply col-md-3">
+                <%# if policy(Proposal.new(project: @project)).create? %>
+                  <button type="button" class="btn btn-success show-buttons" data-toggle="modal" data-target="#myModal">
+                    Apply
+                  </button>
+                <%# end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="white-box project-info">
+            <div class="row">
+              <div class=" col-md-10">
+                <h3 class= "project-h3">Project Details</h3>
+                <p><%= @project.details %></p>
+                <p class="italic"> end by <%= @project.deadline %></p>
+              </div>
+              <div class="col-md-2 text-center">
+                <p  class="pr-status"> <%= @project.status%></p>
+                <p> <%= @project.work_type %></p>
+                <p class="pr-shots">Screenshots:</p>
+                <div class="thumbnail" data-src="<%= cl_image_path @project.photo %>">
+                  <%= cl_image_tag @project.photo, width: "100", height: "100"%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="white-box">
+        <h3 class= "project-h3">More About <%= @project.charity.name %></a></h3>
+        <p><%= @project.charity.description %></p>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="white-box">
+        <h3 class= "project-h3"> Skills Required </h3>
+        <div class="form-group">
+          <div class="skill-display">
+            <% @project.skills.each do |skill| %>
+              <div class = "text-center">
+                <div class="skill-choice"><i class="devicon-<%= skill.name %>-plain colored"></i>  <%= skill.name %></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="team-info white-box">
+        <h3 class = "text-center">Team Members: </h3>
+        <div class = "row">
+          <div class ="form-group">
+            <% if @project.members.size == 0 %>
+              <h4 class = "text-center">No developers working on this project yet</h4>
+            <% else %>
+              <% @project.members.each do |member| %>
+                <div class="col-md-4 text-center team-member">
+                  <div class="team-member-profile">
+                    <% if member.developer.avatar? %>
+                      <%= cl_image_tag member.developer.avatar, class: "user-avatar" %>
+                    <% else %>
+                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar"%>
+                    <% end %>
+                    <div class = "team-member-info">
+                      <p><%= member.developer.first_name %> <%= member.developer.last_name %></p>
+                      <% if @project.leader_id == member.developer.id %>
+                        <h4> LEADER </h4>
+                      <% end %>
+                    </div>
+                    <%= link_to "", developer_path(member.developer), class: "clickable" %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-12">
+      <div id="map" data-markers=<%= @markers.to_json %>> Here the map</div>
+    </div>
+
+    <div class="col-md-12 text-center">
+      <% if policy(@project).dashboard? %>
+        <%= link_to "Dashboard", projects_dashboard_path(@project), class:'btn btn-success show-buttons'  %>
+      <% end %>
+    <% if policy(@project).edit? %>
+      <%= link_to "Edit", edit_project_path(@project), class:'btn btn-default show-buttons'  %>
+      <% end %>
+    </div>
+    <div class="show-apply col-md-12">
+    <%# if policy(Proposal.new(project: @project)).create? %>
+      <button type="button" class="btn btn-success show-buttons" data-toggle="modal" data-target="#myModal">
+        Apply
+      </button>
+    <%# end %>
+    </div>
+
+    <div class="col-md-12">
+      <div class="white-box">
+        <h3 class= "project-h3"> Project Updates </h3>
+        <div class="stat">
+          <div class="stat-content">
+            <% @posts.each do |post| %>
+              <% if post.project == @project %>
+                <li><%= post.content %>  </li>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
