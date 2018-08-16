@@ -106,9 +106,9 @@ class ProjectsController < ApplicationController
 
   def dashboard
     @project = Project.find(params[:project_id])
-    authorize @project
+    # authorize @project
     @proposals = @project.proposals
-    authorize @project
+    # authorize @project
     @charity = @project.charity
     @skills = @project.project_skills
     @posts = Post.all
