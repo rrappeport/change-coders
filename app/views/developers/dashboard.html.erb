@@ -55,9 +55,14 @@
       <div class="form-group">
         <div class="skill-display">
           <% @skills.each do |skill| %>
-            <div class = "text-center">
-              <div class="skill-choice"><i class="devicon-<%= skill.name %>-plain colored"></i>  <%= skill.name %></div>
-              <%= link_to "Remove", developer_developer_skill_path(@developer, skill) , method: :delete %>
+            <div  id="<%= skill.id %>" class = "text-center">
+              <div class="skill-choice"><i class="devicon-<%= skill.skill.name %>-plain colored"></i>  <%= skill.skill.name %>
+                <div class= "remove-button">
+                   <%= link_to developer_developer_skill_path(@developer, skill) ,confirm: "Are you sure?", method: :delete, remote: true do %>
+                     <i class="fa fa-edit"></i>
+                   <% end %>
+                </div>
+              </div>
             </div>
           <% end %>
         </div>

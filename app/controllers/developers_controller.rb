@@ -8,13 +8,13 @@ class DevelopersController < ApplicationController
     @developer = current_developer
     @projects = @developer.projects
     @proposals = @developer.proposals
-    @skills = @developer.skills
+    @skills = @developer.developer_skills
   end
 
   def show
     @developer = Developer.find(params[:id])
     @projects = @developer.projects
-    @skills = @developer.skills
+    @skills = @developer.developer_skills
      # @developer = Developer.find(params[:id])
      # authorize @developer
   end
