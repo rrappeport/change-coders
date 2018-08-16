@@ -16,6 +16,13 @@
 
 }
 
+.pr-title{
+  padding: 0;
+}
+
+.pr-sml-title{
+  font-style: italic;
+}
 .green-box {
   background: $green;
   color: white;
@@ -62,7 +69,7 @@
 
 .team-member-info {
   padding: 20px;
-  height: 70px;
+  height: 90px;
   h4 {
     color: $green-lighter;
     font-weight: 700;
@@ -111,6 +118,8 @@
   position: absolute;
   top: 45px;
   right: 80px;
+  color: $green-lighter;
+  text-align: center;
 }
 
 .charity-info-dashboard{

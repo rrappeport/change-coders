@@ -40,12 +40,15 @@
 
     <div class="col-md-9">
       <div class="project-info-dahsboard white-box">
-        <h3><%= @project.name %></h3>
+        <div class="col-md-9 pr-title">
+          <h3><%= @project.name %></h3>
+        </div>
         <div class="row">
           <div class="col-md-12">
-            <p>Project details:</p>
+            <p class= "pr-sml-title">Project details:</p>
             <p> <%= @project.details %></p>
-            <p>Type of project: <%= @project.work_type %></p>
+            <p class= "pr-sml-title">Type of project: </p>
+            <p><%= @project.work_type %></p>
           </div>
         </div>
         <div class = "days-left">
@@ -73,7 +76,7 @@
     <div class="col-md-9">
       <div class="charity-info-dashboard white-box ">
         <div class="row">
-          <div class = "col-md-6">
+          <div class = "col-md-4">
             <div class="charity-logo-center">
               <% if @project.charity.logo? %>
                 <%= cl_image_tag @project.charity.logo, class: "user-avatar-sml" %>
@@ -82,7 +85,7 @@
               <% end %>
             </div>
           </div>
-          <div class = "col-md-6 text-right">
+          <div class = "col-md-8 text-right">
             <h3><%= @charity.name %></h3>
             <h4><%= @project.charity.category %></h4>
             <p><%= @project.charity.address %></p>
@@ -100,24 +103,29 @@
         <h3 class = "text-center">Team Members: </h3>
         <div class = "row">
           <div class ="form-group">
+            <% if @project.members.size == 0 %>
+              <h4 class = "text-center">No developers working on this project yet</h4>
+            <% else %>
               <% @project.members.each do |member| %>
-            <div class="col-md-3  text-center team-member">
-              <div class="team-member-profile">
-                <% if member.developer.avatar? %>
-                  <%= cl_image_tag member.developer.avatar, class: "user-avatar-xs" %>
-                <% else %>
-                  <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-xs"%>
+                <div class="col-md-3  text-center team-member">
+                  <div class="team-member-profile">
+                    <% if member.developer.avatar? %>
+                      <%= cl_image_tag member.developer.avatar, class: "user-avatar-xs" %>
+                    <% else %>
+                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-xs"%>
+                    <% end %>
+                    <div class = "team-member-info">
+                      <p><%= member.developer.first_name %> <%= member.developer.last_name %></p>
+                      <% if @project.leader_id == member.developer.id %>
+                        <h4> LEADER </h4>
+                      <% end %>
+                    </div>
+                    <%= link_to "", developer_path(member.developer), class: "clickable" %>
+                  </div>
+                <% if policy(member).destroy? && current_developer != member.developer%>
+                  <%= link_to "Remove from the team", project_member_path(@project, member.developer), method: :delete, class: 'btn btn-reset', data: { confirm: "Are you sure?" } %>
                 <% end %>
-                <div class = "team-member-info">
-                  <p><%= member.developer.first_name %> <%= member.developer.last_name %></p>
-                  <% if @project.leader_id == member.developer.id %>
-                    <h4> LEADER </h4>
-                  <% end %>
                 </div>
-                <%= link_to "", developer_path(member.developer), class: "clickable" %>
-              </div>
-              <% if policy(member).destroy? && current_developer != member.developer%>
-                <%= link_to "Remove from the team", project_member_path(@project, member.developer), method: :delete, class: 'btn btn-reset', data: { confirm: "Are you sure?" } %>
               <% end %>
             </div>
           <% end %>
@@ -132,25 +140,28 @@
         <h3 class = "text-center">New join requests: </h3>
         <div class = "row">
           <div class ="form-group">
-            <% @proposals.each do |proposal| %>
-              <% if proposal.state.downcase == "pending" &&  policy(proposal).accept? %>
-                <div class="col-md-3 text-center application-card ">
-                  <div class="team-member-profile">
-                    <% if proposal.developer.avatar? %>
-                      <%= cl_image_tag proposal.developer.avatar, class: "user-avatar-xs black-n-white" %>
-                    <% else %>
-                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-xs black-n-white"%>
-                    <% end %>
-                    <p><%=proposal.developer.first_name %></p>
-                    <%= link_to "", developer_path(proposal.developer), class: "clickable" %>
+            <% if @proposals.size == 0  %>
+                <h4 class = "text-center">No new applications</h4>
+            <% else %>
+              <% @proposals.each do |proposal| %>
+                <% if proposal.state.downcase == "pending" &&  policy(proposal).accept? %>
+                  <div class="col-md-3 text-center application-card ">
+                    <div class="team-member-profile">
+                      <% if proposal.developer.avatar? %>
+                        <%= cl_image_tag proposal.developer.avatar, class: "user-avatar-xs black-n-white" %>
+                      <% else %>
+                        <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-xs black-n-white"%>
+                      <% end %>
+                      <p><%=proposal.developer.first_name %></p>
+                      <%= link_to "", developer_path(proposal.developer), class: "clickable" %>
+                    </div>
+                    <%= link_to "Accept ", accept_proposal_path(proposal: proposal), method: :post, class: 'btn btn-success' %>
+                    <%= link_to "Reject", reject_proposal_path(proposal: proposal), method: :post, class: 'btn  btn-reset' %>
                   </div>
-                  <%= link_to "Accept ", accept_proposal_path(proposal: proposal), method: :post, class: 'btn btn-success' %>
-                  <%= link_to "Reject", reject_proposal_path(proposal: proposal), method: :post, class: 'btn  btn-reset' %>
-                </div>
+                <% end %>
               <% end %>
             <% end %>
           </div>
-
         </div>
       </div>
     </div>
