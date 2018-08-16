@@ -32,7 +32,7 @@
 
 .skill-choice {
   margin: 5px;
-  background: $violet-lighter;
+  border: 2px solid grey;
   padding: 20px;
   border-radius: 5px;
   opacity: .7;
@@ -40,6 +40,7 @@
   text-align: center;
   height: 70px;
   position: relative;
+  min-width: 135px;
   color: $violet;
   &:hover {
     opacity: 1;

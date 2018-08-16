@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   TYPES = ['Rebuild', "New", "Update"]
   CATEGORIES = ["Animals", "Community Development", "Education", "Health", "Environment", "Human Rights"]
   DEADLINES = [15, 30, 60]
-  SKILLS = ["C", "C++", "C#", "Clojure", "CoffeeScript", "CSS", "Go", "Haskell", "Java", "JavaScript", "Lua", "Matlab", "Objective-C", "Peral", "PHP", "Python", "R", "Ruby", "Scala", "Shell", "Swift", "TeX", "Vim script"]
+  SKILLS = ["angularjs", "backbonejs", "bootstrap", "c", "csharp", "css3", "django", "drupal", "git", "gitlab", "heroku", "html5", "java", "javascript", "jquery", "linux", "meteor", "mongodb", "mysql", "nodejs", "php", "python", "rails", "react", "ruby", "swift", "typescript", "vim", "vuejs", "webpack", "wordpress"]
 
   belongs_to :charity
   has_many :members, dependent: :destroy
@@ -14,5 +14,14 @@ class Project < ApplicationRecord
   has_many :proposals
   has_many :posts
   mount_uploader :photo, PhotoUploader
+
+  def next
+    self.class.where("id > ?", id).first
+  end
+
+  def previous
+    self.class.where("id < ?", id).last
+  end
+
 end
 
