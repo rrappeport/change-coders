@@ -7,7 +7,7 @@
   <div class="row">
 
     <div class="col-md-3">
-      <div class="white-box similar-projects">
+      <div class="similar-projects sp-dashboard ">
         <div class="text-center arrows">
           <div class="arrow">
             <% if @project.previous %>
@@ -101,16 +101,15 @@
         <div class = "row">
           <div class ="form-group">
               <% @project.members.each do |member| %>
-            <div class="col-md-4  text-center team-member">
+            <div class="col-md-3  text-center team-member">
               <div class="team-member-profile">
                 <% if member.developer.avatar? %>
-                  <%= cl_image_tag member.developer.avatar, class: "user-avatar-sml" %>
+                  <%= cl_image_tag member.developer.avatar, class: "user-avatar-xs" %>
                 <% else %>
-                  <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-sml"%>
+                  <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-xs"%>
                 <% end %>
                 <div class = "team-member-info">
                   <p><%= member.developer.first_name %> <%= member.developer.last_name %></p>
-                  <p><%= member.developer.email %></p>
                   <% if @project.leader_id == member.developer.id %>
                     <h4> LEADER </h4>
                   <% end %>
@@ -135,12 +134,12 @@
           <div class ="form-group">
             <% @proposals.each do |proposal| %>
               <% if proposal.state.downcase == "pending" &&  policy(proposal).accept? %>
-                <div class="col-md-4 text-center application-card ">
+                <div class="col-md-3 text-center application-card ">
                   <div class="team-member-profile">
                     <% if proposal.developer.avatar? %>
-                      <%= cl_image_tag proposal.developer.avatar, class: "user-avatar-sml black-n-white" %>
+                      <%= cl_image_tag proposal.developer.avatar, class: "user-avatar-xs black-n-white" %>
                     <% else %>
-                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-sml black-n-white"%>
+                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-xs black-n-white"%>
                     <% end %>
                     <p><%=proposal.developer.first_name %></p>
                     <%= link_to "", developer_path(proposal.developer), class: "clickable" %>
