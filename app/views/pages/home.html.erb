@@ -1,5 +1,5 @@
 <div id="home-banner" class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%), url('https://res.cloudinary.com/deoafyurg/image/upload/v1534325192/StockSnap_CKCUPJTGTL.jpg');">
- <div class="banner-content text-center">
+ <div class="banner-content text-center" data-aos="zoom-out" data-aos-duration="2000" data-aos-easing="ease-in-out">
   <h1>Change Coders</h1>
    <h3>Get coding experience by working on projects for nonprofits!</h3>
 <!--    <%= form_for(:project, :url => {:controller => "projects",:action => "index"}, :html => {:method => :get}) do %>
@@ -17,17 +17,17 @@
 <div class="wrapper bg-light-grey">
   <div id="home-about" class="container homepage">
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-8" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-out">
         <h2>Code to make a difference</h2>
         <h4>Are you a new or experienced coder looking to build your portfolio? Sign up on Change Coders today to start working with charities and non-profit organizations to improve their websites while expanding your own coding skills! </h4>
         <h4>It's free to sign up and volunteer to help causes you feel passionately about. Choose from many different charitable organizations and help local communities, human rights, animal activists, and more! </h4>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4" data-aos="fade-left" data-aos-duration="1000" data-aos-easing="ease-in-out">
         <%= image_tag "https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cbbd27149a8243a42eb2bd0bd918ba8f&auto=format&fit=crop&w=1050&q=80", class:'image', width: 500 %>
       </div>
     </div>
   </div>
-  <div class="text-center signup-button">
+  <div class="text-center signup-button" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-in-out">
      <%= link_to "Sign Up Today!", projects_path, class: "btn btn-homepage" %>
     </div>
 </div>
@@ -36,19 +36,19 @@
     <h2>Our values</h2>
     <h4>What matters to us</h4>
     <br>
-    <div class="row">
+    <div class="row" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-out">
       <div class="col-sm-4">
-        <span class="glyphicon glyphicon-globe roll-in-left"></span>
+        <span class="glyphicon glyphicon-globe"></span>
         <h4>INCLUSIVE</h4>
         <p class="dark-text">We are open to ALL developers who want to improve their skills, regardless of experience or location!</p>
       </div>
       <div class="col-sm-4">
-        <span class="glyphicon glyphicon-heart roll-in-left"></span>
+        <span class="glyphicon glyphicon-heart"></span>
         <h4>GIVE BACK</h4>
         <p class="dark-text">Pick which charities you want to partner with from our large list of partner organizations.</p>
       </div>
       <div class="col-sm-4">
-        <span class="glyphicon glyphicon-certificate roll-in-left"></span>
+        <span class="glyphicon glyphicon-certificate"></span>
         <h4>COLLABORATE</h4>
         <p class="dark-text">Meet and work with other developers from all over the world, or work on projects by yourself. The choice is yours!</p>
       </div>
