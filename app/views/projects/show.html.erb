@@ -44,7 +44,7 @@
         <div class="col-md-12">
           <div class="project-show-box white-box">
             <h2 class=""><%= @project.name %></h2>
-
+              <div class="row">
               <div class="col-md-3">
                 <div class="project-show-logo">
                   <% if @project.charity.logo.model[:logo] %>
@@ -73,6 +73,7 @@
                     Apply
                   </button>
                 <%# end %>
+              </div>
               </div>
           </div>
         </div>
