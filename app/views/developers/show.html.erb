@@ -10,7 +10,7 @@
       <div class="col-md-4">
       </div>
         <div class="col-md-8">
-          <h2> <%= @developer.first_name %> <%= @developer.last_name %></h2>
+          <h3> <%= @developer.first_name %> <%= @developer.last_name %></h3>
         </div>
       <div class = "row" >
         <div class="col-md-4 user-photo">
@@ -43,9 +43,9 @@
   </div>
 
   <div class="col-md-12">
-    <div class="project-info white-box text-center">
+    <div class="project-info white-box">
       <div>
-        <h2> <%= @developer.first_name %>'s Experience </h2>
+        <h3> <%= @developer.first_name %>'s Experience </h3>
         <h4 class= "project-h4 show-content"><%= @developer.experience %></h4>
       </div>
     </div>
@@ -53,8 +53,8 @@
 
 
   <div class="col-md-12">
-    <div class="project-info white-box text-center">
-      <h2> <%= @developer.first_name %>'s projects </h2>
+    <div class="project-info white-box">
+      <h3> <%= @developer.first_name %>'s projects </h3>
       <div class="row">
         <div class="form-group">
           <% @projects.each do |project| %>
@@ -72,7 +72,7 @@
 
   <div class="col-md-12">
     <div class="project-info white-box">
-      <h2>  <%= @developer.first_name %>'s skills </h2>
+      <h3>  <%= @developer.first_name %>'s skills </h3>
       <div class="skill-display">
         <% @developer.skills.each do |skill| %>
           <div class = "text-center">
