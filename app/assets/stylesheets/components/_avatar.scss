@@ -14,6 +14,14 @@
   border: 5px solid $green-lighter;
 }
 
+.user-avatar-xs{
+  object-fit: cover;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 5px solid $green-lighter;
+}
+
 .avatar {
   background-size: cover;
 }

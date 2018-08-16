@@ -65,6 +65,8 @@ class ProjectsController < ApplicationController
         lng: @charity.longitude#,
         # infoWindow: { content: render_to_string(partial: "/carities/map_box", locals: { charity: charity }) }
       }]
+    @charity_id = Charity.where(category: @charity.category).pluck(:id)
+    @similar_projects = Project.where(charity_id: @charity_id)
   end
 
   def edit
@@ -103,7 +105,6 @@ class ProjectsController < ApplicationController
   end
 
   def dashboard
-    @charities = Charity.all
     @project = Project.find(params[:project_id])
     # authorize @project
     @proposals = @project.proposals
@@ -111,6 +112,8 @@ class ProjectsController < ApplicationController
     @charity = @project.charity
     @skills = @project.project_skills
     @posts = Post.all
+    @charity_id = Charity.where(category: @charity.category).pluck(:id)
+    @similar_projects = Project.where(charity_id: @charity_id)
   end
 
   private
