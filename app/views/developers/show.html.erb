@@ -16,7 +16,7 @@
         <div class="col-md-4 user-photo">
           <% if @developer.avatar? %>
             <div class = "user-avatar"
-            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+            style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)),
            url('<%= cl_image_path @developer.avatar %>')"></div>
           <% else %>
             <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar"%>
@@ -25,29 +25,31 @@
             <div class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star off"></i></div>
           </div>
           <a href="#" class="btn btn-reset btn-top-margin" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Get in touch</a>
+        <div class="contact-links contact-links-show ">
+          <a href="#"><i class="far fa-envelope"></i> </a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
         </div>
         <div class="col-md-8">
-          <div class = "border-spaced">
-            <h4><%= @developer.email %></h4>
-          </div>
-          <div class = "border-spaced">
-            <h4>Description: <%= @developer.description %></h4>
-          </div>
-          <div class = "border-spaced">
-            <h4>Experience: <%= @developer.experience %></h4>
-          </div>
-          <div class = "border-spaced">
-            <h4>Linkedin_username: <%= @developer.linkedin_username %></h4>
-          </div>
-          <div class = "border-spaced-bottom">
-            <h4>Github_username: <%= @developer.github_username %></h4>
+          <div>
+            <h4 class= "project-h4" > <strong> Bio </strong></h4>
+            <h4 class= "project-h4"><%= @developer.description %></h4>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-
+  <div class="col-md-12">
+    <div class="project-info white-box text-center">
+      <div>
+        <h2> <%= @developer.first_name %>'s Experience </h2>
+        <h4 class= "project-h4"><%= @developer.experience %></h4>
+      </div>
+    </div>
+  </div>
 
 
   <div class="col-md-12">
