@@ -56,7 +56,125 @@ Charity.destroy_all
 
 
 
+puts "creating developers"
+url = "https://avatars2.githubusercontent.com/u/23458442?s=460&v=4"
+developer = Developer.new(
+  first_name: "Rui",
+  last_name: "Freitas",
+  email: "dinnerpartysaboteur@gmail.com",
+  password: 'topsecret',
+  password_confirmation: 'topsecret',
+  birth_date: "1/12/1988",
+  description: "I love creating and building products and I am open to participate in new ideas as a developer and/or business side or join the development team of an ongoing project/product. My professional and academic path has been somewhat unorthodox. I have plenty of sales experience and am a creative and proactive sales expert with a keen business sense and focused on innovation and streamlining processes.",
+  experience: "As a web developer, I am both involved in the frontend and backend programming. I've worked and managed multicultural sales teams in various sectors and my leadership style is set on three main pillars: participation/empowerment, coaching/training and motivation/inspiration. I am also an accomplished legal translator and digital photographer, and I'm an avid traveller and adventurer with a passion for technology and entrepreneurship.",
+  github_username: "rodloboz",
+  linkedin_username: "freitasrui",
+  address: "Lisbon, Portugal"
+  )
+  developer.remote_avatar_url = url
+  developer.save!
 
+  url = "https://avatars1.githubusercontent.com/u/28883927?s=460&v=4"
+developer = Developer.new(
+  first_name: "Dirk",
+  last_name: "Schuler",
+  email: "dscbdv@gmail.com",
+  password: 'topsecret',
+  password_confirmation: 'topsecret',
+  birth_date: "11/12/1985",
+  description: "Founder of Le Wagon Bali",
+  experience: "Opening the new HQ of FileHippo in London overseeing sales, marketing and product. Building new sales team and strategy leading to 200% increase of direct partnerships. Introduction of several new revenue streams making the company more profitable and less dependent.",
+  github_username: "dirkschuler",
+  linkedin_username: "dirkschuler",
+  address: "Denpasar, Indonesia"
+  )
+  developer.remote_avatar_url = url
+  developer.save!
+
+url = "https://avatars3.githubusercontent.com/u/33505647?s=460&v=4"
+developer = Developer.new(
+  first_name: "Guido",
+  last_name: "Caldara",
+  email: "guidocaldara@gmail.com",
+  password: 'topsecret',
+  password_confirmation: 'topsecret',
+  birth_date: "5/12/1988",
+  description: "Teacher at Le Wagon",
+  experience: "Attended Le Wagon Bali (Batch # 128). 9-week intensive coding bootcamp learning HTML, CSS, Bootstrap, JavaScript ES2015, SQL, git, GitHub, Heroku and Ruby on Rails. Designed, Implemented and Shipped to production a clone of AirBnB and a Rails prototype of run-db.com.",
+  github_username: "GuidoCaldara",
+  linkedin_username: "guido-caldara-12a83ab1",
+  address: "Albino, Lombardy, Italy"
+  )
+  developer.remote_avatar_url = url
+  developer.save!
+
+url = "https://avatars3.githubusercontent.com/u/6523459?s=460&v=4"
+developer = Developer.new(
+  first_name: "Luca",
+  last_name: "Spagnolo",
+  email: "spagnolodesign@gmail.com",
+  password: 'topsecret',
+  password_confirmation: 'topsecret',
+  birth_date: "9/12/1993",
+  description: "I am looking for a way to use what I know to make a difference in society. I am a full-stack developer with 5+ years professional experience specialising in Agile Web Development. With a principal focus on the user interface, I work primarily in JavaScript and Ruby with extensive knowledge of various frameworks and libraries including React, Node.js, Rails. Other technical proficiencies include DevOps.",
+  experience: "My greatest asset is being able to take products from concept stage to MVP (minimum viable product) via the Agile Web Development. I have both agency and freelancing experience ranging from design and development to prototyping, branding, and project management.",
+  github_username: "spagnolodesign",
+  linkedin_username: "spagnolodesign",
+  address: "Milan, Italy"
+  )
+  developer.remote_avatar_url = url
+  developer.save!
+
+  url = "https://avatars1.githubusercontent.com/u/19226636?s=460&v=4"
+developer = Developer.new(
+  first_name: "Juliette",
+  last_name: "Chevalier",
+  email: "juliettech.1393@gmail.com",
+  password: 'topsecret',
+  password_confirmation: 'topsecret',
+  birth_date: "8/13/2002",
+  description: "Honest, vivid reader, traveler, and extremely curious. Passionate about making the world a better place and optimistic that we can. Special interests include learning languages (programming & human), fighting the impacts of environmental degradation, and the infinite possibilities of technology in making public services more efficient and transparent. Believer in the immense power of empowering others and in words and technology as indispensable tools for global progress.",
+  experience: "Assisting on Introduction to Ruby, Object Oriented Programming, Databases, HTML, CSS, JavaScript, Ruby on Rails, Airbnb-clone week and Project modules in Berlin, Tel Aviv, and Bali.",
+  github_username: "juliettech13",
+  linkedin_username: "juliette-chevalier",
+  address: "Berlin, Germany"
+  )
+  developer.remote_avatar_url = url
+  developer.save!
+
+    url = "https://avatars0.githubusercontent.com/u/16646041?s=460&v=4"
+developer = Developer.new(
+  first_name: "Matthijs",
+  last_name: "Kolkmanr",
+  email: "matthijskolkman@gmail.com",
+  password: 'topsecret',
+  password_confirmation: 'topsecret',
+  birth_date: "3/13/1992",
+  description: "Working as a TA/Teacher internationally to help Le Wagon Bootcamp students learn Ruby on Rails in under 9 weeks. Course exists of learning hard and soft-skills regarding web development, where you can think of writing programs in Ruby, building web pages with HTML and (S)CSS, but also collaborating with a team using Git.",
+  experience: "Worked for various companies, ranging from small to large: ABN Amro, Boothurenamsterdam.com, Growth Tribe, Le Wagon, V@Amsterdam and private businesses",
+  github_username: "Matonias",
+  linkedin_username: "matthijskolkman",
+  address: "Amsterdam, Netherlands"
+  )
+  developer.remote_avatar_url = url
+  developer.save!
+
+  url = "https://media.licdn.com/dms/image/C4E03AQFL8aVPo9DncQ/profile-displayphoto-shrink_800_800/0?e=1539820800&v=beta&t=VWK9FzXg9RpGrE3cJpAwefbSY4RCdtRDEqs5oX8a9q8"
+developer = Developer.new(
+  first_name: "Sonia",
+  last_name: "Montero",
+  email: "monterosonia@gmail.com",
+  password: 'topsecret',
+  password_confirmation: 'topsecret',
+  birth_date: "9/22/1994",
+  description: "Teaching students how to build awesome products in Bali at Le Wagon intensive full stack developer coding bootcamp.",
+  experience: "Stack: Ruby, RubyOnRails, JavaScript (Vanilla, JQuery, Ajax), HTML, CSS, Bootstrap, GitHub & Heroku. Soft skills: Design (Sketch), Software Engineering, Web Project Development",
+  github_username: "monterosonia",
+  linkedin_username: "monterosonia",
+  address: "Paris, France"
+  )
+  developer.remote_avatar_url = url
+  developer.save!
 
   puts "creating new charity"
 
@@ -90,6 +208,18 @@ charity.save
   project.remote_photo_url = url
   project.save!
 
+    member = Member.new(
+      developer: Developer.find_by(first_name: "Rui"),
+      project: Project.last
+    )
+    member.save!
+
+    member1 = Member.new(
+      developer: Developer.find_by(first_name: "Guido"),
+      project: Project.last
+    )
+    member1.save!
+
   #balireptiles
   url =  "https://res.cloudinary.com/dlqzyuzhd/image/upload/v1534395445/bali-reptiles.jpg"
 charity = Charity.new(
@@ -120,6 +250,24 @@ url = "https://res.cloudinary.com/dlqzyuzhd/image/upload/v1534399647/bali-reptil
   )
   project.remote_photo_url = url
   project.save!
+
+      member = Member.new(
+      developer: Developer.find_by(first_name: "Juliette"),
+      project: Project.last
+    )
+    member.save!
+
+    member_2 = Member.new(
+      developer: Developer.find_by(first_name: "Dirk"),
+      project: Project.last
+    )
+    member_2.save!
+
+    member_3 = Member.new(
+      developer: Developer.find_by(first_name: "Luca"),
+      project: Project.last
+    )
+    member_3.save!
 
   # http://www.africaorganics.org/
 url = "https://res.cloudinary.com/dlqzyuzhd/image/upload/v1534400455/organics-logo.png"
@@ -421,124 +569,7 @@ url = "https://res.cloudinary.com/dlqzyuzhd/image/upload/v1534400067/organics.pn
   project.save!
 
 
-url = "https://avatars2.githubusercontent.com/u/23458442?s=460&v=4"
-developer = Developer.new(
-  first_name: "Rui",
-  last_name: "Freitas",
-  email: "dinnerpartysaboteur@gmail.com",
-  password: 'topsecret',
-  password_confirmation: 'topsecret',
-  birth_date: "1/12/1988",
-  description: "I love creating and building products and I am open to participate in new ideas as a developer and/or business side or join the development team of an ongoing project/product. My professional and academic path has been somewhat unorthodox. I have plenty of sales experience and am a creative and proactive sales expert with a keen business sense and focused on innovation and streamlining processes.",
-  experience: "As a web developer, I am both involved in the frontend and backend programming. I've worked and managed multicultural sales teams in various sectors and my leadership style is set on three main pillars: participation/empowerment, coaching/training and motivation/inspiration. I am also an accomplished legal translator and digital photographer, and I'm an avid traveller and adventurer with a passion for technology and entrepreneurship.",
-  github_username: "rodloboz",
-  linkedin_username: "freitasrui",
-  address: "Lisbon, Portugal"
-  )
-  developer.remote_avatar_url = url
-  developer.save!
 
-  url = "https://avatars1.githubusercontent.com/u/28883927?s=460&v=4"
-developer = Developer.new(
-  first_name: "Dirk",
-  last_name: "Schuler",
-  email: "dscbdv@gmail.com",
-  password: 'topsecret',
-  password_confirmation: 'topsecret',
-  birth_date: "11/12/1985",
-  description: "Founder of Le Wagon Bali",
-  experience: "Opening the new HQ of FileHippo in London overseeing sales, marketing and product. Building new sales team and strategy leading to 200% increase of direct partnerships. Introduction of several new revenue streams making the company more profitable and less dependent.",
-  github_username: "dirkschuler",
-  linkedin_username: "dirkschuler",
-  address: "Denpasar, Indonesia"
-  )
-  developer.remote_avatar_url = url
-  developer.save!
-
-url = "https://avatars3.githubusercontent.com/u/33505647?s=460&v=4"
-developer = Developer.new(
-  first_name: "Guido",
-  last_name: "Caldara",
-  email: "guidocaldara@gmail.com",
-  password: 'topsecret',
-  password_confirmation: 'topsecret',
-  birth_date: "5/12/1988",
-  description: "Teacher at Le Wagon",
-  experience: "Attended Le Wagon Bali (Batch # 128). 9-week intensive coding bootcamp learning HTML, CSS, Bootstrap, JavaScript ES2015, SQL, git, GitHub, Heroku and Ruby on Rails. Designed, Implemented and Shipped to production a clone of AirBnB and a Rails prototype of run-db.com.",
-  github_username: "GuidoCaldara",
-  linkedin_username: "guido-caldara-12a83ab1",
-  address: "Albino, Lombardy, Italy"
-  )
-  developer.remote_avatar_url = url
-  developer.save!
-
-url = "https://avatars3.githubusercontent.com/u/6523459?s=460&v=4"
-developer = Developer.new(
-  first_name: "Luca",
-  last_name: "Spagnolo",
-  email: "spagnolodesign@gmail.com",
-  password: 'topsecret',
-  password_confirmation: 'topsecret',
-  birth_date: "9/12/1993",
-  description: "I am looking for a way to use what I know to make a difference in society. I am a full-stack developer with 5+ years professional experience specialising in Agile Web Development. With a principal focus on the user interface, I work primarily in JavaScript and Ruby with extensive knowledge of various frameworks and libraries including React, Node.js, Rails. Other technical proficiencies include DevOps.",
-  experience: "My greatest asset is being able to take products from concept stage to MVP (minimum viable product) via the Agile Web Development. I have both agency and freelancing experience ranging from design and development to prototyping, branding, and project management.",
-  github_username: "spagnolodesign",
-  linkedin_username: "spagnolodesign",
-  address: "Milan, Italy"
-  )
-  developer.remote_avatar_url = url
-  developer.save!
-
-  url = "https://avatars1.githubusercontent.com/u/19226636?s=460&v=4"
-developer = Developer.new(
-  first_name: "Juliette",
-  last_name: "Chevalier",
-  email: "juliettech.1393@gmail.com",
-  password: 'topsecret',
-  password_confirmation: 'topsecret',
-  birth_date: "8/13/2002",
-  description: "Honest, vivid reader, traveler, and extremely curious. Passionate about making the world a better place and optimistic that we can. Special interests include learning languages (programming & human), fighting the impacts of environmental degradation, and the infinite possibilities of technology in making public services more efficient and transparent. Believer in the immense power of empowering others and in words and technology as indispensable tools for global progress.",
-  experience: "Assisting on Introduction to Ruby, Object Oriented Programming, Databases, HTML, CSS, JavaScript, Ruby on Rails, Airbnb-clone week and Project modules in Berlin, Tel Aviv, and Bali.",
-  github_username: "juliettech13",
-  linkedin_username: "juliette-chevalier",
-  address: "Berlin, Germany"
-  )
-  developer.remote_avatar_url = url
-  developer.save!
-
-    url = "https://avatars0.githubusercontent.com/u/16646041?s=460&v=4"
-developer = Developer.new(
-  first_name: "Matthijs",
-  last_name: "Kolkmanr",
-  email: "matthijskolkman@gmail.com",
-  password: 'topsecret',
-  password_confirmation: 'topsecret',
-  birth_date: "3/13/1992",
-  description: "Working as a TA/Teacher internationally to help Le Wagon Bootcamp students learn Ruby on Rails in under 9 weeks. Course exists of learning hard and soft-skills regarding web development, where you can think of writing programs in Ruby, building web pages with HTML and (S)CSS, but also collaborating with a team using Git.",
-  experience: "Worked for various companies, ranging from small to large: ABN Amro, Boothurenamsterdam.com, Growth Tribe, Le Wagon, V@Amsterdam and private businesses",
-  github_username: "Matonias",
-  linkedin_username: "matthijskolkman",
-  address: "Amsterdam, Netherlands"
-  )
-  developer.remote_avatar_url = url
-  developer.save!
-
-  url = "https://media.licdn.com/dms/image/C4E03AQFL8aVPo9DncQ/profile-displayphoto-shrink_800_800/0?e=1539820800&v=beta&t=VWK9FzXg9RpGrE3cJpAwefbSY4RCdtRDEqs5oX8a9q8"
-developer = Developer.new(
-  first_name: "Sonia",
-  last_name: "Montero",
-  email: "monterosonia@gmail.com",
-  password: 'topsecret',
-  password_confirmation: 'topsecret',
-  birth_date: "9/22/1994",
-  description: "Teaching students how to build awesome products in Bali at Le Wagon intensive full stack developer coding bootcamp.",
-  experience: "Stack: Ruby, RubyOnRails, JavaScript (Vanilla, JQuery, Ajax), HTML, CSS, Bootstrap, GitHub & Heroku. Soft skills: Design (Sketch), Software Engineering, Web Project Development",
-  github_username: "monterosonia",
-  linkedin_username: "monterosonia",
-  address: "Paris, France"
-  )
-  developer.remote_avatar_url = url
-  developer.save!
 
 # developer = Developer.new(
 #   first_name: NAME.sample,
@@ -559,14 +590,14 @@ developer = Developer.new(
 
 
 
-puts "creating new members"
-  2.times do
-    member = Member.new(
-      developer: Developer.all.sample,
-      project: Project.all.sample,
-    )
-    member.save!
-  end
+# puts "creating new members"
+#   20.times do
+#     member = Member.new(
+#       developer: Developer.all.sample,
+#       project: Project.all.sample,
+#     )
+#     member.save!
+#   end
 
 
 puts "creating new proposal"
