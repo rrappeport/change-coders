@@ -221,8 +221,7 @@
         <h4 class="modal-title" id="myModalLabel">Choose skills</h4>
       </div>
       <div class="modal-body">
-
-        <%= simple_form_for(@project) do |f| %>
+        <%= simple_form_for ([@project,ProjectSkill.new])  do |f| %>
           <div class="form-group">
             <label class="control-label check_boxes optional">
                 <h1>Skills</h1>

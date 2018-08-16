@@ -28,7 +28,7 @@
       </div>
       <% if @charity.logo? %>
         <div class = "user-avatar absolute" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-            url('<%= cl_image_path @developer.avatar %>')"></div>
+            url('<%= cl_image_path @charity.logo %>')"></div>
       <% else %>
         <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar absolute"%>
       <% end %>

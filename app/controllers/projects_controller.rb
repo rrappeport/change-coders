@@ -75,9 +75,9 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     authorize @project
-    params[:project][:skill_ids].reject(&:empty?).each do |skill_id|
-      @project.skills << Skill.find(skill_id)
-    end
+    # params[:project][:skill_ids].reject(&:empty?).each do |skill_id|
+    #   @project.skills << Skill.find(skill_id)
+    # end
     if @project.update(project_params)
       redirect_to projects_dashboard_path(@project)
     else
