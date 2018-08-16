@@ -132,6 +132,39 @@
     </div>
 
     <div class="col-md-12">
+      <div class="team-info white-box">
+        <h3 class = "text-center">Team Members: </h3>
+        <div class = "row">
+          <div class ="form-group">
+            <% if @project.members.size == 0 %>
+              <h4 class = "text-center">No developers working on this project yet</h4>
+            <% else %>
+              <% @project.members.each do |member| %>
+                <div class="col-md-3  text-center team-member">
+                  <div class="team-member-profile">
+                    <% if member.developer.avatar? %>
+                      <%= cl_image_tag member.developer.avatar, class: "user-avatar-xs" %>
+                    <% else %>
+                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-xs"%>
+                    <% end %>
+                    <div class = "team-member-info">
+                      <p><%= member.developer.first_name %> <%= member.developer.last_name %></p>
+                      <% if @project.leader_id == member.developer.id %>
+                        <h4> LEADER </h4>
+                      <% end %>
+                    </div>
+                    <%= link_to "", developer_path(member.developer), class: "clickable" %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-12">
       <div id="map" data-markers=<%= @markers.to_json %>> Here the map</div>
     </div>
 
