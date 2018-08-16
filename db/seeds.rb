@@ -214,11 +214,17 @@ charity.save
     )
     member.save!
 
-    member1 = Member.new(
+    member2 = Member.new(
       developer: Developer.find_by(first_name: "Guido"),
       project: Project.last
     )
-    member1.save!
+    member2.save!
+
+    member3 = Member.new(
+      developer: Developer.find_by(first_name: "Matthijs"),
+      project: Project.last
+    )
+    member3.save!
 
   #balireptiles
   url =  "https://res.cloudinary.com/dlqzyuzhd/image/upload/v1534395445/bali-reptiles.jpg"
