@@ -21,3 +21,4 @@ initMap();
 initSkillChoice();
 subscribeForm();
 initFilters();
+initShowMore();
