@@ -111,12 +111,12 @@
               <h4 class = "text-center">No developers working on this project yet</h4>
             <% else %>
               <% @project.members.each do |member| %>
-                <div class="col-md-3  text-center team-member">
+                <div class="col-md-4  text-center team-member">
                   <div class="team-member-profile">
                     <% if member.developer.avatar? %>
-                      <%= cl_image_tag member.developer.avatar, class: "user-avatar-xs" %>
+                      <%= cl_image_tag member.developer.avatar, class: "user-avatar" %>
                     <% else %>
-                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-xs"%>
+                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar"%>
                     <% end %>
                     <div class = "team-member-info">
                       <p><%= member.developer.first_name %> <%= member.developer.last_name %></p>
