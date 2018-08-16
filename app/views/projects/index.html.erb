@@ -60,7 +60,7 @@
       <div class="filter-container hidden-options">
         <% Project::SKILLS.each do |skill| %>
           <div class= "skills-search">
-            <%= check_box_tag "skill", skill %> <%= skill %>
+            <%= check_box_tag "skill", skill %> <%= skill.capitalize %>
           </div>
         <% end %>
       </div>
