@@ -151,13 +151,14 @@
   }
 }
 
-.similar-projects {
+.similar-projects-dashboard {
     background: #fff;
     border: 1px solid #ddd;
     width: 100%;
     padding: 20px 40px;
     margin: 10px 0;
     text-align: center;
+    height: calc(100% - 40px);
   a {
     color: black;
     text-decoration: none;
@@ -169,8 +170,12 @@
     font-weight: bold;
   }
 
+.similar-project-links {
+  padding-top: 15px;
+}
+
 .sp-dashboard {
-  height: 820px;
+  height: 995px;
 }
 
 .arrows {

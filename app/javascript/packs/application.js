@@ -10,7 +10,9 @@ initUpdateNavbarOnScroll();
 import { autocomplete } from 'components/autocomplete';
 import { initSkillChoice } from 'components/skill_choice';
 import { subscribeForm } from 'components/footer';
-import { initFilters } from 'components/filters';
+
+import { initFilters, initShowMore } from 'components/filters';
+
 import { initLightbox } from 'components/lightbox';
 // [...]
 initLightbox();
@@ -19,3 +21,4 @@ initMap();
 initSkillChoice();
 subscribeForm();
 initFilters();
+initShowMore();
