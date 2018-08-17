@@ -5,7 +5,7 @@
   border-radius: 5px;
   h2 {
     color: #666666;
-    margin-bottom: 50px;
+    padding-bottom: 15px;
   }
   h1 {
     text-align: center;
@@ -25,9 +25,10 @@
 // Checkboxes design
 .skill-choices {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   margin: 20px 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .skill-choice {
@@ -53,7 +54,7 @@
     cursor: pointer;
   }
   &.active {
-  background: $violet;
+  background: $green-lighter;
   color: white;
   opacity: 1;
   }
