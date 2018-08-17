@@ -8,7 +8,7 @@
   <div class="row row-eq-height project-show-conatiner">
 
     <div class="col-md-3">
-      <div class="similar-projects sp-show">
+      <div class="similar-projects">
         <div class="text-center arrows">
           <div class="arrow">
             <% if @project.previous %>
@@ -44,7 +44,7 @@
         <div class="col-md-12">
           <div class="project-show-box white-box">
             <h2 class=""><%= @project.name %></h2>
-            <div class="row">
+              <div class="row">
               <div class="col-md-3">
                 <div class="project-show-logo">
                   <% if @project.charity.logo.model[:logo] %>
@@ -74,7 +74,7 @@
                   </button>
                 <%# end %>
               </div>
-            </div>
+              </div>
           </div>
         </div>
 

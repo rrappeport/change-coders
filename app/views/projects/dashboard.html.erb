@@ -4,10 +4,10 @@
 </figure>
 
 <div class="container">
-  <div class="row">
 
+  <div class="row row-eq-height project-show-conatiner">
     <div class="col-md-3">
-      <div class="similar-projects sp-dashboard ">
+      <div class="similar-projects-dashboard">
         <div class="text-center arrows">
           <div class="arrow">
             <% if @project.previous %>
@@ -39,62 +39,66 @@
     </div>
 
     <div class="col-md-9">
-      <div class="project-info-dahsboard white-box">
-        <div class="col-md-9 pr-title">
-          <h3><%= @project.name %></h3>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <p class= "pr-sml-title">Project details:</p>
-            <p> <%= @project.details %></p>
-            <p class= "pr-sml-title">Type of project: </p>
-            <p><%= @project.work_type %></p>
-          </div>
-        </div>
-        <div class = "days-left">
-          <p><%= @project.status  %></p>
-          <p> <%= (@project.deadline - Date.today).to_i %> days left</p>
-        </div>
-        <div class="skill-display">
-          <% @skills.each do |project_skill| %>
-            <div class = "text-center">
-              <div class="skill-choice"><i class="devicon-<%= project_skill.skill.name %>-plain colored"></i>  <%= project_skill.skill.name %>
-              </div>
-              <%# if policy(project_skill).destroy? %>
-                <%= link_to "Remove", project_project_skill_path(@project, project_skill),class: "remove", method: :delete %>
-              <% #end %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="project-info-dahsboard white-box">
+            <div class="col-md-9 pr-title">
+              <h3><%= @project.name %></h3>
             </div>
-          <% end %>
-        </div>
-        <button type="button" class="btn btn-success display-right" data-toggle="modal" data-target="#myModal">
-          Add more skills
-        </button>
-      </div>
-    </div>
-
-
-    <div class="col-md-9">
-      <div class="charity-info-dashboard white-box ">
-        <div class="row">
-          <div class = "col-md-4">
-            <div class="charity-logo-center">
-              <% if @project.charity.logo? %>
-                <%= cl_image_tag @project.charity.logo, class: "user-avatar-sml" %>
-              <% else %>
-                <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjFbGzCB7sAeKl1FMboHXQiDZ3KSd7G5CPmNOZ_EGBLY3fzTOjxQ", width: 300%>
+            <div class="row">
+              <div class="col-md-12">
+                <p class= "pr-sml-title">Project details:</p>
+                <p> <%= @project.details %></p>
+                <p class= "pr-sml-title">Type of project: </p>
+                <p><%= @project.work_type %></p>
+              </div>
+            </div>
+            <div class = "days-left">
+              <p><%= @project.status  %></p>
+              <p> <%= (@project.deadline - Date.today).to_i %> days left</p>
+            </div>
+            <div class="skill-display">
+              <% @skills.each do |project_skill| %>
+                <div class = "text-center">
+                  <div class="skill-choice"><i class="devicon-<%= project_skill.skill.name %>-plain colored"></i>  <%= project_skill.skill.name %>
+                  </div>
+                  <%# if policy(project_skill).destroy? %>
+                    <%= link_to "Remove", project_project_skill_path(@project, project_skill),class: "remove", method: :delete %>
+                  <% #end %>
+                </div>
               <% end %>
             </div>
-          </div>
-          <div class = "col-md-8 text-right">
-            <h3><%= @charity.name %></h3>
-            <h4><%= @project.charity.category %></h4>
-            <p><%= @project.charity.address %></p>
-            <p><%= @project.charity.email %></p>
-            <p><%= @project.charity.website %></p>
+            <button type="button" class="btn btn-success display-right" data-toggle="modal" data-target="#myModal">
+              Add more skills
+            </button>
           </div>
         </div>
+
+
+        <div class="col-md-12">
+          <div class="charity-info-dashboard white-box ">
+            <div class="row">
+              <div class = "col-md-4">
+                <div class="charity-logo-center">
+                  <% if @project.charity.logo? %>
+                    <%= cl_image_tag @project.charity.logo, class: "user-avatar-sml" %>
+                  <% else %>
+                    <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjFbGzCB7sAeKl1FMboHXQiDZ3KSd7G5CPmNOZ_EGBLY3fzTOjxQ", width: 300%>
+                  <% end %>
+                </div>
+              </div>
+              <div class = "col-md-8 text-right">
+                <h3><%= @charity.name %></h3>
+                <h4><%= @project.charity.category %></h4>
+                <p><%= @project.charity.address %></p>
+                <p><%= @project.charity.email %></p>
+                <p><%= @project.charity.website %></p>
+              </div>
+            </div>
+          </div>
+        </div>`
       </div>
-    </div>`
+    </div>
   </div>
 
   <div class="row">
@@ -107,12 +111,12 @@
               <h4 class = "text-center">No developers working on this project yet</h4>
             <% else %>
               <% @project.members.each do |member| %>
-                <div class="col-md-3  text-center team-member">
+                <div class="col-md-4  text-center team-member">
                   <div class="team-member-profile">
                     <% if member.developer.avatar? %>
-                      <%= cl_image_tag member.developer.avatar, class: "user-avatar-xs" %>
+                      <%= cl_image_tag member.developer.avatar, class: "user-avatar" %>
                     <% else %>
-                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar-xs"%>
+                      <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar"%>
                     <% end %>
                     <div class = "team-member-info">
                       <p><%= member.developer.first_name %> <%= member.developer.last_name %></p>
@@ -129,11 +133,9 @@
               <% end %>
             </div>
           <% end %>
-          </div>
         </div>
       </div>
     </div>
-
 
     <div class="col-md-12">
       <div class="applications-info white-box">

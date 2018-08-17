@@ -80,7 +80,7 @@
 }
 
 .sp-show {
-  height: 490px;
+  height: 760px;
 }
 
 .project-skills {
@@ -151,3 +151,24 @@
   color: $green;
 }
 
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+}
+
+.similar-projects {
+    background: #fff;
+    border: 1px solid #ddd;
+    width: 100%;
+    padding: 20px 40px;
+    margin: 10px 0;
+    text-align: center;
+    height: calc(100% - 20px);
+  a {
+    color: black;
+    text-decoration: none;
+    padding-top: 5px;
+  }
+}
