@@ -8,7 +8,7 @@
   <div class="row row-eq-height project-show-conatiner">
 
 
-    <div class="col-md-9">
+    <div class="col-md-12">
       <div class="row">
         <div class="col-md-12">
           <div class="project-info-dahsboard white-box">
@@ -27,23 +27,30 @@
               <p><%= @project.status  %></p>
               <p> <%= (@project.deadline - Date.today).to_i %> days left</p>
             </div>
-            <div class="skill-display">
-              <% @skills.each do |project_skill| %>
-                <div class = "text-center">
-                  <div class="skill-choice"><i class="devicon-<%= project_skill.skill.name %>-plain colored"></i>  <%= project_skill.skill.name %>
-                  </div>
-                  <%# if policy(project_skill).destroy? %>
-                    <%= link_to "Remove", project_project_skill_path(@project, project_skill),class: "remove", method: :delete %>
-                  <% #end %>
-                </div>
-              <% end %>
-            </div>
-            <button type="button" class="btn btn-success display-right" data-toggle="modal" data-target="#myModal">
-              Add more skills
-            </button>
           </div>
         </div>
 
+        <div class="col-md-12">
+          <div class="skills white-box ">
+            <h3>My skills</h3>
+            <div class="form-group">
+              <div class="skill-display">
+                <% @skills.each do |project_skill| %>
+                  <div  id="<%= project_skill.id %>" class = "text-center">
+                    <div class="skill-choice"><i class="devicon-<%= project_skill.skill.name %>-plain colored"></i>  <%= project_skill.skill.name %>
+                      <div class= "remove-button">
+                         <%= link_to project_project_skill_path(@project, project_skill) ,confirm: "Are you sure?", method: :delete, remote: true do %>
+                           <i class="far fa-times-circle"></i>
+                         <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <i class="fas fa-plus add-skill" data-toggle="modal" data-target="#myModal"></i>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="col-md-12">
           <div class="charity-info-dashboard white-box ">
@@ -67,38 +74,6 @@
             </div>
           </div>
         </div>`
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="similar-projects-dashboard">
-        <div class="text-center arrows">
-          <div class="arrow">
-            <% if @project.previous %>
-              <%= link_to project_path(@project.previous) do %>
-                <i class="fas fa-arrow-left"></i>
-              <% end %>
-              <% end %>
-          </div>
-          <div class="arrow">
-            <%= link_to "All", projects_path %>
-          </div>
-          <div class="arrow">
-            <% if @project.next %>
-              <%= link_to project_path(@project.next) do %>
-                <i class="fas fa-arrow-right"></i>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-
-        <h2> Similar projects</h2>
-        <% @similar_projects.each do |project|%>
-          <% if project != @project %>
-            <%= link_to project.name, project_path(project), class:"mute-75 similar-project-link"%>
-          <% end %>
-          <br>
-        <% end %>
       </div>
     </div>
 

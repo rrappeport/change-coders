@@ -13,7 +13,11 @@ class ProjectSkillsController < ApplicationController
   def destroy
     @project_skill = ProjectSkill.find(params[:id])
     # authorize @project_skill
-    @project_skill.destroy
-    redirect_to projects_dashboard_path(params[:project_id])
+    if @project_skill.destroy
+      respond_to do |format|
+        format.js {}
+        format.html {redirect_to projects_dashboard_path(params[:project_id])}
+      end
+    end
   end
 end

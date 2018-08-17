@@ -179,20 +179,50 @@
     <%# end %>
     </div>
 
+
     <div class="col-md-12">
-      <div class="white-box">
-        <h3 class= "project-h3"> Project Updates </h3>
-        <div class="stat">
-          <div class="stat-content">
+
+      <div class="comments white-box">
+        <h3> Project updates </h3>
+        <ul class="post-list green-background">
+          <% if @posts.count > 0 %>
+            <div class = "border-spaced">
+              <div class = "row">
+                <div class = "col-md-8">
+                  <p>Content</p>
+                </div>
+                <div class = "col-md-2">
+                  <p>Developer</p>
+                </div>
+                <div class = "col-md-2">
+                  <p>Created on</p>
+                </div>
+              </div>
+            </div>
             <% @posts.each do |post| %>
-              <% if post.project == @project %>
-                <li><%= post.content %>  </li>
-              <% end %>
+              <div class = "row">
+                <li class="">
+                  <div class = "border-spaced-bottom">
+                    <div class = "col-md-8">
+                      <%= post.content %>
+                    </div>
+                    <div class = "col-md-2">
+                      <%= post.developer.first_name %>
+                    </div>
+                    <div class = "col-md-2">
+                      <%= post.created_at.strftime("%D %T") %>
+                    </div>
+                  </div>
+                </li>
+              </div>
             <% end %>
-          </div>
-        </div>
+          <% else %>
+            <h4 class = "text-center">No updates yet</h3>
+          <% end %>
+        </ul>
       </div>
     </div>
+
   </div>
 
 

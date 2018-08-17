@@ -17,7 +17,7 @@
   </div>
   </div> -->
 </div>
-<div class="container">
+<div class="container padding-large-bottom  ">
 
 
 
@@ -48,7 +48,7 @@
             <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar"%>
           <% end %>
           <div class = "star-rating">
-            <%= link_to "Go To Profile", developer_path(@developer), class: 'btn btn-reset btn-top-margin'  %>
+            <%= link_to "Preview profile", developer_path(@developer), class: 'btn btn-reset btn-top-margin'  %>
           </div>
         </div>
         <div class="col-md-8 dev-description">
@@ -91,6 +91,7 @@
               </div>
             </div>
           <% end %>
+          <i class="fas fa-plus add-skill" data-toggle="modal" data-target="#myModal"></i>
         </div>
       </div>
     </div>
@@ -114,3 +115,43 @@
   </div>
   </div>
 </div>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Choose skills</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for ([@developer,DeveloperSkill.new])  do |f| %>
+          <div class="form-group">
+            <label class="control-label check_boxes optional">
+                <h1>Skills</h1>
+            </label>
+            <input type="hidden" name="developer[skill_ids][]" value="">
+            <fieldset class="skill-choices">
+              <% Skill.all.each do |skill| %>
+                <div class="skill-choice">
+                  <input type="checkbox" class="checkbox-hidden" value="<%= skill.id%>" name="developer[skill_ids][]" id="developer_skill_ids_<%= skill.id%>" >
+                  <label class="" for="developer_skill_ids<%= skill.id%>">
+                    <%= skill.name %>
+                  </label>
+                </div>
+              <% end %>
+            </fieldset>
+          </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-reset" data-dismiss="modal">Close</button>
+         <%= f.button :submit, "Update", class: "btn btn-success" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+

@@ -8,4 +8,14 @@ class DeveloperSkillsController < ApplicationController
       end
     end
   end
+
+  def create
+    @developer = Developer.find(params[:developer_id])
+    @skill = DeveloperSkill.new(developer: @developer)
+    params[:developer][:skill_ids].reject(&:empty?).each do |skill_id|
+      DeveloperSkill.create(skill_id: skill_id, developer: @developer)
+    end
+      redirect_to developer_dashboard_path
+  end
+
 end

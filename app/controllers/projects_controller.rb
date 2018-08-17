@@ -58,7 +58,7 @@ class ProjectsController < ApplicationController
     authorize @project
     @skills = @project.skills
     @charity = @project.charity
-    @posts = Post.all
+    @posts = @project.posts
     @markers =
       [{
         lat: @charity.latitude,
