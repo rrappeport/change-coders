@@ -1,6 +1,7 @@
 .star-rating {
   padding: 10px;
   margin: 20px 0;
+  margin-bottom: 0;
 }
 .border-spaced {
   padding : 15px;
@@ -18,7 +19,7 @@
 }
 
 .projects-box {
-  padding: 10px;
+  padding: 10px 25px;
   border-radius: 10px;
   margin: 5px;
   width: 300px;
@@ -60,8 +61,16 @@
 
 .remove-button {
     position: absolute;
-    right: 2px;
-    top: 1px;
+    right: -1px;
+    bottom: 28px;
+    opacity: 0.75;
+
+    &:hover {
+      opacity: 1;
+    }
+    a {
+      color: $green-lighter;
+    }
 }
 
 

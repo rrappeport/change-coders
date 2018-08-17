@@ -32,16 +32,22 @@
 
 .skill-choice {
   margin: 5px;
-  border: 2px solid grey;
-  padding: 20px;
+  border: 2px solid #05a58d;
+  padding: 15px 35px;
   border-radius: 5px;
-  opacity: .7;
+  opacity: 0.8;
   flex: 0 0 30%;
   text-align: center;
-  height: 70px;
+  height: 60px;
   position: relative;
   min-width: 135px;
-  color: $violet;
+  color: #5C5C5F;
+  font-size: 20px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
   &:hover {
     opacity: 1;
     cursor: pointer;
@@ -50,6 +56,9 @@
   background: $violet;
   color: white;
   opacity: 1;
+  }
+  i {
+    padding-right: 5px;
   }
 }
 .checkbox-hidden {
