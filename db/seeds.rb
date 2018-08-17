@@ -699,6 +699,7 @@ puts "creating new dev skills"
 end
 
 
+
 puts "creating new project skills"
 5.times do
 Project.all.each do |project|
