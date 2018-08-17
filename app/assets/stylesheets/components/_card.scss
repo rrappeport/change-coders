@@ -20,7 +20,8 @@
     width: 73%;
     padding: 5px;
     border-right: 1px solid $light-gray;
-  }
+}
+
 
   .card-index-content h4 a {
     margin: 15px 0;
@@ -49,6 +50,22 @@
   margin-bottom: 25px;
   position: relative;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  &:hover{
+    background: $green-hover;
+    box-shadow: 2px 2px 5px #05a58d33;
+  }
+}
+
+.card-index-conteiner:hover{
+  background: $green-hover;
+}
+
+.card-hover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .card-index-charity {
