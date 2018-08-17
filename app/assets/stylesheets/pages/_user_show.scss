@@ -24,6 +24,11 @@
   margin: 5px;
   width: 300px;
   background-color: $green-hover;
+  min-height: 300px;
+  }
+
+  .projects-box h3 {
+    min-height: 135px;
   }
 
 .projects-box:hover {

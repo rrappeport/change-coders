@@ -304,6 +304,18 @@ url = "https://res.cloudinary.com/dlqzyuzhd/image/upload/v1534400067/organics.pn
   project.remote_photo_url = url
   project.save!
 
+    member = Member.new(
+      developer: Developer.find_by(first_name: "Rui"),
+      project: Project.last
+    )
+    member.save!
+
+    member2 = Member.new(
+      developer: Developer.find_by(first_name: "Sonia"),
+      project: Project.last
+    )
+    member2.save!
+
   # http://www.alabamapugrescue.org/
 url =  "http://www.alabamapugrescue.org/images/PugBanner.gif"
 charity = Charity.new(
@@ -332,6 +344,18 @@ url = "https://res.cloudinary.com/dlqzyuzhd/image/upload/v1534400067/organics.pn
   )
   project.remote_photo_url = url
   project.save!
+
+    member = Member.new(
+      developer: Developer.find_by(first_name: "Juliette"),
+      project: Project.last
+    )
+    member.save!
+
+    member2 = Member.new(
+      developer: Developer.find_by(first_name: "Guido"),
+      project: Project.last
+    )
+    member2.save!
 
 
 # https://www.eastbalipovertyproject.org/ improve
@@ -364,6 +388,18 @@ url = "https://res.cloudinary.com/dlqzyuzhd/image/upload/v1534400067/organics.pn
   project.remote_photo_url = url
   project.save!
 
+  member = Member.new(
+      developer: Developer.find_by(first_name: "Luca"),
+      project: Project.last
+    )
+    member.save!
+
+    member3 = Member.new(
+      developer: Developer.find_by(first_name: "Matthijs"),
+      project: Project.last
+    )
+    member3.save!
+
 # http://en.mitrabali.com/
 url = "https://pbs.twimg.com/profile_images/2533998284/Mitra_Bali_Logo_SQR.jpg"
 charity = Charity.new(
@@ -392,6 +428,18 @@ url = "https://res.cloudinary.com/dlqzyuzhd/image/upload/v1534400067/organics.pn
   )
   project.remote_photo_url = url
   project.save!
+
+    member = Member.new(
+      developer: Developer.find_by(first_name: "Rui"),
+      project: Project.last
+    )
+    member.save!
+
+    member = Member.new(
+      developer: Developer.find_by(first_name: "Juliette"),
+      project: Project.last
+    )
+    member.save!
 
 
 # http://www.spanglefish.com/adgg/
@@ -423,6 +471,18 @@ url = "https://res.cloudinary.com/dlqzyuzhd/image/upload/v1534400067/organics.pn
   project.remote_photo_url = url
   project.save!
 
+    member_3 = Member.new(
+      developer: Developer.find_by(first_name: "Luca"),
+      project: Project.last
+    )
+    member_3.save!
+
+        member = Member.new(
+      developer: Developer.find_by(first_name: "Dirk"),
+      project: Project.last
+    )
+    member.save!
+
 # https://sites.google.com/site/raidgambia/
 url =  "https://sites.google.com/site/raidgambia/_/rsrc/1472875916306/config/customLogo.gif?revision=6"
 charity = Charity.new(
@@ -452,6 +512,11 @@ url = "https://res.cloudinary.com/dlqzyuzhd/image/upload/v1534400067/organics.pn
   project.remote_photo_url = url
   project.save!
 
+    member3 = Member.new(
+      developer: Developer.find_by(first_name: "Sonia"),
+      project: Project.last
+    )
+    member3.save!
 # http://nsagm.weebly.com/avisu.html
 url = "http://www.gambia-ec.gm/wp-content/uploads/2017/01/EU-supports-the-work-of-NSAs-in-The-Gambia-650x300.jpg"
 charity = Charity.new(
