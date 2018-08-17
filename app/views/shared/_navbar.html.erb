@@ -18,7 +18,7 @@
 
     <% if developer_signed_in? %>
       <div class="navbar-wagon-item navbar-wagon-link">
-        <div class="dropdown display-flex dropdown-toggle" data-toggle="dropdown">
+        <div class="dropdown display-flex">
           <% if current_developer.avatar.file %>
             <div class="avatar dropdown-toggle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path current_developer.avatar %>')" id="navbar-wagon-menu" data-toggle="dropdown"></div>
           <% else %>
