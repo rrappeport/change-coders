@@ -7,37 +7,6 @@
 <div class="container">
   <div class="row row-eq-height project-show-conatiner">
 
-    <div class="col-md-3">
-      <div class="similar-projects">
-        <div class="text-center arrows">
-          <div class="arrow">
-            <% if @project.previous %>
-              <%= link_to project_path(@project.previous) do %>
-                <i class="fas fa-arrow-left"></i>
-              <% end %>
-              <% end %>
-          </div>
-          <div class="arrow">
-            <%= link_to "All", projects_path %>
-          </div>
-          <div class="arrow">
-            <% if @project.next %>
-              <%= link_to project_path(@project.next) do %>
-                <i class="fas fa-arrow-right"></i>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-
-        <h2> Similar projects</h2>
-        <% @similar_projects.each do |project|%>
-          <% if project != @project %>
-            <%= link_to project.name, project_path(project), class:"mute-75 similar-project-link"%>
-          <% end %>
-          <br>
-        <% end %>
-      </div>
-    </div>
 
     <div class="col-md-9">
       <div class="row">
@@ -99,6 +68,39 @@
         </div>
       </div>
     </div>
+
+    <div class="col-md-3">
+      <div class="similar-projects">
+        <div class="text-center arrows">
+          <div class="arrow">
+            <% if @project.previous %>
+              <%= link_to project_path(@project.previous) do %>
+                <i class="fas fa-arrow-left"></i>
+              <% end %>
+              <% end %>
+          </div>
+          <div class="arrow">
+            <%= link_to "All", projects_path %>
+          </div>
+          <div class="arrow">
+            <% if @project.next %>
+              <%= link_to project_path(@project.next) do %>
+                <i class="fas fa-arrow-right"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <h2> Similar projects</h2>
+        <% @similar_projects.each do |project|%>
+          <% if project != @project %>
+            <%= link_to project.name, project_path(project), class:"mute-75 similar-project-link"%>
+          <% end %>
+          <br>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 
   <div class="row">
