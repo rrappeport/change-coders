@@ -1,6 +1,8 @@
 <figure>
   <code id="cover-image" style="display: none;"></code>
-  <img class="cover-img" data-embed-id="cover-image" alt="Mastercard cover image" src="https://res.cloudinary.com/deoafyurg/image/upload/v1534414161/wade-austin-ellis-702904-unsplash.jpg">
+
+  <img class="cover-img" data-embed-id="cover-image" alt="Mastercard cover image" src="https://res.cloudinary.com/deoafyurg/image/upload/v1534410963/filip-varga-271263-unsplash.jpg">
+
 </figure>
 
 <div class="container">
@@ -10,13 +12,12 @@
       <div class="col-md-4">
       </div>
         <div class="col-md-8">
-          <h2> <%= @developer.first_name %> <%= @developer.last_name %></h2>
         </div>
-      <div class = "row" >
+      <div class = "row padding-medium-top" >
         <div class="col-md-4 user-photo">
           <% if @developer.avatar? %>
             <div class = "user-avatar"
-            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+            style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)),
            url('<%= cl_image_path @developer.avatar %>')"></div>
           <% else %>
             <%= image_tag "https://image.flaticon.com/icons/svg/145/145849.svg", class: "user-avatar"%>
@@ -24,35 +25,37 @@
           <div class = "star-rating">
             <div class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star on"></i><i class="fa fa-star off"></i></div>
           </div>
-          <a href="#" class="btn btn-reset btn-top-margin" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Get in touch</a>
+        <div class="contact-links contact-links-show ">
+          <a href="#"><i class="far fa-envelope"></i> </a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
         </div>
         <div class="col-md-8">
-          <div class = "border-spaced">
-            <h4><%= @developer.email %></h4>
-          </div>
-          <div class = "border-spaced">
-            <h4>Description: <%= @developer.description %></h4>
-          </div>
-          <div class = "border-spaced">
-            <h4>Experience: <%= @developer.experience %></h4>
-          </div>
-          <div class = "border-spaced">
-            <h4>Linkedin_username: <%= @developer.linkedin_username %></h4>
-          </div>
-          <div class = "border-spaced-bottom">
-            <h4>Github_username: <%= @developer.github_username %></h4>
+          <div>
+            <h3 class="margin-remove-top"> <%= @developer.first_name %> <%= @developer.last_name %></h3>
+            <h4 class= "project-h4" > <strong> Bio </strong></h4>
+            <h4 class= "project-h4"><%= @developer.description %></h4>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-
+  <div class="col-md-12">
+    <div class="project-info white-box">
+      <div>
+        <h3> <%= @developer.first_name %>'s Experience </h3>
+        <h4 class= "project-h4 show-content"><%= @developer.experience %></h4>
+      </div>
+    </div>
+  </div>
 
 
   <div class="col-md-12">
-    <div class="project-info white-box text-center">
-      <h2> <%= @developer.first_name %>'s projects </h2>
+    <div class="project-info white-box">
+      <h3> <%= @developer.first_name %>'s projects </h3>
       <div class="row">
         <div class="form-group">
           <% @projects.each do |project| %>
@@ -69,8 +72,8 @@
   </div>
 
   <div class="col-md-12">
-    <div class="project-info white-box">
-      <h2>  <%= @developer.first_name %>'s skills </h2>
+    <div class="project-info white-box dev-skills-show">
+      <h3>  <%= @developer.first_name %>'s skills </h3>
       <div class="skill-display">
         <% @developer.skills.each do |skill| %>
           <div class = "text-center">

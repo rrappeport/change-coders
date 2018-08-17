@@ -23,4 +23,13 @@ const initFilters = function() {
   }
 };
 
-export { initFilters };
+const initShowMore = function() {
+  const btn = document.querySelector('#show_more');
+  btn.addEventListener('click', function(e) {
+    const container = document.querySelector('#filter');
+    container.style.height = 'auto';
+    btn.remove();
+  });
+}
+
+export { initFilters, initShowMore };

@@ -16,12 +16,13 @@
     <p class="card-index-category"><%= project.charity.category %></p>
     <p class="card-index-type"><%= project.work_type %></p>
     <div class="card-index-project">
-      <h2><%= link_to project.name, project_path(project)%></h2>
+      <h2><%= link_to project.name%></h2>
       <p class="mute-75"><%= project.details %></p>
     </div>
     <div class="card-index-details">
       <p class="card-index-deadline"><%= project.deadline %></p>
       <p class="card-index-progess"><%= project.status %></p>
     </div>
+    <%= link_to "", project_path(project), class:"card-hover"%>
   </div>
 <%end %>

@@ -1,0 +1,5 @@
+meta_product_name: "Change Coders"
+meta_title: "Change Coders - Code for Nonprofits"
+meta_description: "Get coding experience while helping charities and nonprofits! Browse available projects, connect with other developers, and build your resume while contributing to a good cause"
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "@changecoders"   # required for Twitter Cards

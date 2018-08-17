@@ -2,15 +2,27 @@
   background: #fff;
   border: 1px solid #ddd;
   width: 100%;
-  height: auto;
-  padding: 20px 40px;
+  padding: 40px 80px;
   margin: 10px 0;
   h3 {
     color: $green;
     text-transform:uppercase;
+    margin-bottom: 35px;
   }
+  h2 {
+    text-transform:uppercase;
+    margin-bottom: 35px;
+  }
+
 }
 
+.pr-title{
+  padding: 0;
+}
+
+.pr-sml-title{
+  font-style: italic;
+}
 .green-box {
   background: $green;
   color: white;
@@ -56,8 +68,8 @@
 }
 
 .team-member-info {
-  height: 140px;
   padding: 20px;
+  height: 90px;
   h4 {
     color: $green-lighter;
     font-weight: 700;
@@ -98,7 +110,7 @@
 
 .project-info-dahsboard {
   padding: 20px 80px;
-  position: relative
+  position: relative;
 }
 
 .days-left {
@@ -106,6 +118,8 @@
   position: absolute;
   top: 45px;
   right: 80px;
+  color: $green-lighter;
+  text-align: center;
 }
 
 .charity-info-dashboard{
@@ -125,7 +139,7 @@
 }
 
 .display-right {
-  margin-left: 520px;
+  margin-left: 545px;
 }
 
 .remove {
@@ -137,6 +151,18 @@
   }
 }
 
-.similar-projects {
-  height: 710px;
+
+
+.sp-dashboard {
+  height: 995px;
+}
+
+.arrows {
+  display: flex;
+  justify-content: center;
+}
+
+.arrow {
+  color: $violet;
+  padding: 0 25px;
 }

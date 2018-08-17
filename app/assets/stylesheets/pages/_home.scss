@@ -12,17 +12,53 @@ body {
 .banner-content h1 {
   color: white;
   padding: 20px;
+  font-size: 65px;
 }
 
 .banner-content h3 {
   color: white;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
+  font-size: 35px;
 }
+
+.about-box {
+  padding-right: 50px;
+}
+
+.about-box h2 {
+  margin-top: 0;
+}
+
+.about-box h4 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#home-services h2 {
+  font-size: 45px;
+}
+
+#home-services h4 {
+  font-size: 30px;
+}
+
+#home-services p {
+  font-size: 22px;
+}
+
+.get-started h2 {
+  font-size: 45px;
+}
+
+.get-started .btn {
+  width: 300px;
+}
+
 
 #home-banner {
   height: 100vh;
   background-size: cover !important;
-  background-position: center;
+  background-position: bottom;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,6 +89,10 @@ body {
 
 .homepage {
 padding: 30px;
+}
+
+.homepage h4 {
+  font-size: 25px;
 }
 
 .homepage h2 {
