@@ -29,7 +29,7 @@ class DevelopersController < ApplicationController
       @developer.skills << Skill.find(skill_id)
     end
     if @developer.update(developer_params)
-      redirect_to developer_path(@developer)
+      redirect_to developer_dashborad_path
     else
       render :edit
     end

@@ -18,7 +18,7 @@
 
     <% if developer_signed_in? %>
       <div class="navbar-wagon-item navbar-wagon-link">
-        <div class="dropdown display-flex dropdown-toggle" data-toggle="dropdown">
+        <div class="dropdown display-flex dropdown-toggle">
           <% if current_developer.avatar.file %>
             <div class="avatar dropdown-toggle" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path current_developer.avatar %>')" id="navbar-wagon-menu" data-toggle="dropdown"></div>
           <% else %>
@@ -28,7 +28,7 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
 
-              <%= link_to developer_dashboard_path(current_developer) do %>
+              <%= link_to developer_dashboard_path do %>
 
                 <i class="fa fa-user"></i> <%= t(".profile", default: " Dashboard") %>
 
@@ -61,7 +61,7 @@
           <span class="dropdown-toggle" data-toggle="dropdown"><%= current_charity.name %></span>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to charity_dashboard_path(current_charity) do %>
+              <%= link_to charity_dashboard_path do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
               <% end %>
             </li>
