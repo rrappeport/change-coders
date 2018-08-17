@@ -93,10 +93,15 @@
           </div>
         </div>
 
-        <h2> Similar projects</h2>
+        <h2  class = "margin-bottom"> Similar projects</h2>
         <% @similar_projects.each do |project|%>
           <% if project != @project %>
-            <%= link_to project.name, project_path(project), class:"mute-75 similar-project-link"%>
+            <div class="similar-projects-box mute-75">
+              <p><%= project.name%></p>
+              <p><%= project.charity.name %></p>
+              <p><%= project.deadline %></p>
+              <%= link_to "", project_path(project), class:"similar-project-link"%>
+            </div>
           <% end %>
           <br>
         <% end %>
